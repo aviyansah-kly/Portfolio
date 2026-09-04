@@ -106,29 +106,98 @@ function initMagnetic() {
 function initWorkPreview() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  document.querySelectorAll('.work-row').forEach((row) => {
-    const preview = row.querySelector('.work-preview');
-    if (!preview || row.dataset.previewBound) return;
-    row.dataset.previewBound = 'true';
+  const stage = document.querySelector('.work-preview-stage');
+  const rows = document.querySelectorAll('.work-row[data-preview]');
+  if (!stage || !rows.length) return;
 
-    row.addEventListener('mouseenter', () => {
-      gsap.to(preview, { opacity: 1, scale: 1, duration: .35, ease: 'power3.out' });
+  if (stage.dataset.previewBound) return;
+  stage.dataset.previewBound = 'true';
+
+  const cards = [...stage.querySelectorAll('[data-preview-card]')];
+  let activeKey = null;
+  let visible = false;
+
+  const setX = gsap.quickTo(stage, 'x', { duration: .28, ease: 'power3.out' });
+  const setY = gsap.quickTo(stage, 'y', { duration: .28, ease: 'power3.out' });
+
+  function movePreview(clientX, clientY) {
+    const rect = stage.getBoundingClientRect();
+    const width = rect.width || 320;
+    const height = rect.height || 240;
+    const gap = 28;
+
+    let x = clientX + gap;
+    let y = clientY - height * .5;
+
+    if (x + width > window.innerWidth - 18) {
+      x = clientX - width - gap;
+    }
+
+    y = Math.max(18, Math.min(y, window.innerHeight - height - 18));
+
+    setX(x);
+    setY(y);
+  }
+
+  function activate(key) {
+    if (activeKey === key && visible) return;
+    activeKey = key;
+
+    cards.forEach((card) => {
+      const isActive = card.dataset.previewCard === key;
+      card.classList.toggle('is-active', isActive);
+      if (isActive) {
+        gsap.fromTo(card,
+          { opacity: 0, scale: 1.035 },
+          { opacity: 1, scale: 1, duration: .38, ease: 'power3.out', overwrite: true }
+        );
+      } else {
+        gsap.to(card, { opacity: 0, duration: .16, overwrite: true });
+      }
+    });
+
+    if (!visible) {
+      visible = true;
+      gsap.set(stage, { visibility: 'visible' });
+      gsap.fromTo(stage,
+        { opacity: 0, scale: .92 },
+        { opacity: 1, scale: 1, duration: .34, ease: 'power3.out', overwrite: true }
+      );
+    }
+  }
+
+  function hide() {
+    visible = false;
+    activeKey = null;
+    gsap.to(stage, {
+      opacity: 0,
+      scale: .94,
+      duration: .24,
+      ease: 'power2.out',
+      overwrite: true,
+      onComplete: () => {
+        if (!visible) gsap.set(stage, { visibility: 'hidden' });
+      }
+    });
+  }
+
+  rows.forEach((row) => {
+    row.addEventListener('mouseenter', (e) => {
+      movePreview(e.clientX, e.clientY);
+      activate(row.dataset.preview);
     });
 
     row.addEventListener('mousemove', (e) => {
-      gsap.to(preview, {
-        x: e.clientX + 28,
-        y: e.clientY - 20,
-        duration: .28,
-        ease: 'power3.out',
-        overwrite: true
-      });
+      movePreview(e.clientX, e.clientY);
+      if (activeKey !== row.dataset.preview) activate(row.dataset.preview);
     });
 
-    row.addEventListener('mouseleave', () => {
-      gsap.to(preview, { opacity: 0, scale: .92, duration: .25, ease: 'power2.out' });
-    });
+    row.addEventListener('mouseleave', hide);
   });
+
+  window.addEventListener('blur', hide);
+  document.addEventListener('mouseleave', hide);
+  window.addEventListener('resize', hide);
 }
 
 function initHomeIntro() {
