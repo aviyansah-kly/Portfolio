@@ -22,3 +22,12 @@ npm run dev
 ```
 
 Open http://localhost:3000
+
+
+## Cloudflare deployment
+
+This project uses Next.js static export and Cloudflare Workers Static Assets.
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Output directory: `./out`
