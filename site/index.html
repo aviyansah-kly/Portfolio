@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Avi Yansah — Product Designer & Web Creator</title>
-  <meta name="description" content="Independent Product Designer & Web Creator based in Indonesia, working worldwide." />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="Independent Product Designer & Web Creator based in Indonesia, working worldwide.">
+  <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body data-barba="wrapper">
+  <div class="transition-layer"><div class="transition-label">AVI YANSAH®</div></div>
+  <div class="cursor"><span>View</span></div>
+
   <header class="site-header">
-    <a href="#" class="brand">AVI YANSAH®</a>
+    <a href="./index.html" class="brand magnetic">AVI YANSAH®</a>
     <nav>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#work" class="magnetic">Work</a>
+      <a href="#about" class="magnetic">About</a>
+      <a href="#contact" class="magnetic">Contact</a>
     </nav>
   </header>
 
-  <main>
+  <main data-barba="container" data-barba-namespace="home">
     <section class="hero">
       <div class="hero-kicker">Independent designer & web creator</div>
       <h1>
@@ -28,27 +31,54 @@
       <div class="hero-meta">
         <p>Based in Indonesia<br>Working worldwide</p>
         <p>Designing digital products<br>and websites that perform.</p>
-        <a class="circle-link" href="#work">↓</a>
+        <a class="circle-link magnetic" href="#work">↓</a>
       </div>
     </section>
 
     <section id="work" class="work">
       <div class="section-head reveal"><span>Selected work</span><span>2024—2026</span></div>
 
-      <article class="project-card reveal">
-        <div class="project-media tone-a"><div class="browser-frame"><div class="browser-bar"><i></i><i></i><i></i></div><div class="mock-ui"><div class="mock-eyebrow">01</div><div class="mock-title">Pins+</div><div class="mock-lines"><span></span><span></span><span></span></div></div></div></div>
+      <a class="project-card reveal" href="./work/pins.html" data-cursor="View">
+        <div class="project-media tone-a">
+          <div class="browser-frame">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mock-ui">
+              <div class="mock-eyebrow">01</div>
+              <div class="mock-title">Pins+</div>
+              <div class="mock-lines"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
         <div class="project-info"><h2>Pins+</h2><p>Product Strategy · UI/UX · 2026</p></div>
-      </article>
+      </a>
 
-      <article class="project-card reveal">
-        <div class="project-media tone-b"><div class="browser-frame"><div class="browser-bar"><i></i><i></i><i></i></div><div class="mock-ui"><div class="mock-eyebrow">02</div><div class="mock-title">Liputan6 Quran</div><div class="mock-lines"><span></span><span></span><span></span></div></div></div></div>
+      <a class="project-card reveal" href="./work/quran.html" data-cursor="View">
+        <div class="project-media tone-b">
+          <div class="browser-frame">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mock-ui">
+              <div class="mock-eyebrow">02</div>
+              <div class="mock-title">Liputan6 Quran</div>
+              <div class="mock-lines"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
         <div class="project-info"><h2>Liputan6 Quran</h2><p>Product Design · UX · 2026</p></div>
-      </article>
+      </a>
 
-      <article class="project-card reveal">
-        <div class="project-media tone-c"><div class="browser-frame"><div class="browser-bar"><i></i><i></i><i></i></div><div class="mock-ui"><div class="mock-eyebrow">03</div><div class="mock-title">Panorama Advisory</div><div class="mock-lines"><span></span><span></span><span></span></div></div></div></div>
+      <a class="project-card reveal" href="./work/panorama.html" data-cursor="View">
+        <div class="project-media tone-c">
+          <div class="browser-frame">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mock-ui">
+              <div class="mock-eyebrow">03</div>
+              <div class="mock-title">Panorama Advisory</div>
+              <div class="mock-lines"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
         <div class="project-info"><h2>Panorama Advisory</h2><p>Web Design · Development · 2026</p></div>
-      </article>
+      </a>
     </section>
 
     <section id="about" class="statement">
@@ -82,14 +112,15 @@
     <section id="contact" class="contact">
       <p class="eyebrow reveal">Available for selected projects</p>
       <h2 class="reveal">HAVE SOMETHING<br>INTERESTING IN MIND?</h2>
-      <a class="contact-link reveal" href="mailto:hello@example.com">LET'S WORK TOGETHER ↗</a>
+      <a class="contact-link magnetic reveal" href="mailto:hello@example.com">LET'S WORK TOGETHER ↗</a>
     </section>
-  </main>
 
-  <footer><span>© 2026 Avi Yansah</span><span>Indonesia · Worldwide</span></footer>
+    <footer><span>© 2026 Avi Yansah</span><span>Indonesia · Worldwide</span></footer>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="./script.js"></script>
 </body>
