@@ -1,25 +1,12 @@
 {
   "name": "avi-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "echo \"Static site: no build required\"",
     "deploy": "wrangler deploy"
   },
-  "dependencies": {
-    "gsap": "^3.12.5",
-    "lenis": "^1.1.20",
-    "next": "^15.5.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
   "devDependencies": {
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.0.3",
-    "@types/react-dom": "^19.0.2",
-    "typescript": "^5.7.2",
-    "wrangler": "^4.68.0"
+    "wrangler": "^4.129.0"
   }
 }
