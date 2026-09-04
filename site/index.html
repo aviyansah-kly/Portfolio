@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body data-barba="wrapper">
-  <div class="transition-layer"><div class="transition-label">AVI YANSAH®</div></div>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-top"><span>AVI YANSAH®</span><span>PORTFOLIO</span></div>
+    <div class="loader-count"><span>0</span><sup>%</sup></div>
+    <div class="loader-line"><i></i></div>
+  </div>
+  <div class="transition-layer"><div class="transition-title">AVI YANSAH®</div><div class="transition-progress"></div></div>
   <div class="cursor"><span>View</span></div>
 
   <header class="site-header">
@@ -22,7 +27,10 @@
 
   <main data-barba="container" data-barba-namespace="home">
     <section class="hero">
-      <div class="hero-kicker">Independent designer & web creator</div>
+      <div class="hero-top">
+        <div class="hero-kicker">Independent designer & web creator</div>
+        <div class="availability"><i></i><span>Available for selected projects</span></div>
+      </div>
       <h1>
         <span class="hero-line"><span>PRODUCT</span></span>
         <span class="hero-line"><span>DESIGNER &</span></span>
@@ -35,10 +43,17 @@
       </div>
     </section>
 
-    <section id="work" class="work">
-      <div class="section-head reveal"><span>Selected work</span><span>2024—2026</span></div>
+    <section class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <span>DESIGNING DIGITAL EXPERIENCES — BUILDING WHAT I DESIGN — </span>
+        <span>DESIGNING DIGITAL EXPERIENCES — BUILDING WHAT I DESIGN — </span>
+      </div>
+    </section>
 
-      <a class="project-card reveal" href="./work/pins.html" data-cursor="View">
+    <section id="work" class="work">
+      <div class="section-head line-reveal"><span>Selected work</span><span>2024—2026</span></div>
+
+      <a class="project-card reveal" href="./work/pins.html" data-cursor="View" data-project-title="Pins+">
         <div class="project-media tone-a">
           <div class="browser-frame">
             <div class="browser-bar"><i></i><i></i><i></i></div>
@@ -52,7 +67,7 @@
         <div class="project-info"><h2>Pins+</h2><p>Product Strategy · UI/UX · 2026</p></div>
       </a>
 
-      <a class="project-card reveal" href="./work/quran.html" data-cursor="View">
+      <a class="project-card reveal" href="./work/quran.html" data-cursor="View" data-project-title="Liputan6 Quran">
         <div class="project-media tone-b">
           <div class="browser-frame">
             <div class="browser-bar"><i></i><i></i><i></i></div>
@@ -66,7 +81,7 @@
         <div class="project-info"><h2>Liputan6 Quran</h2><p>Product Design · UX · 2026</p></div>
       </a>
 
-      <a class="project-card reveal" href="./work/panorama.html" data-cursor="View">
+      <a class="project-card reveal" href="./work/panorama.html" data-cursor="View" data-project-title="Panorama Advisory">
         <div class="project-media tone-c">
           <div class="browser-frame">
             <div class="browser-bar"><i></i><i></i><i></i></div>
