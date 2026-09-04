@@ -56,11 +56,13 @@ a{color:inherit;text-decoration:none}
 
 .recent-work{padding:40px var(--pad) 120px;background:#fff}
 .work-label{padding-bottom:20px;border-bottom:1px solid var(--line);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-.work-row{position:relative;display:grid;grid-template-columns:1.6fr .75fr 80px;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);min-height:105px}
+.work-row{position:relative;display:grid;grid-template-columns:1.6fr .75fr 80px;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);min-height:105px;transition:opacity .25s ease}
 .work-title{font-size:clamp(36px,4.6vw,74px);letter-spacing:-.05em;line-height:.95}
 .work-service,.work-year{font-size:13px}
-.work-preview{position:fixed;z-index:60;top:0;left:0;width:330px;aspect-ratio:4/3;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.92);display:grid;place-items:center;color:#111;box-shadow:0 28px 80px rgba(0,0,0,.18);overflow:hidden}
-.work-preview span{font-size:clamp(28px,3vw,54px);letter-spacing:-.05em}
+.work-preview-stage{position:fixed;top:0;left:0;z-index:70;width:clamp(260px,24vw,360px);aspect-ratio:4/3;pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(0,0,0) scale(.94);overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.18);will-change:transform,opacity}
+.preview-card{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(1.04);transition:none}
+.preview-card.is-active{opacity:1}
+.preview-card span{font-size:clamp(28px,3vw,54px);letter-spacing:-.05em}
 .preview-a{background:#d8ff4d}.preview-b{background:#e5d8c7}.preview-c{background:#cbd6ef}.preview-d{background:#dedede}
 
 .philosophy{padding:150px var(--pad);background:#f1f1ee}
@@ -119,3 +121,7 @@ a{color:inherit;text-decoration:none}
   .case-copy{gap:30px}
   .case-cover{height:85vw}
 }
+
+.recent-work:has(.work-row:hover) .work-row:not(:hover){opacity:.34}
+.work-row:hover .work-title{transform:translateX(12px)}
+.work-title{transition:transform .45s cubic-bezier(.22,.8,.22,1)}
