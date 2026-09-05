@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Investire in Tanzania — Redesign Concept</title>
+<meta name="description" content="Concept di restyling per Investire in Tanzania: consulenza, opportunità e supporto agli investitori.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10231e;--deep:#0b1b17;--green:#174f3d;--sage:#dfe8dc;--sand:#f3eee4;--paper:#fbfaf6;--line:rgba(16,35,30,.14);--white:#fff;--accent:#d4a95d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}img{display:block;width:100%;height:100%;object-fit:cover}.wrap{width:min(1240px,calc(100% - 48px));margin:auto}.eyebrow{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:600;font-size:14px;border:1px solid transparent;transition:.25s}.btn.primary{background:var(--ink);color:#fff}.btn.primary:hover{transform:translateY(-2px);background:#183a31}.btn.ghost{border-color:rgba(255,255,255,.5);color:#fff}.btn.light{background:#fff;color:var(--ink)}.arrow{font-size:18px}
+.topbar{background:var(--deep);color:rgba(255,255,255,.8);font-size:12px}.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:9px 0}.topbar span{display:flex;gap:18px}
+header{position:absolute;z-index:5;left:0;right:0;color:#fff;border-bottom:1px solid rgba(255,255,255,.22)}header .wrap{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-family:Manrope;font-weight:700;letter-spacing:.02em}.mark{width:38px;height:38px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;font-size:12px}.brand small{display:block;font-family:"DM Sans";font-size:10px;font-weight:500;letter-spacing:.18em;opacity:.72}.nav{display:flex;gap:28px;font-size:14px;align-items:center}.nav a{opacity:.88}.nav a:hover{opacity:1}.menuBtn{display:none}
+.hero{min-height:760px;position:relative;color:#fff;display:flex;align-items:flex-end;background:linear-gradient(90deg,rgba(8,26,21,.88) 0%,rgba(8,26,21,.62) 46%,rgba(8,26,21,.12) 78%),url("https://static.wixstatic.com/media/28f348_ac7f7e697bfb452888bbd4a00e8e4217~mv2.webp/v1/fill/w_1600,h_1000,al_c,q_85/28f348_ac7f7e697bfb452888bbd4a00e8e4217~mv2.webp") center/cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,22,18,.68),transparent 45%)}.hero .wrap{position:relative;z-index:2;padding:190px 0 68px;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:end}.hero h1{font-family:Manrope;font-size:clamp(54px,7vw,94px);line-height:.98;letter-spacing:-.055em;margin:14px 0 24px;max-width:830px}.hero p{font-size:18px;max-width:610px;color:rgba(255,255,255,.84);margin:0 0 32px}.actions{display:flex;gap:12px;flex-wrap:wrap}.heroCard{justify-self:end;max-width:330px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(14px);padding:25px;border-radius:20px}.heroCard strong{display:block;font-family:Manrope;font-size:36px;margin:8px 0 4px}.heroCard p{font-size:13px;margin:0;color:rgba(255,255,255,.7)}.heroCard .rule{height:1px;background:rgba(255,255,255,.25);margin:20px 0}
+.trust{background:var(--sand);border-bottom:1px solid var(--line)}.trust .wrap{display:grid;grid-template-columns:1.2fr repeat(3,1fr);align-items:center}.trust .item{padding:28px 26px;border-left:1px solid var(--line)}.trust .item:first-child{border-left:0;padding-left:0}.trust strong{display:block;font-family:Manrope;font-size:28px}.trust p{margin:2px 0 0;color:#627069;font-size:13px}
+section{padding:110px 0}.sectionHead{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:end;margin-bottom:48px}.sectionHead h2{font-family:Manrope;font-size:clamp(38px,5vw,64px);line-height:1.02;letter-spacing:-.045em;margin:8px 0 0}.sectionHead p{margin:0;color:#5e6964;max-width:580px;justify-self:end}
+.opps{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.opp{position:relative;min-height:360px;border-radius:22px;overflow:hidden;background:#d5ddd8;color:#fff}.opp.large{grid-column:span 6}.opp.small{grid-column:span 3}.opp:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,20,15,.82),transparent 65%)}.opp img{position:absolute;inset:0;transition:transform .7s}.opp:hover img{transform:scale(1.045)}.opp .body{position:absolute;z-index:2;left:24px;right:24px;bottom:22px}.opp .num{font-size:11px;letter-spacing:.14em;opacity:.72}.opp h3{font-family:Manrope;font-size:25px;margin:6px 0 2px}.opp p{font-size:13px;color:rgba(255,255,255,.72);margin:0}
+.why{background:var(--deep);color:#fff}.whyGrid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.whyVisual{height:590px;border-radius:26px;overflow:hidden;position:relative}.whyVisual img{filter:saturate(.84)}.whyVisual .note{position:absolute;left:24px;bottom:24px;background:#f7f2e7;color:var(--ink);padding:18px;border-radius:16px;width:210px}.note strong{font-family:Manrope;font-size:25px;display:block}.why h2{font-family:Manrope;font-size:clamp(40px,5vw,64px);line-height:1.02;letter-spacing:-.045em;margin:12px 0 24px}.why .lead{font-size:17px;color:rgba(255,255,255,.7);max-width:540px}.reasons{margin-top:36px;border-top:1px solid rgba(255,255,255,.16)}.reason{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.16)}.reason b{font-family:Manrope}.reason p{margin:3px 0 0;font-size:13px;color:rgba(255,255,255,.62)}
+.services .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.service{padding:28px;border:1px solid var(--line);border-radius:20px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;transition:.25s}.service:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(15,35,29,.08)}.icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--sage);font-weight:700}.service h3{font-family:Manrope;font-size:22px;margin:32px 0 8px}.service p{font-size:14px;color:#64706a;margin:0}.service .more{margin-top:28px;font-size:13px;font-weight:600}
+.zanzibar{padding:0 0 110px}.zbox{min-height:590px;border-radius:28px;overflow:hidden;position:relative;color:#fff;background:linear-gradient(90deg,rgba(7,27,22,.84),rgba(7,27,22,.18)),url("https://images.unsplash.com/photo-1708524920733-0be146c8a238?auto=format&fit=crop&q=85&w=2000") center/cover}.zcontent{position:absolute;left:clamp(28px,6vw,72px);bottom:clamp(32px,6vw,70px);max-width:610px}.zcontent h2{font-family:Manrope;font-size:clamp(46px,6vw,76px);letter-spacing:-.05em;line-height:1;margin:12px 0 22px}.zcontent p{color:rgba(255,255,255,.78);font-size:16px}
+.process{background:var(--sand)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}.step{padding:28px 28px 10px 0;border-right:1px solid var(--line);min-height:245px}.step:not(:first-child){padding-left:28px}.step:last-child{border-right:0}.step span{font-size:12px;color:#6d7772}.step h3{font-family:Manrope;font-size:24px;margin:35px 0 8px}.step p{font-size:13px;color:#68736d}
+.teamGrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}.team h2{font-family:Manrope;font-size:clamp(38px,5vw,62px);line-height:1.03;letter-spacing:-.045em;margin:10px 0 22px}.team p{color:#66716b}.people{display:grid;grid-template-columns:1fr 1fr}.person{padding:24px 0;border-top:1px solid var(--line)}.person:nth-child(odd){padding-right:28px}.person:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}.person b{font-family:Manrope;font-size:18px}.person small{display:block;margin-top:4px;color:#76817b}
+.cta{padding-top:0}.ctaBox{background:var(--green);color:#fff;border-radius:28px;padding:64px;display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:40px}.ctaBox h2{font-family:Manrope;font-size:clamp(40px,5vw,66px);line-height:1.02;letter-spacing:-.045em;margin:10px 0}.ctaBox p{color:rgba(255,255,255,.7);max-width:520px}.ctaAside{justify-self:end}
+footer{background:#07130f;color:rgba(255,255,255,.72);padding:58px 0 28px}.foot{display:grid;grid-template-columns:1.2fr repeat(3,.7fr);gap:45px}.foot h4{font-family:Manrope;color:#fff;margin:0 0 15px}.foot a,.foot p{display:block;font-size:13px;margin:0 0 8px}.copyright{margin-top:50px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;font-size:11px}.concept{position:fixed;right:18px;bottom:18px;z-index:20;background:#fff;color:#172b25;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:10px;box-shadow:0 8px 30px rgba(0,0,0,.12)}
+.fade{opacity:0;transform:translateY(18px);transition:.7s ease}.fade.in{opacity:1;transform:none}
+@media(max-width:900px){.nav{display:none}.menuBtn{display:block}.hero .wrap,.sectionHead,.whyGrid,.teamGrid,.ctaBox{grid-template-columns:1fr}.hero{min-height:700px}.heroCard{display:none}.trust .wrap{grid-template-columns:1fr 1fr}.trust .item{border-left:0;border-top:1px solid var(--line);padding:22px 16px}.opp.large,.opp.small{grid-column:span 6}.services .cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.ctaAside{justify-self:start}}
+@media(max-width:600px){.wrap{width:min(100% - 28px,1240px)}.topbar span:last-child{display:none}header .wrap{height:70px}.hero .wrap{padding:150px 0 45px}.hero h1{font-size:52px}.hero p{font-size:16px}section{padding:78px 0}.trust .wrap,.services .cards,.steps,.people{grid-template-columns:1fr}.opp.large,.opp.small{grid-column:span 12;min-height:320px}.whyVisual{height:420px}.step{border-right:0;border-bottom:1px solid var(--line);padding:24px 0!important}.person:nth-child(even){padding-left:0;border-left:0}.person:nth-child(odd){padding-right:0}.ctaBox{padding:35px 26px}.foot{grid-template-columns:1fr 1fr}.copyright{gap:20px;flex-direction:column}.concept{display:none}}
+</style>
+</head>
+<body>
+<div class="concept">Concept proposal · Avi Yansah</div>
+<div class="topbar"><div class="wrap"><span>Dar es Salaam · Arusha · Zanzibar</span><span>+255 745 362 028 · opportunita@investireintanzania.com</span></div></div>
+<header><div class="wrap">
+<a class="brand" href="#"><span class="mark">IT</span><span>INVESTIRE <small>IN TANZANIA</small></span></a>
+<nav class="nav"><a href="#opportunita">Opportunità</a><a href="#servizi">Servizi</a><a href="#zanzibar">Zanzibar</a><a href="#team">Team</a><a class="btn ghost" href="#contatti">Parla con noi <span class="arrow">↗</span></a></nav><span class="menuBtn">Menu</span>
+</div></header>
+
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="fade"><div class="eyebrow">Consulenza per investitori in Tanzania</div><h1>Trasforma un’opportunità in un investimento concreto.</h1><p>Da 26 anni aiutiamo imprenditori e investitori a orientarsi nel mercato tanzaniano: strategia, società, licenze, immobiliare e supporto locale.</p><div class="actions"><a class="btn light" href="#opportunita">Esplora le opportunità <span class="arrow">↗</span></a><a class="btn ghost" href="#contatti">Richiedi una consulenza</a></div></div>
+<aside class="heroCard fade"><div class="eyebrow">Presenza locale</div><strong>26 anni</strong><p>di esperienza operativa sul territorio.</p><div class="rule"></div><div class="eyebrow">Network</div><strong>3 sedi</strong><p>Dar es Salaam, Arusha e Zanzibar.</p></aside>
+</div>
+</section>
+
+<div class="trust"><div class="wrap">
+<div class="item"><div class="eyebrow">Una guida locale, dall’idea all’operatività</div></div>
+<div class="item"><strong>26</strong><p>anni di esperienza in Tanzania</p></div>
+<div class="item"><strong>18</strong><p>professionisti e collaboratori</p></div>
+<div class="item"><strong>360°</strong><p>supporto strategico e operativo</p></div>
+</div></div>
+
+<section id="opportunita"><div class="wrap">
+<div class="sectionHead fade"><div><div class="eyebrow">Dove investire</div><h2>Settori ad alto potenziale.</h2></div><p>La Tanzania offre opportunità in comparti molto diversi. Il concept riordina i contenuti esistenti in una lettura immediata, così l’investitore può capire rapidamente dove approfondire.</p></div>
+<div class="opps">
+<a class="opp large fade" href="https://investireintanzania.com/zanzibar/immobiliare-turistico/" target="_blank"><img src="https://images.unsplash.com/photo-1708524920733-0be146c8a238?auto=format&fit=crop&q=80&w=1400" alt="Zanzibar"><div class="body"><span class="num">01 · ZANZIBAR</span><h3>Immobiliare turistico</h3><p>Domanda internazionale, clima tutto l’anno e nuove opportunità di sviluppo.</p></div></a>
+<a class="opp small fade" href="https://investireintanzania.com/opportunita-investimenti/turismo/" target="_blank"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=900" alt="Turismo"><div class="body"><span class="num">02</span><h3>Turismo</h3><p>Un settore in forte fermento.</p></div></a>
+<a class="opp small fade" href="https://investireintanzania.com/immobiliare/alberghiero/" target="_blank"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=900" alt="Hospitality"><div class="body"><span class="num">03</span><h3>Alberghiero</h3><p>Hospitality e strutture ricettive.</p></div></a>
+<a class="opp small fade" href="https://investireintanzania.com/opportunita-investimenti/agricoltura-bestiame/" target="_blank"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=900" alt="Agricoltura"><div class="body"><span class="num">04</span><h3>Agricoltura</h3><p>Produzione, filiera e trasformazione.</p></div></a>
+<a class="opp small fade" href="https://investireintanzania.com/minerario/" target="_blank"><img src="https://images.unsplash.com/photo-1578319439584-104c94d37305?auto=format&fit=crop&q=80&w=900" alt="Minerario"><div class="body"><span class="num">05</span><h3>Minerario</h3><p>Materie prime e risorse naturali.</p></div></a>
+<a class="opp large fade" href="https://investireintanzania.com/minerario/gas-naturale-e-petrolio/" target="_blank"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1400" alt="Energia"><div class="body"><span class="num">06 · ENERGIA</span><h3>Gas naturale & industria</h3><p>Progetti industriali e domanda crescente di infrastrutture e servizi.</p></div></a>
+</div>
+</div></section>
+
+<section class="why"><div class="wrap"><div class="whyGrid">
+<div class="whyVisual fade"><img src="https://static.wixstatic.com/media/28f348_ac7f7e697bfb452888bbd4a00e8e4217~mv2.webp/v1/fill/w_1200,h_1000,al_c,q_85/28f348_ac7f7e697bfb452888bbd4a00e8e4217~mv2.webp" alt="Dar es Salaam"><div class="note"><span class="eyebrow">Hub economico</span><strong>Dar es Salaam</strong><span>Business, servizi e accesso ai mercati regionali.</span></div></div>
+<div class="fade"><div class="eyebrow">Perché la Tanzania</div><h2>Un mercato che premia chi arriva preparato.</h2><p class="lead">Il valore non è solo trovare un’opportunità, ma comprenderne regole, rischi e percorso operativo. Il nuovo sito deve comunicare questa competenza in pochi secondi.</p>
+<div class="reasons">
+<div class="reason"><span>01</span><div><b>Mercato in espansione</b><p>Domanda crescente in turismo, immobiliare, industria, agroalimentare e servizi.</p></div></div>
+<div class="reason"><span>02</span><div><b>Incentivi agli investimenti</b><p>Strumenti dedicati a investitori e progetti in settori strategici e prioritari.</p></div></div>
+<div class="reason"><span>03</span><div><b>Supporto locale reale</b><p>Un team sul territorio per ridurre attriti burocratici e tempi di esecuzione.</p></div></div>
+</div></div>
+</div></div></section>
+
+<section class="services" id="servizi"><div class="wrap">
+<div class="sectionHead fade"><div><div class="eyebrow">I nostri servizi</div><h2>Dall’analisi all’avvio.</h2></div><p>Il sito attuale contiene molti servizi utili. Li raggruppiamo in aree più semplici, così il potenziale cliente capisce subito come può essere aiutato.</p></div>
+<div class="cards">
+<article class="service fade"><div class="icon">01</div><div><h3>Strategia & Market Study</h3><p>Studi di mercato, valutazione opportunità, business plan e fattibilità.</p><div class="more">Scopri di più →</div></div></article>
+<article class="service fade"><div class="icon">02</div><div><h3>Società & Licenze</h3><p>Apertura società, licenze operative e pratiche necessarie per iniziare l’attività.</p><div class="more">Scopri di più →</div></div></article>
+<article class="service fade"><div class="icon">03</div><div><h3>Legale & Fiscale</h3><p>Supporto con professionisti locali per diritto societario, contabilità e adempimenti.</p><div class="more">Scopri di più →</div></div></article>
+<article class="service fade"><div class="icon">04</div><div><h3>Banking & Finance</h3><p>Assistenza per conti bancari, lettere di credito e relazioni finanziarie.</p><div class="more">Scopri di più →</div></div></article>
+<article class="service fade"><div class="icon">05</div><div><h3>Immobiliare & Terreni</h3><p>Valutazioni, verifiche, acquisizioni e supporto nei processi immobiliari.</p><div class="more">Scopri di più →</div></div></article>
+<article class="service fade"><div class="icon">06</div><div><h3>Permessi & Operatività</h3><p>Permessi di lavoro, residenza e assistenza pratica per operare sul territorio.</p><div class="more">Scopri di più →</div></div></article>
+</div></div></section>
+
+<section class="zanzibar" id="zanzibar"><div class="wrap"><div class="zbox fade"><div class="zcontent"><div class="eyebrow">Focus · Zanzibar</div><h2>Un’isola. Più possibilità di investimento.</h2><p>Turismo, hospitality, immobiliare e nuove iniziative non turistiche: una sezione dedicata trasforma l’attuale quantità di contenuti in un percorso di scoperta più chiaro.</p><a class="btn light" href="https://investireintanzania.com/zanzibar/" target="_blank">Esplora Zanzibar <span class="arrow">↗</span></a></div></div></div></section>
+
+<section class="process"><div class="wrap">
+<div class="sectionHead fade"><div><div class="eyebrow">Come lavoriamo</div><h2>Un percorso chiaro, senza dispersioni.</h2></div><p>La fiducia cresce quando il cliente sa cosa succede dopo il primo contatto. Per questo il concept rende visibile anche il processo.</p></div>
+<div class="steps">
+<div class="step fade"><span>STEP 01</span><h3>Ascolto</h3><p>Obiettivi, capitale, settore e priorità dell’investitore.</p></div>
+<div class="step fade"><span>STEP 02</span><h3>Valutazione</h3><p>Mercato, vincoli, opportunità e percorso più adatto.</p></div>
+<div class="step fade"><span>STEP 03</span><h3>Strutturazione</h3><p>Business plan, società, licenze e partner locali.</p></div>
+<div class="step fade"><span>STEP 04</span><h3>Avvio</h3><p>Supporto operativo fino alla messa a terra del progetto.</p></div>
+</div></div></section>
+
+<section class="team" id="team"><div class="wrap"><div class="teamGrid">
+<div class="fade"><div class="eyebrow">Esperienza sul territorio</div><h2>Competenze diverse, una sola regia.</h2><p>Il team esistente è un asset importante. Nel redesign viene presentato come prova di capacità operativa, non come semplice elenco biografico.</p><a href="https://investireintanzania.com/team-contatti/" target="_blank" class="btn primary">Conosci il team <span class="arrow">↗</span></a></div>
+<div class="people fade">
+<div class="person"><b>Stefano De Amicis</b><small>Consulente · 26 anni in Tanzania</small></div>
+<div class="person"><b>Abel Kisomi</b><small>Fiscalista</small></div>
+<div class="person"><b>Joseph Ally</b><small>Avvocato societario</small></div>
+<div class="person"><b>Firas Aziz</b><small>Consulente finanziario</small></div>
+</div>
+</div></div></section>
+
+<section class="cta" id="contatti"><div class="wrap"><div class="ctaBox fade"><div><div class="eyebrow">Hai un progetto in Tanzania?</div><h2>Parliamone prima di investire.</h2><p>Raccontaci il settore, l’idea e gli obiettivi. Ti aiutiamo a capire il percorso più efficace per trasformarli in un progetto concreto.</p></div><div class="ctaAside"><a class="btn light" href="mailto:opportunita@investireintanzania.com">Richiedi una consulenza <span class="arrow">↗</span></a></div></div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="foot">
+<div><a class="brand" href="#"><span class="mark">IT</span><span>INVESTIRE <small>IN TANZANIA</small></span></a><p style="margin-top:18px;max-width:340px">Consulenza e supporto locale per imprenditori e investitori che vogliono operare in Tanzania.</p></div>
+<div><h4>Esplora</h4><a href="#opportunita">Opportunità</a><a href="#servizi">Servizi</a><a href="#zanzibar">Zanzibar</a></div>
+<div><h4>Contatti</h4><p>+255 745 362 028</p><p>opportunita@investireintanzania.com</p></div>
+<div><h4>Presenza</h4><p>Dar es Salaam</p><p>Arusha</p><p>Zanzibar</p></div>
+</div><div class="copyright"><span>© Investire in Tanzania · Redesign concept</span><span>Concept prepared for proposal purposes · Existing content restructured for demonstration.</span></div></div></footer>
+<script>
+const io=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{threshold:.12});
+document.querySelectorAll(".fade").forEach(el=>io.observe(el));
+</script>
+</body></html>
