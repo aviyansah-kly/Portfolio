@@ -110,69 +110,79 @@ function initWorkPreview() {
   const rows = document.querySelectorAll('.work-row[data-preview]');
   if (!stage || !rows.length) return;
 
-  if (stage.dataset.previewBound) return;
-  stage.dataset.previewBound = 'true';
-
   const cards = [...stage.querySelectorAll('[data-preview-card]')];
   let activeKey = null;
   let visible = false;
 
-  const setX = gsap.quickTo(stage, 'x', { duration: .28, ease: 'power3.out' });
-  const setY = gsap.quickTo(stage, 'y', { duration: .28, ease: 'power3.out' });
+  const xTo = gsap.quickTo(stage, 'x', { duration: .18, ease: 'power3.out' });
+  const yTo = gsap.quickTo(stage, 'y', { duration: .18, ease: 'power3.out' });
 
-  function movePreview(clientX, clientY) {
-    const rect = stage.getBoundingClientRect();
-    const width = rect.width || 320;
-    const height = rect.height || 240;
-    const gap = 28;
+  function getStageSize() {
+    const width = stage.offsetWidth || 340;
+    const height = stage.offsetHeight || 255;
+    return { width, height };
+  }
+
+  function place(clientX, clientY, immediate = false) {
+    const { width, height } = getStageSize();
+    const gap = 26;
 
     let x = clientX + gap;
-    let y = clientY - height * .5;
+    let y = clientY - height * 0.5;
 
-    if (x + width > window.innerWidth - 18) {
+    if (x + width > window.innerWidth - 20) {
       x = clientX - width - gap;
     }
 
-    y = Math.max(18, Math.min(y, window.innerHeight - height - 18));
+    x = Math.max(20, Math.min(x, window.innerWidth - width - 20));
+    y = Math.max(20, Math.min(y, window.innerHeight - height - 20));
 
-    setX(x);
-    setY(y);
+    if (immediate) {
+      gsap.set(stage, { x, y });
+    } else {
+      xTo(x);
+      yTo(y);
+    }
   }
 
   function activate(key) {
-    if (activeKey === key && visible) return;
     activeKey = key;
 
     cards.forEach((card) => {
       const isActive = card.dataset.previewCard === key;
       card.classList.toggle('is-active', isActive);
-      if (isActive) {
-        gsap.fromTo(card,
-          { opacity: 0, scale: 1.035 },
-          { opacity: 1, scale: 1, duration: .38, ease: 'power3.out', overwrite: true }
-        );
-      } else {
-        gsap.to(card, { opacity: 0, duration: .16, overwrite: true });
-      }
+
+      gsap.to(card, {
+        opacity: isActive ? 1 : 0,
+        scale: isActive ? 1 : 1.025,
+        duration: isActive ? .28 : .15,
+        ease: 'power3.out',
+        overwrite: true
+      });
     });
 
     if (!visible) {
       visible = true;
       gsap.set(stage, { visibility: 'visible' });
-      gsap.fromTo(stage,
-        { opacity: 0, scale: .92 },
-        { opacity: 1, scale: 1, duration: .34, ease: 'power3.out', overwrite: true }
-      );
+      gsap.to(stage, {
+        opacity: 1,
+        scale: 1,
+        duration: .28,
+        ease: 'power3.out',
+        overwrite: true
+      });
     }
   }
 
   function hide() {
+    if (!visible) return;
     visible = false;
     activeKey = null;
+
     gsap.to(stage, {
       opacity: 0,
       scale: .94,
-      duration: .24,
+      duration: .18,
       ease: 'power2.out',
       overwrite: true,
       onComplete: () => {
@@ -182,13 +192,16 @@ function initWorkPreview() {
   }
 
   rows.forEach((row) => {
+    if (row.dataset.previewBound === 'true') return;
+    row.dataset.previewBound = 'true';
+
     row.addEventListener('mouseenter', (e) => {
-      movePreview(e.clientX, e.clientY);
+      place(e.clientX, e.clientY, true);
       activate(row.dataset.preview);
     });
 
     row.addEventListener('mousemove', (e) => {
-      movePreview(e.clientX, e.clientY);
+      place(e.clientX, e.clientY);
       if (activeKey !== row.dataset.preview) activate(row.dataset.preview);
     });
 
@@ -196,7 +209,6 @@ function initWorkPreview() {
   });
 
   window.addEventListener('blur', hide);
-  document.addEventListener('mouseleave', hide);
   window.addEventListener('resize', hide);
 }
 
