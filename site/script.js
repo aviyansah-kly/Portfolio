@@ -206,8 +206,7 @@ function initHomeIntro() {
     .from('.hero-location', { x: -50, opacity: 0, duration: .7 }, '-=.35')
     .from('.hero-role', { y: 20, opacity: 0, duration: .7 }, '-=.45')
     .from('.hero-portrait-image', { scale: 1.025, opacity: 0, duration: 1.05 }, '-=.5')
-    .from('.hero-name-track', { opacity: 0, y: 24, duration: .8 }, '-=.75')
-    .from('.hero-scroll', { scale: .7, opacity: 0, duration: .5 }, '-=.4');
+    .from('.hero-name-track', { opacity: 0, y: 24, duration: .8 }, '-=.75');
 }
 
 function initCaseIntro() {
@@ -259,46 +258,38 @@ function initScrollMotion() {
 
 
 let heroMarqueeTween;
-let heroMarqueeScrollTimer;
+let heroMarqueeScrollTrigger;
 
 function initHeroMarquee() {
   const track = document.querySelector('.hero-name-track');
   if (!track) return;
 
   if (heroMarqueeTween) heroMarqueeTween.kill();
+  if (heroMarqueeScrollTrigger) heroMarqueeScrollTrigger.kill();
+
+  // Default continuous direction: move to the right.
+  gsap.set(track, { xPercent: -50 });
 
   heroMarqueeTween = gsap.to(track, {
-    xPercent: -50,
-    duration: 18,
+    xPercent: 0,
+    duration: 20,
     ease: 'none',
     repeat: -1
   });
 
-  if (lenis && !track.dataset.scrollDirectionBound) {
-    track.dataset.scrollDirectionBound = 'true';
-
-    lenis.on('scroll', () => {
-      if (!heroMarqueeTween) return;
-
-      gsap.to(heroMarqueeTween, {
-        timeScale: -1,
-        duration: .35,
-        ease: 'power2.out',
-        overwrite: true
+  // While scrolling through the hero, progress pulls the marquee left.
+  heroMarqueeScrollTrigger = ScrollTrigger.create({
+    trigger: '.dennis-hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true,
+    onUpdate: (self) => {
+      const scrollShift = self.progress * 18;
+      gsap.set(track, {
+        x: -window.innerWidth * scrollShift / 10
       });
-
-      clearTimeout(heroMarqueeScrollTimer);
-      heroMarqueeScrollTimer = setTimeout(() => {
-        if (!heroMarqueeTween) return;
-        gsap.to(heroMarqueeTween, {
-          timeScale: 1,
-          duration: .55,
-          ease: 'power2.out',
-          overwrite: true
-        });
-      }, 160);
-    });
-  }
+    }
+  });
 }
 
 function initAll({ intro = false } = {}) {
