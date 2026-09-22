@@ -205,8 +205,8 @@ function initHomeIntro() {
   tl.from('.site-header', { y: -22, opacity: 0, duration: .65 })
     .from('.hero-location', { x: -50, opacity: 0, duration: .7 }, '-=.35')
     .from('.hero-role', { y: 20, opacity: 0, duration: .7 }, '-=.45')
-    .from('.hero-portrait-image', { yPercent: 7, scale: .985, opacity: 0, duration: 1.05 }, '-=.5')
-    .from('.hero-name', { xPercent: -7, opacity: 0, duration: 1.05 }, '-=.8')
+    .from('.hero-portrait-image', { scale: 1.025, opacity: 0, duration: 1.05 }, '-=.5')
+    .from('.hero-name-track', { opacity: 0, y: 24, duration: .8 }, '-=.75')
     .from('.hero-scroll', { scale: .7, opacity: 0, duration: .5 }, '-=.4');
 }
 
@@ -241,25 +241,11 @@ function initScrollMotion() {
     });
   });
 
-  const heroName = document.querySelector('.hero-name');
-  if (heroName) {
-    gsap.to(heroName, {
-      xPercent: -8,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.dennis-hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1
-      }
-    });
-  }
-
   const portrait = document.querySelector('.hero-portrait-image');
   if (portrait) {
     gsap.to(portrait, {
-      yPercent: 5,
-      scale: 1.015,
+      yPercent: 2.5,
+      scale: 1.02,
       ease: 'none',
       scrollTrigger: {
         trigger: '.dennis-hero',
@@ -271,11 +257,56 @@ function initScrollMotion() {
   }
 }
 
+
+let heroMarqueeTween;
+let heroMarqueeScrollTimer;
+
+function initHeroMarquee() {
+  const track = document.querySelector('.hero-name-track');
+  if (!track) return;
+
+  if (heroMarqueeTween) heroMarqueeTween.kill();
+
+  heroMarqueeTween = gsap.to(track, {
+    xPercent: -50,
+    duration: 18,
+    ease: 'none',
+    repeat: -1
+  });
+
+  if (lenis && !track.dataset.scrollDirectionBound) {
+    track.dataset.scrollDirectionBound = 'true';
+
+    lenis.on('scroll', () => {
+      if (!heroMarqueeTween) return;
+
+      gsap.to(heroMarqueeTween, {
+        timeScale: -1,
+        duration: .35,
+        ease: 'power2.out',
+        overwrite: true
+      });
+
+      clearTimeout(heroMarqueeScrollTimer);
+      heroMarqueeScrollTimer = setTimeout(() => {
+        if (!heroMarqueeTween) return;
+        gsap.to(heroMarqueeTween, {
+          timeScale: 1,
+          duration: .55,
+          ease: 'power2.out',
+          overwrite: true
+        });
+      }, 160);
+    });
+  }
+}
+
 function initAll({ intro = false } = {}) {
   initLenis();
   initCursor();
   initMagnetic();
   initWorkPreview();
+  initHeroMarquee();
   initScrollMotion();
 
   if (intro) {
