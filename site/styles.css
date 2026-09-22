@@ -180,3 +180,154 @@ a{color:inherit;text-decoration:none}
   .hero-location{top:23%}
   .hero-role{top:25.5%}
 }
+
+
+/* Hero v3 — full-bleed Dennis-style composition */
+.site-header{
+  padding:28px var(--pad);
+  font-size:20px;
+  line-height:1;
+}
+.site-header nav{gap:48px}
+
+.dennis-hero{
+  min-height:100svh;
+  background:#9fa3a4;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-portrait{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  display:block;
+  overflow:hidden;
+}
+.hero-portrait-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  object-fit:cover;
+  object-position:center center;
+  filter:none;
+  transform:none;
+}
+
+.hero-location{
+  left:0;
+  top:43%;
+  z-index:6;
+  border-radius:0 999px 999px 0;
+  padding:24px 34px 24px var(--pad);
+  min-width:292px;
+  font-size:20px;
+  line-height:1.18;
+}
+.hero-location span{font-size:20px}
+.hero-location strong{font-size:20px;font-weight:400}
+
+.hero-role{
+  right:8vw;
+  top:43%;
+  z-index:6;
+  max-width:430px;
+  font-size:20px;
+  line-height:1.05;
+}
+.hero-role span{
+  font-size:20px;
+  margin-bottom:14px;
+  opacity:.78;
+}
+.hero-role strong{
+  font-size:clamp(38px,3vw,58px);
+  line-height:1.05;
+  font-weight:400;
+  letter-spacing:-.035em;
+}
+
+.hero-name-wrap{
+  position:absolute;
+  left:0;
+  right:0;
+  top:auto;
+  bottom:6vh;
+  z-index:7;
+  overflow:hidden;
+  pointer-events:none;
+}
+.hero-name-track{
+  display:flex;
+  width:max-content;
+  white-space:nowrap;
+  will-change:transform;
+}
+.hero-name-track span{
+  display:block;
+  flex:none;
+  font-size:clamp(150px,17vw,330px);
+  line-height:.78;
+  letter-spacing:-.075em;
+  font-weight:400;
+  color:#fff;
+}
+
+.hero-scroll{
+  right:28%;
+  bottom:45%;
+  z-index:8;
+  width:auto;
+  height:auto;
+  border:0;
+  border-radius:0;
+  font-size:40px;
+  color:#fff;
+}
+
+@media(max-width:1100px){
+  .site-header{font-size:18px}
+  .hero-location,
+  .hero-location span,
+  .hero-location strong,
+  .hero-role span{font-size:18px}
+  .hero-role strong{font-size:clamp(34px,4.1vw,48px)}
+  .hero-name-track span{font-size:clamp(130px,18vw,220px)}
+}
+
+@media(max-width:760px){
+  .site-header{padding:22px 18px;font-size:20px}
+  .hero-portrait-image{
+    object-fit:cover;
+    object-position:center top;
+  }
+  .hero-location{
+    top:33%;
+    min-width:auto;
+    padding:18px 24px 18px 18px;
+  }
+  .hero-location,
+  .hero-location span,
+  .hero-location strong,
+  .hero-role span{font-size:20px}
+  .hero-role{
+    top:34%;
+    right:18px;
+    max-width:190px;
+  }
+  .hero-role strong{
+    font-size:28px;
+    line-height:1.03;
+  }
+  .hero-name-wrap{bottom:8vh}
+  .hero-name-track span{font-size:30vw}
+  .hero-scroll{
+    right:32%;
+    bottom:43%;
+    font-size:34px;
+  }
+}
