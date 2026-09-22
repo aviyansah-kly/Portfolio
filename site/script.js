@@ -202,11 +202,11 @@ function initWorkPreview() {
 
 function initHomeIntro() {
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
   tl.from('.site-header', { y: -22, opacity: 0, duration: .65 })
-    .from('.hero-location', { x: -50, opacity: 0, duration: .7 }, '-=.35')
-    .from('.hero-role', { y: 20, opacity: 0, duration: .7 }, '-=.45')
-    .from('.hero-portrait-image', { scale: 1.025, opacity: 0, duration: 1.05 }, '-=.5')
-    .from('.hero-name-track', { opacity: 0, y: 24, duration: .8 }, '-=.75');
+    .from('.type-hero-top > *', { y: 18, opacity: 0, stagger: .08, duration: .55 }, '-=.3')
+    .from('.type-line > span', { yPercent: 115, duration: 1.05, stagger: .08 }, '-=.25')
+    .from('.type-hero-bottom > *', { y: 22, opacity: 0, stagger: .08, duration: .65 }, '-=.45');
 }
 
 function initCaseIntro() {
@@ -240,20 +240,7 @@ function initScrollMotion() {
     });
   });
 
-  const portrait = document.querySelector('.hero-portrait-image');
-  if (portrait) {
-    gsap.to(portrait, {
-      yPercent: 1.5,
-      scale: 1.008,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.dennis-hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1
-      }
-    });
-  }
+  
 }
 
 
@@ -323,8 +310,7 @@ function initAll({ intro = false } = {}) {
   initCursor();
   initMagnetic();
   initWorkPreview();
-  initHeroMarquee();
-  initScrollMotion();
+    initScrollMotion();
 
   if (intro) {
     const ns = document.querySelector('[data-barba="container"]')?.dataset.barbaNamespace;
