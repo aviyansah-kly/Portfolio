@@ -258,38 +258,64 @@ function initScrollMotion() {
 
 
 let heroMarqueeTween;
-let heroMarqueeScrollTrigger;
+let heroMarqueeScrollHandler;
+let heroMarqueeResetTimer;
 
 function initHeroMarquee() {
   const track = document.querySelector('.hero-name-track');
   if (!track) return;
 
-  if (heroMarqueeTween) heroMarqueeTween.kill();
-  if (heroMarqueeScrollTrigger) heroMarqueeScrollTrigger.kill();
+  if (heroMarqueeTween) {
+    heroMarqueeTween.kill();
+    heroMarqueeTween = null;
+  }
 
-  // Default continuous direction: move to the right.
-  gsap.set(track, { xPercent: -50 });
+  clearTimeout(heroMarqueeResetTimer);
 
+  // Start halfway through the duplicated line so the loop is seamless.
+  gsap.set(track, { xPercent: -50, x: 0 });
+
+  // Default direction = to the right.
+  // Tween goes from -50% to 0%, then repeats seamlessly.
   heroMarqueeTween = gsap.to(track, {
     xPercent: 0,
-    duration: 20,
+    duration: 22,
     ease: 'none',
     repeat: -1
   });
 
-  // While scrolling through the hero, progress pulls the marquee left.
-  heroMarqueeScrollTrigger = ScrollTrigger.create({
-    trigger: '.dennis-hero',
-    start: 'top top',
-    end: 'bottom top',
-    scrub: true,
-    onUpdate: (self) => {
-      const scrollShift = self.progress * 18;
-      gsap.set(track, {
-        x: -window.innerWidth * scrollShift / 10
+  if (lenis) {
+    heroMarqueeScrollHandler = ({ velocity, direction }) => {
+      if (!heroMarqueeTween) return;
+
+      clearTimeout(heroMarqueeResetTimer);
+
+      // Scroll down => marquee moves left.
+      // Scroll up => marquee moves right.
+      const absVelocity = Math.min(Math.abs(velocity || 0), 20);
+      const intensity = 1 + absVelocity * 0.16;
+      const targetScale = direction > 0 ? -intensity : intensity;
+
+      gsap.to(heroMarqueeTween, {
+        timeScale: targetScale,
+        duration: .22,
+        ease: 'power2.out',
+        overwrite: true
       });
-    }
-  });
+
+      heroMarqueeResetTimer = setTimeout(() => {
+        if (!heroMarqueeTween) return;
+        gsap.to(heroMarqueeTween, {
+          timeScale: 1,
+          duration: .75,
+          ease: 'power3.out',
+          overwrite: true
+        });
+      }, 140);
+    };
+
+    lenis.on('scroll', heroMarqueeScrollHandler);
+  }
 }
 
 function initAll({ intro = false } = {}) {
