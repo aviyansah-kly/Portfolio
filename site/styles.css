@@ -468,3 +468,54 @@ a{color:inherit;text-decoration:none}
     margin-bottom:34px !important;
   }
 }
+
+
+/* Hero v6 — centered portrait with matching side background */
+.dennis-hero{
+  background:#b8bec3 !important;
+}
+
+.hero-portrait{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  z-index:1;
+}
+
+.hero-portrait-image{
+  position:relative !important;
+  inset:auto !important;
+  width:auto !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  transform-origin:center bottom;
+}
+
+@media(min-width:1200px){
+  .hero-portrait-image{
+    height:96% !important;
+  }
+}
+
+@media(max-width:1199px){
+  .hero-portrait-image{
+    height:94% !important;
+  }
+}
+
+@media(max-width:760px){
+  .dennis-hero{
+    background:#b8bec3 !important;
+  }
+  .hero-portrait-image{
+    height:82% !important;
+    width:auto !important;
+    object-position:center bottom !important;
+  }
+}
