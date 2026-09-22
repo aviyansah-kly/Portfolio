@@ -243,8 +243,8 @@ function initScrollMotion() {
   const portrait = document.querySelector('.hero-portrait-image');
   if (portrait) {
     gsap.to(portrait, {
-      yPercent: 2.5,
-      scale: 1.02,
+      yPercent: 1.5,
+      scale: 1.008,
       ease: 'none',
       scrollTrigger: {
         trigger: '.dennis-hero',
