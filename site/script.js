@@ -205,7 +205,7 @@ function initHomeIntro() {
   tl.from('.site-header', { y: -22, opacity: 0, duration: .65 })
     .from('.hero-location', { x: -50, opacity: 0, duration: .7 }, '-=.35')
     .from('.hero-role', { y: 20, opacity: 0, duration: .7 }, '-=.45')
-    .from('.hero-portrait', { yPercent: 8, opacity: 0, duration: 1.05 }, '-=.5')
+    .from('.hero-portrait-image', { yPercent: 7, scale: .985, opacity: 0, duration: 1.05 }, '-=.5')
     .from('.hero-name', { xPercent: -7, opacity: 0, duration: 1.05 }, '-=.8')
     .from('.hero-scroll', { scale: .7, opacity: 0, duration: .5 }, '-=.4');
 }
@@ -255,10 +255,11 @@ function initScrollMotion() {
     });
   }
 
-  const portrait = document.querySelector('.hero-portrait');
+  const portrait = document.querySelector('.hero-portrait-image');
   if (portrait) {
     gsap.to(portrait, {
-      yPercent: 6,
+      yPercent: 5,
+      scale: 1.015,
       ease: 'none',
       scrollTrigger: {
         trigger: '.dennis-hero',
