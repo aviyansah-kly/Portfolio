@@ -2,48 +2,49 @@
   const stage = document.querySelector("[data-scroll-video]");
   const video = document.querySelector("[data-video]");
   const progress = document.querySelector("[data-progress]");
+  const status = document.querySelector("[data-status]");
 
   if (!stage || !video) return;
 
   let duration = 0;
   let targetTime = 0;
-  let currentTime = 0;
+  let displayedTime = 0;
   let rafId = 0;
+  let ready = false;
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-  const getProgress = () => {
+  const getScrollProgress = () => {
     const rect = stage.getBoundingClientRect();
-    const scrollable = Math.max(stage.offsetHeight - window.innerHeight, 1);
-    return clamp(-rect.top / scrollable, 0, 1);
+    const scrollDistance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+    return clamp(-rect.top / scrollDistance, 0, 1);
   };
 
-  const updateTarget = () => {
-    const p = getProgress();
-
-    if (duration > 0) {
-      // Keep a tiny margin from the exact final frame for more reliable seeking.
-      targetTime = p * Math.max(duration - 0.05, 0);
-    }
+  const syncTargetToScroll = () => {
+    const p = getScrollProgress();
 
     if (progress) {
       progress.style.transform = `scaleX(${p})`;
     }
+
+    if (!ready || duration <= 0) return;
+
+    targetTime = p * Math.max(duration - 0.04, 0);
   };
 
   const render = () => {
-    if (duration > 0) {
-      // Small interpolation prevents harsh jumps on trackpads while
-      // preserving a direct relationship between scroll and video time.
-      currentTime += (targetTime - currentTime) * 0.18;
+    if (ready && duration > 0) {
+      // Smooth enough for trackpads, but still tightly follows the user's scroll.
+      const delta = targetTime - displayedTime;
+      displayedTime += delta * 0.28;
 
-      if (Math.abs(targetTime - currentTime) < 0.001) {
-        currentTime = targetTime;
+      if (Math.abs(delta) < 0.002) {
+        displayedTime = targetTime;
       }
 
-      if (Math.abs(video.currentTime - currentTime) > 0.008) {
+      if (Math.abs(video.currentTime - displayedTime) > 0.01) {
         try {
-          video.currentTime = currentTime;
+          video.currentTime = displayedTime;
         } catch (_) {}
       }
     }
@@ -51,32 +52,62 @@
     rafId = requestAnimationFrame(render);
   };
 
-  const onMetadata = () => {
+  const initializeVideo = () => {
     duration = Number.isFinite(video.duration) ? video.duration : 0;
-    currentTime = 0;
-    targetTime = 0;
+    ready = duration > 0;
+
     video.pause();
-    updateTarget();
+    displayedTime = 0;
+    targetTime = 0;
+
+    if (status) {
+      status.textContent = ready
+        ? `${duration.toFixed(1)}s film · scroll controls timeline`
+        : "Unable to read video duration";
+      status.classList.toggle("is-ready", ready);
+    }
+
+    syncTargetToScroll();
+
+    // Force the first frame to render on browsers that otherwise show black.
+    if (ready) {
+      try {
+        video.currentTime = 0.01;
+      } catch (_) {}
+    }
   };
 
-  video.addEventListener("loadedmetadata", onMetadata, { once: true });
+  if (video.readyState >= 1) {
+    initializeVideo();
+  } else {
+    video.addEventListener("loadedmetadata", initializeVideo, { once: true });
+  }
 
-  window.addEventListener("scroll", updateTarget, { passive: true });
-  window.addEventListener("resize", updateTarget, { passive: true });
+  video.addEventListener("error", () => {
+    if (status) status.textContent = "Video failed to load";
+  });
+
+  window.addEventListener("scroll", syncTargetToScroll, { passive: true });
+  window.addEventListener("resize", syncTargetToScroll, { passive: true });
 
   document.addEventListener(
     "touchstart",
     () => {
-      // Helps iOS unlock media seeking after the first user gesture.
-      video.play().then(() => video.pause()).catch(() => {});
+      // Unlocks seeking on iOS Safari after the first user gesture.
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.then === "function") {
+        playAttempt.then(() => video.pause()).catch(() => {});
+      }
     },
     { once: true, passive: true }
   );
 
-  updateTarget();
+  syncTargetToScroll();
   rafId = requestAnimationFrame(render);
 
-  window.addEventListener("pagehide", () => cancelAnimationFrame(rafId), {
-    once: true,
-  });
+  window.addEventListener(
+    "pagehide",
+    () => cancelAnimationFrame(rafId),
+    { once: true }
+  );
 })();
