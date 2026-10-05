@@ -8,9 +8,11 @@
 
   let duration = 0;
   let targetTime = 0;
-  let displayedTime = 0;
-  let rafId = 0;
+  let lastAppliedTime = -1;
+  let ticking = false;
   let ready = false;
+
+  const SEEK_EPSILON = 1 / 30; // avoid seeking for sub-frame changes
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -20,7 +22,7 @@
     return clamp(-rect.top / scrollDistance, 0, 1);
   };
 
-  const syncTargetToScroll = () => {
+  const computeTarget = () => {
     const p = getScrollProgress();
 
     if (progress) {
@@ -32,33 +34,46 @@
     targetTime = p * Math.max(duration - 0.04, 0);
   };
 
-  const render = () => {
-    if (ready && duration > 0) {
-      // Smooth enough for trackpads, but still tightly follows the user's scroll.
-      const delta = targetTime - displayedTime;
-      displayedTime += delta * 0.28;
+  const applySeek = () => {
+    ticking = false;
+    if (!ready || duration <= 0) return;
 
-      if (Math.abs(delta) < 0.002) {
-        displayedTime = targetTime;
-      }
+    // Do not spam the decoder while it is still resolving the previous seek.
+    if (video.seeking) return;
 
-      if (Math.abs(video.currentTime - displayedTime) > 0.01) {
-        try {
-          video.currentTime = displayedTime;
-        } catch (_) {}
+    if (Math.abs(targetTime - lastAppliedTime) < SEEK_EPSILON) return;
+
+    lastAppliedTime = targetTime;
+
+    try {
+      if (typeof video.fastSeek === "function") {
+        video.fastSeek(targetTime);
+      } else {
+        video.currentTime = targetTime;
       }
+    } catch (_) {}
+  };
+
+  const scheduleSeek = () => {
+    computeTarget();
+
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(applySeek);
     }
+  };
 
-    rafId = requestAnimationFrame(render);
+  const continueToLatestTarget = () => {
+    // If the user kept scrolling during a seek, immediately resolve to the latest target.
+    if (Math.abs(targetTime - lastAppliedTime) >= SEEK_EPSILON) {
+      scheduleSeek();
+    }
   };
 
   const initializeVideo = () => {
     duration = Number.isFinite(video.duration) ? video.duration : 0;
     ready = duration > 0;
-
     video.pause();
-    displayedTime = 0;
-    targetTime = 0;
 
     if (status) {
       status.textContent = ready
@@ -67,13 +82,10 @@
       status.classList.toggle("is-ready", ready);
     }
 
-    syncTargetToScroll();
-
-    // Force the first frame to render on browsers that otherwise show black.
     if (ready) {
-      try {
-        video.currentTime = 0.01;
-      } catch (_) {}
+      targetTime = 0.01;
+      lastAppliedTime = -1;
+      scheduleSeek();
     }
   };
 
@@ -83,17 +95,18 @@
     video.addEventListener("loadedmetadata", initializeVideo, { once: true });
   }
 
+  video.addEventListener("seeked", continueToLatestTarget);
+
   video.addEventListener("error", () => {
     if (status) status.textContent = "Video failed to load";
   });
 
-  window.addEventListener("scroll", syncTargetToScroll, { passive: true });
-  window.addEventListener("resize", syncTargetToScroll, { passive: true });
+  window.addEventListener("scroll", scheduleSeek, { passive: true });
+  window.addEventListener("resize", scheduleSeek, { passive: true });
 
   document.addEventListener(
     "touchstart",
     () => {
-      // Unlocks seeking on iOS Safari after the first user gesture.
       const playAttempt = video.play();
       if (playAttempt && typeof playAttempt.then === "function") {
         playAttempt.then(() => video.pause()).catch(() => {});
@@ -102,12 +115,5 @@
     { once: true, passive: true }
   );
 
-  syncTargetToScroll();
-  rafId = requestAnimationFrame(render);
-
-  window.addEventListener(
-    "pagehide",
-    () => cancelAnimationFrame(rafId),
-    { once: true }
-  );
+  scheduleSeek();
 })();
