@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Highfield Scroll Hero Experiment</title>
+  <meta name="description" content="Experimental scroll-controlled video hero for Avi Yansah Portfolio." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main>
+    <section class="scroll-stage" data-scroll-video>
+      <div class="hero">
+        <video
+          class="hero__video"
+          data-video
+          muted
+          playsinline
+          preload="auto"
+          poster="./poster.jpg"
+        >
+          <source src="./video.mp4" type="video/mp4" />
+        </video>
+
+        <div class="hero__shade"></div>
+
+        <div class="hero__chrome">
+          <div class="hero__eyebrow">Avi Yansah / Experiment 01</div>
+          <div class="hero__copy">
+            <h1>Design in motion.</h1>
+            <p>Scroll to control the film timeline.</p>
+          </div>
+
+          <div class="hero__progress" aria-hidden="true">
+            <span data-progress></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="after">
+      <p>End of scroll-scrub experiment.</p>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
