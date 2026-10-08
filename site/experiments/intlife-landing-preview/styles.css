@@ -62,3 +62,24 @@ main{display:block;position:relative;margin:0;padding:0}
 .intro-aside p,.platform-title p{color:#38594c;font-size:16px}
 html.has-scroll-smooth,html.has-scroll-smooth body{overflow-x:clip;overflow-y:auto}
 @media(max-width:760px){.header{top:0}.intro-main h2,.platform-title h2{font-weight:700}}
+
+/* Landed property developer narrative — pitch deck adaptation */
+.deck-benefits{background:#f7f8f3}.deck-heading{display:grid;grid-template-columns:1.6fr .4fr;gap:42px;align-items:end;margin:48px 0 38px}
+.deck-heading h2,.compare-intro h2{font-family:Manrope,sans-serif;font-weight:750;font-size:clamp(38px,4.8vw,68px);line-height:1.16;letter-spacing:-.065em;max-width:920px;margin:0}
+.deck-heading h2 span{color:#40775e}.deck-heading p,.compare-intro p{font-size:16px;line-height:1.7;color:#526b60;margin:0}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.benefit{min-height:298px;background:#e9efe7;border:1px solid #dfe8df;border-radius:16px;padding:29px;display:flex;align-items:flex-start;flex-direction:column}
+.benefit:nth-child(2){background:#dcebd9}.benefit:nth-child(3){background:#e1e9de}.benefit:nth-child(4){background:#d9e7d9}.benefit:nth-child(5){background:#e7ece0}
+.benefit>.lucide{height:30px;width:30px;color:#236d59;margin-bottom:32px}.benefit>span{font-size:12px;letter-spacing:.13em;font-weight:800;color:#416951}
+.benefit h3{font-size:clamp(22px,2vw,29px);letter-spacing:-.05em;line-height:1.22;margin:12px 0}.benefit p{font-size:15px;line-height:1.65;color:#436354;margin:0}
+.deck-compare{background:#123b31;color:#f8fff8}.deck-compare .section-top{border-color:#537267}.deck-compare .section-top .overline,.deck-compare .section-top p{color:#bdd9c7}
+.compare-intro{display:grid;grid-template-columns:1.4fr .6fr;gap:52px;align-items:end;margin:52px 0 40px}.compare-intro h2 em{font-style:normal;color:#d8f468}.compare-intro p{color:#c6d8cc}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.compare-card{border-radius:18px;padding:36px;min-height:390px;overflow:hidden}
+.compare-card.traditional{background:#e5eae2;color:#233e34}.compare-card.smart{background:#d8f468;color:#123a2c}
+.compare-kicker{font-size:12px;font-weight:800;letter-spacing:.13em}.compare-card h3{font-size:clamp(29px,3vw,43px);letter-spacing:-.06em;line-height:1.16;margin:20px 0 38px}
+.compare-tags{display:flex;flex-wrap:wrap;gap:10px}.compare-tags span{font-size:14px;line-height:1.35;font-weight:600;padding:12px 16px;border:1px solid currentColor;border-radius:60px}
+.compare-card.traditional .compare-tags span{border-color:#b5c5b8}.compare-card.smart .compare-tags span{border-color:#9bb85b}
+.compare-card small{display:block;margin-top:25px;font-size:13px;line-height:1.5;opacity:.75}
+#opportunity,#solutions,#experience,#advantage,#process,#contact{scroll-margin-top:90px}
+@media(max-width:1050px){.deck-heading,.compare-intro{grid-template-columns:1fr;gap:20px}.benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.deck-heading{margin:36px 0 28px}.deck-heading h2,.compare-intro h2{font-size:clamp(36px,9vw,52px)}.benefits-grid,.compare-grid{grid-template-columns:1fr}.benefit{min-height:255px;padding:24px}.benefit>.lucide{margin-bottom:23px}.compare-intro{margin:38px 0 30px}.compare-card{padding:26px;min-height:320px}.compare-card h3{margin-bottom:26px}.compare-tags span{padding:10px 12px}.deck-compare .section-top p{max-width:150px;text-align:right}}
