@@ -35,3 +35,16 @@ html.has-scroll-smooth{overflow:hidden}
 html.has-scroll-smooth body{overflow:hidden}
 @media(max-width:760px){.nav-cta{font-size:12px}.hero-product .phone{transform:rotate(2deg)}.concept-bar{padding:8px}.hero-text p{font-size:16px}}
 @media(prefers-reduced-motion:reduce){html.has-scroll-smooth,html.has-scroll-smooth body{overflow:auto} .motion-word,.motion-word-inner{transform:none!important;opacity:1!important}}
+
+/* Stability patch: no clipping, dimming or layout-shifting on typography */
+.hero h1,.intro-main h2,.platform-title h2,.journey-copy h2,.cta-copy h2,
+.hero h1 *, .intro-main h2 *, .platform-title h2 *, .journey-copy h2 *, .cta-copy h2 * {
+ overflow:visible!important;clip-path:none!important;opacity:1;
+}
+.motion-clip,.motion-word,.motion-word-inner{overflow:visible!important;transform:none!important;vertical-align:baseline!important;padding:0!important;margin:0!important}
+.reveal,.reveal.show,html.has-motion .reveal{opacity:1!important;visibility:visible!important;transform:none!important}
+.section,.section-top,.feature,.journey-step,.image-card,.intro-aside,.cta-panel,.strip-inner{opacity:1}
+h1,h2,h3{line-height:1.17;overflow:visible;overflow-wrap:normal}
+.hero h1{line-height:1.105}
+.hero-photo{opacity:.72}
+@media(max-width:760px){h1,h2,h3{line-height:1.16}.hero h1{line-height:1.12}}
