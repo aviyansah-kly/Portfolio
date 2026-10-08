@@ -48,3 +48,17 @@ h1,h2,h3{line-height:1.17;overflow:visible;overflow-wrap:normal}
 .hero h1{line-height:1.105}
 .hero-photo{opacity:.72}
 @media(max-width:760px){h1,h2,h3{line-height:1.16}.hero h1{line-height:1.12}}
+
+/* October 8 visual QA: clean, continuous header and high-contrast headings */
+html,body{margin:0;padding:0;overflow-x:clip;background:#f8f8f4}
+.header{position:sticky;top:0;left:0;right:0;width:100%;z-index:100;background:#fafbf7;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:0;border-bottom:1px solid #e5eae4;isolation:isolate}
+.header::before,.header::after{content:none!important}
+main{display:block;position:relative;margin:0;padding:0}
+.hero{margin-top:0}
+.intro-main h2,.platform-title h2{color:#173a31!important;opacity:1!important}
+.intro-main h2 span,.platform-title h2 span{color:#376f57!important;opacity:1!important}
+.intro-main h2,.platform-title h2{font-weight:750;text-shadow:none}
+.section-top .overline,.section-top p{color:#315b48}
+.intro-aside p,.platform-title p{color:#38594c;font-size:16px}
+html.has-scroll-smooth,html.has-scroll-smooth body{overflow-x:clip;overflow-y:auto}
+@media(max-width:760px){.header{top:0}.intro-main h2,.platform-title h2{font-weight:700}}
