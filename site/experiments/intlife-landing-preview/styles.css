@@ -83,3 +83,52 @@ html.has-scroll-smooth,html.has-scroll-smooth body{overflow-x:clip;overflow-y:au
 #opportunity,#solutions,#experience,#advantage,#process,#contact{scroll-margin-top:90px}
 @media(max-width:1050px){.deck-heading,.compare-intro{grid-template-columns:1fr;gap:20px}.benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.deck-heading{margin:36px 0 28px}.deck-heading h2,.compare-intro h2{font-size:clamp(36px,9vw,52px)}.benefits-grid,.compare-grid{grid-template-columns:1fr}.benefit{min-height:255px;padding:24px}.benefit>.lucide{margin-bottom:23px}.compare-intro{margin:38px 0 30px}.compare-card{padding:26px;min-height:320px}.compare-card h3{margin-bottom:26px}.compare-tags span{padding:10px 12px}.deck-compare .section-top p{max-width:150px;text-align:right}}
+
+/* Intlife Brand Guidelines — deep purple, pink, Poppins; staging only */
+:root{--dark:#26003E;--deep:#1B092C;--green:#E90288;--lime:#E90288;--paper:#FDFCFF;--ink:#26003E;--muted:#72627C}
+body{background:var(--paper);color:var(--ink);font-family:'Poppins',sans-serif}
+h1,h2,h3,.logo{font-family:'Poppins',sans-serif}
+.logo span{color:#E90288}
+.header{background:#fff!important;border-bottom:1px solid #efe4f2}
+.nav-center a:hover,.inline-link:hover{color:#E90288}
+.nav-cta{border-color:#ead8f0}
+.hero{background:#26003E}
+.hero-overlay{background:linear-gradient(90deg,rgba(26,5,43,.96),rgba(38,0,62,.81) 45%,rgba(38,0,62,.33)),linear-gradient(0deg,rgba(19,5,35,.6),transparent 50%)}
+.hero-photo{filter:saturate(.75) hue-rotate(55deg)}
+h1 em,.cta-copy em{color:#FE78D1}
+.button.lime{background:#E90288;color:#fff}
+.button.lime:hover{background:#d0007a}
+.eyebrow i,.status-dot{background:#E90288}
+.hero-text p{color:#eee5f3}
+.phone{border-color:#170722;box-shadow:0 40px 100px #14001d99,0 0 0 1px #ffffff44}
+.phone-inner{background:#f9f4fb;color:#26003E}
+.switch-grid .lucide,.tag .lucide,.mini-app-row b{color:#E90288}
+.tag,.floating-label{color:#26003E}
+.strip{background:#f7e9f4}
+.strip-inner>span,.strip span{color:#665171}
+.intro,.deck-benefits,.journey{background:#FCFAFD}
+.intro-main h2,.platform-title h2{color:#26003E!important}
+.intro-main h2 span,.platform-title h2 span,.deck-heading h2 span{color:#9D3F99!important}
+.platform{background:#f7edf9}
+.platform-title p,.intro-aside p,.journey-copy p,.deck-heading p{color:#65536d}
+.section-top .overline,.section-top p{color:#744480}
+.feature-light,.benefit,.benefit:nth-child(2),.benefit:nth-child(3),.benefit:nth-child(4),.benefit:nth-child(5){background:#f4e8f5;border-color:#ead9ed}
+.feature-dark{background:#26003E}
+.access-circle{background:#e1c4e4;box-shadow:0 0 0 25px #ead8ed,0 0 0 55px #f7edf9}
+.access-circle .lucide{color:#E90288}
+.benefit>.lucide{color:#E90288}.benefit>span{color:#943c83}.benefit p{color:#61536b}
+.deck-compare,.cta-section,.footer{background:#26003E}
+.deck-compare .section-top{border-color:#72518a}
+.deck-compare .section-top .overline,.deck-compare .section-top p{color:#ebc1e8}
+.compare-intro h2 em{color:#FE78D1}
+.compare-card.traditional{background:#f5eaf7;color:#26003E}.compare-card.smart{background:#E90288;color:#fff}
+.compare-card.smart .compare-tags span{border-color:#ffc4e6}
+.cta-copy>p{color:#e9cfe8}.cta-note{color:#deb8de}
+.cta-panel{background:#fff;color:#26003E}.form-overline{color:#E90288}
+.cta-panel label{font-size:14px}.cta-panel input,.cta-panel select,.cta-panel textarea{width:100%;min-height:48px;border:1px solid #ddd3e2;border-radius:9px;background:#fff;padding:12px;color:#26003E;font:inherit;font-size:14px;outline:none}
+.cta-panel textarea{resize:vertical;min-height:110px}
+.cta-panel input:focus,.cta-panel select:focus,.cta-panel textarea:focus{border-color:#E90288;box-shadow:0 0 0 3px #E9028817}
+.form-fields-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.required{color:#E90288}
+.form-note{color:#7e6b89!important}
+@media(max-width:600px){.form-fields-two{grid-template-columns:1fr}}
