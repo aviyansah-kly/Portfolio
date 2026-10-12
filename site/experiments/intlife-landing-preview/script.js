@@ -53,6 +53,17 @@
     });
   });
 
+  // Prepared event names for later GA4 / Google Ads setup through the client's GTM.
+  // This does not enable tracking or record conversions without their configuration.
+  $("[data-track]").forEach(link => link.addEventListener("click", () => {
+    if (!Array.isArray(window.dataLayer)) return;
+    window.dataLayer.push({
+      event: "intlife_cta_click",
+      cta_location: link.dataset.track || "unknown",
+      landing_page: "landed_properties"
+    });
+  }));
+
   // Preview forms must never collect/store personal details or claim a successful submission.
   // Replace with the approved HubSpot form implementation once credentials are provided.
   const form = $("#concept-form");
@@ -65,7 +76,9 @@
     if (invalid) {
       invalid.setAttribute("aria-invalid", "true");
       invalid.focus();
-      if (feedback) feedback.textContent = "Please complete the required fields before continuing.";
+      if (feedback) feedback.textContent = invalid.type === "email" && invalid.value.trim()
+        ? "Please enter a valid work email address."
+        : "Please complete the highlighted required field.";
       return;
     }
     if (feedback) {
