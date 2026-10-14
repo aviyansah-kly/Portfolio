@@ -625,3 +625,35 @@ a.complete__discuss.button--outline:hover svg,
   .case-card__bottom {gap:6px;}
   .case-card__bottom strong {font-size:24px;}
 }
+
+
+/* Hero CTA pair: use compact wording and balanced desktop columns to stay side by side. */
+@media(min-width:981px) {
+  .hero__layout {
+    grid-template-columns:minmax(0,1.01fr) minmax(0,.99fr);
+    gap:clamp(28px,3vw,48px);
+  }
+}
+.hero__actions {
+  gap:10px;
+}
+.hero__actions > a.button,
+.hero__actions > a.text-link.button--outline {
+  padding-inline:15px;
+  gap:9px;
+  min-height:52px;
+  font-size:14px;
+  white-space:nowrap;
+}
+.hero__actions.is-stacked > a.button,
+.hero__actions.is-stacked > a.text-link.button--outline {
+  padding-inline:19px;
+  white-space:normal;
+}
+@media(max-width:680px) {
+  .hero__actions > a.button,
+  .hero__actions > a.text-link.button--outline {
+    width:100%;
+    white-space:normal;
+  }
+}
