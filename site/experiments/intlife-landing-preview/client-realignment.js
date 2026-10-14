@@ -62,7 +62,6 @@
   const stageDescription = $("#integrated-stage-description");
   const stageLabel = $("#integrated-stage-eyebrow");
   const stageNumber = $("#integrated-stage-number");
-  const stageIcon = $(".complete__scene-corner");
   const stageContent = {
     solar: {
       number:"01 / 04",label:"01 / GENERATE",title:"Start with solar-ready homes.",
@@ -107,14 +106,6 @@
       button.classList.toggle("is-current",selected);
       button.setAttribute("aria-pressed",String(selected));
     });
-    if (stageIcon && window.lucide) {
-      const glyph = stageIcon.querySelector("[data-lucide]");
-      if (glyph) {
-        // Lucide replaces placeholders with SVG. Rebuild the icon when changing scenes.
-        stageIcon.innerHTML = '<i data-lucide="' + copy.icon + '" aria-hidden="true"></i>';
-        window.lucide.createIcons({nodes:[stageIcon],attrs:{"stroke-width":1.8}});
-      }
-    }
   }
 
   storyButtons.forEach(button => {
