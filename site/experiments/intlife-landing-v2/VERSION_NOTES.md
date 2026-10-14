@@ -53,3 +53,21 @@
 - **Primary CTA:** Discuss your project
 - **Secondary CTA:** Explore smart living
 - **Supportive topics:** compatible energy awareness, solar-ready infrastructure, optional storage, without calling them standalone products
+
+## Quality audit — 14 October 2026
+
+- Verified source markup, local anchor targets and unique IDs; all are consistent.
+- Verified JavaScript parses and CSS braces are balanced; no page-level browser screenshot verification was available.
+- Corrected prototype form validation: required name, work email and company must pass browser validity before showing the preview-only message. No data is sent or stored.
+- Corrected narrow-screen (up to 460 px) energy-flow pill layout to avoid label overflow.
+- Added short, published website figures to the key-partners strip: **10,000+ smart homes, 50,000+ IoT devices, 5 states** (source: `https://intlife.com.my/` as accessed 14 Oct 2026). Request explicit client sign-off before using in paid campaigns; the About Us page includes older milestone figures.
+- No unsupported "5 of Malaysia's Top 10" ranking claim is reproduced in V2.
+
+### Outstanding blockers to client-ready design approval
+
+1. Client to confirm that the archived 13-Oct visual is the intended previous design.
+2. App Figma: `https://www.figma.com/design/kigiHKOO8nu865M1HshtDj/Intlife-App?node-id=0-1` is currently inaccessible with linked Figma credentials. V2 uses the earlier approved welcome-screen mockup only, not the real functional app screens.
+3. Replace text-based partner names with real logos/assets from the client's official source.
+4. Review the scroll-stage illustration against the requested product-motion reference. V2 is an interactive proof of concept, not yet equivalent to an app-backed animated product demo or an exact FoxESS-style energy diagram.
+5. Verify actual Cloudflare production preview at desktop/tablet/mobile with browser screenshots and click-through testing.
+6. Confirm current scale metrics, preferred developer proof and scope of energy integration with the client.
