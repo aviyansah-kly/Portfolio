@@ -48,7 +48,7 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .eyebrow--light { color:#F4BFE0; }
 .eyebrow__dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#FF4EAD; }
 .section { padding:100px 0; }
-.section-head { border-top:1px solid var(--line); padding-top:18px; margin-bottom:38px; }
+.section-head { border-top:0; padding-top:0; margin-bottom:38px; }
 .section-head--light { border-color:#61436F; }
 .section-index { display:inline-block; font-size:14px; font-weight:700; letter-spacing:.075em; color:#9C457C; }
 .section-head--light .section-index { color:#FFA7D5; }
