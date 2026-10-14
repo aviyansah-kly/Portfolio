@@ -464,22 +464,16 @@ a.complete__discuss.button--outline:hover svg,
 }
 
 
-/* Intlife proof spotlight — split chapter between light solution and dark app experience.
-   One editorial layout, no decorative callout box or additional unneeded CTAs. */
+/* Intlife Valeria proof spotlight — clean white background, premium project photography. */
 .case-study {
   position:relative;
   isolation:isolate;
   overflow:hidden;
-  background:linear-gradient(90deg,#FFFCFA 0%,#FFFCFA 50%,#291136 50%,#291136 100%);
+  background:#FFFFFF;
   padding-block:clamp(90px,8.3vw,126px);
 }
 .case-study::before {
-  content:"";
-  position:absolute;
-  z-index:-1;
-  inset:0 50% 0 0;
-  pointer-events:none;
-  background:radial-gradient(ellipse at 15% 100%,rgba(219,65,153,.075),transparent 55%);
+  content:none;
 }
 .case-study__layout {
   display:grid;
@@ -493,21 +487,10 @@ a.complete__discuss.button--outline:hover svg,
   padding-block:23px;
 }
 .case-study__copy .section-index {
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
+  display:inline-block;
   color:#A62C79;
   font-size:14px;
   letter-spacing:.06em;
-}
-.case-study__copy .section-index::before {
-  content:"";
-  display:inline-block;
-  flex:none;
-  width:24px;
-  height:2px;
-  background:#C42D89;
-  border-radius:2px;
 }
 .case-study__copy h2 {
   max-width:570px;
@@ -602,15 +585,13 @@ a.complete__discuss.button--outline:hover svg,
 }
 .case-card__bottom span {color:#EBD7EC;font-size:14px;}
 
-/* At tablet width the split becomes a warm full-width background so the
-   editorial copy never lands on the dark half. */
+/* At tablet width the section stays white; the project image remains the contrast. */
 @media(max-width:1180px) {
   .case-study {
-    background:linear-gradient(135deg,#FFFCFA 0%,#F8F1F8 100%);
+    background:#FFFFFF;
     padding-block:88px 95px;
   }
-  .case-study::before {inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(202,63,140,.06),transparent 60%);}
-  .case-study__layout {grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);gap:clamp(28px,3.2vw,43px);}
+    .case-study__layout {grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);gap:clamp(28px,3.2vw,43px);}
   .case-study__copy h2 {font-size:clamp(37px,3.6vw,49px);}
   .case-card {height:465px;min-height:465px;box-shadow:0 20px 45px rgba(38,9,47,.14);}
 }
