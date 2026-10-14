@@ -198,3 +198,79 @@
   .complete__scene-layer,.complete__step,.complete__flow-node,.complete__flow-node svg {transition:none!important;}
   .complete__visual[data-active-system] .complete__flow-arrow {animation:none!important;}
 }
+
+
+/* FINAL CONVERSION BUTTON SYSTEM — all secondary actions use outlines, not underline links */
+a.text-link.button--outline,
+a.complete__discuss.button--outline {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  width:fit-content;
+  max-width:100%;
+  min-height:52px;
+  padding:13px 22px;
+  border:1px solid #AE6D9E;
+  border-radius:999px;
+  background:transparent;
+  color:#872566;
+  font-size:14px;
+  font-weight:700;
+  line-height:1.5;
+  text-align:center;
+  text-decoration:none;
+  white-space:normal;
+  box-shadow:none;
+  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease,box-shadow .22s ease;
+}
+a.text-link.button--outline:hover,
+a.complete__discuss.button--outline:hover {
+  background:#F8EAF4;
+  color:#7A165D;
+  border-color:#A73083;
+  transform:translateY(-2px);
+  box-shadow:0 7px 18px rgba(91,17,95,.075);
+}
+a.text-link.button--outline:active,
+a.complete__discuss.button--outline:active {transform:translateY(0);}
+a.text-link.button--outline svg,
+a.complete__discuss.button--outline svg {
+  width:17px;
+  height:17px;
+  flex:none;
+  transition:transform .22s ease;
+}
+a.text-link.button--outline:hover svg,
+a.complete__discuss.button--outline:hover svg {transform:translate(2px,-1px);}
+a.text-link--light.button--outline {
+  color:#fff;
+  border-color:rgba(249,218,242,.67);
+  background:rgba(255,255,255,.045);
+}
+a.text-link--light.button--outline:hover {
+  background:rgba(255,255,255,.14);
+  border-color:#FFE0F4;
+  color:#fff;
+  box-shadow:0 8px 22px rgba(8,2,16,.15);
+}
+/* Preserve consistent horizontal rhythm in conversion sections. */
+.hero__actions .button--outline { min-height:52px; }
+.opportunity__points a.button--outline { margin-top:22px; }
+.case-study__copy a.button--outline { margin-top:2px; }
+.complete__steps a.complete__discuss.button--outline {margin:9px 0 0;}
+
+/* Responsive secondary buttons must never run off the viewport. */
+@media(max-width:680px) {
+  .hero__actions {display:grid;grid-template-columns:1fr;gap:12px;align-items:stretch;}
+  .hero__actions .button,
+  .hero__actions a.text-link.button--outline {width:100%;min-height:52px;}
+  .complete__steps a.complete__discuss.button--outline {width:100%;padding:13px 16px;}
+  .case-study__copy a.button--outline {max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce) {
+  a.text-link.button--outline,
+  a.complete__discuss.button--outline,
+  a.text-link.button--outline svg,
+  a.complete__discuss.button--outline svg {transition:none;}
+}
