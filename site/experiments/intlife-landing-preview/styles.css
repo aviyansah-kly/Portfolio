@@ -29,9 +29,60 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .nav { display:flex; align-items:center; gap:36px; margin-left:auto; }
 .nav a { font-size:14px; line-height:1.5; font-weight:600; white-space:nowrap; color:#4A3C51; transition:color .2s; }
 .nav a:hover { color:var(--pink-hover); }
-.header__cta { font-size:14px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; gap:18px; padding:12px 18px; min-height:46px; border-radius:99px; border:1px solid #DBD0DE; color:var(--purple); white-space:nowrap; transition:background .2s,border-color .2s; }
-.header__cta svg { width:17px; height:17px; color:var(--pink); }
-.header__cta:hover { background:#FBEAF6; border-color:#E3B0D3; }
+/* Sticky conversion CTA: accessible brand gradient with restrained periodic light sweep. */
+.header__cta {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  min-height:49px;
+  padding:12px 21px;
+  border:1px solid rgba(165,0,112,.17);
+  border-radius:999px;
+  background:linear-gradient(115deg,#E90288 0%,#CD087F 50%,#802B9E 100%);
+  color:#fff;
+  white-space:nowrap;
+  font-size:14px;
+  font-weight:700;
+  line-height:1.5;
+  box-shadow:0 7px 20px rgba(158,4,111,.20);
+  transition:transform .24s ease,box-shadow .24s ease,filter .24s ease;
+}
+.header__cta::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(112deg,transparent 26%,rgba(255,255,255,.36) 47%,transparent 66%);
+  transform:translateX(-145%);
+  animation:header-cta-shimmer 5.8s ease-in-out infinite;
+}
+.header__cta svg {
+  width:17px;
+  height:17px;
+  color:#fff;
+  transition:transform .24s ease;
+}
+.header__cta:hover {
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 12px 27px rgba(158,4,111,.32);
+}
+.header__cta:hover svg { transform:translate(2px,-2px); }
+.header__cta:active { transform:translateY(0); }
+@keyframes header-cta-shimmer {
+  0%,70%,100% { transform:translateX(-145%); }
+  89% { transform:translateX(145%); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .header__cta,.header__cta svg { transition:none; }
+  .header__cta::before { animation:none; opacity:0; }
+}
 .menu-toggle { display:none; align-items:center; justify-content:center; width:46px; height:46px; border:0; background:transparent; color:var(--purple); }
 
 /* SHARED */
@@ -322,7 +373,7 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
   .container { width:calc(100% - 36px); }
   .header__inner { min-height:70px; gap:12px; }
   .brand img { width:124px; }
-  .header__cta { padding:10px 13px; min-height:44px; font-size:14px; gap:5px; }
+  .header__cta { padding:10px 13px; min-height:44px; font-size:14px; gap:7px; box-shadow:0 5px 16px rgba(158,4,111,.19); }
   .header__cta svg { display:none; }
   .nav { padding:15px 18px 22px; }
   .section { padding:75px 0; }
@@ -400,4 +451,17 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
+
+/* Fit the sticky CTA, logo and menu on narrow phones without truncating the CTA. */
+@media(max-width:400px) {
+  .header__inner { gap:7px; }
+  .brand img { width:102px; }
+  .header__cta { padding-inline:10px; gap:4px; min-height:42px; }
+  .menu-toggle { width:42px; height:42px; }
+}
+@media(max-width:350px) {
+  .brand img { width:91px; }
+  .header__inner { gap:5px; }
+  .header__cta { padding-inline:9px; font-size:14px; }
 }
