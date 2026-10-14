@@ -1,5 +1,6 @@
 (() => {
   "use strict";
+  document.body.classList.add("js-ready");
   const $ = (q,root=document)=>root.querySelector(q);
   const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
   const reduce = matchMedia("(prefers-reduced-motion: reduce)");
