@@ -1,7 +1,7 @@
 # Intlife Landed Smart Living — Design V2
 
 **Date:** 14 October 2026
-**Status:** Interactive design preview for client alignment. Not production or final approval.
+**Status:** V2.1 interactive refinement for client alignment. Not production or final approval.
 
 ## Design history (kept separately, no overrides)
 
@@ -71,3 +71,21 @@
 4. Review the scroll-stage illustration against the requested product-motion reference. V2 is an interactive proof of concept, not yet equivalent to an app-backed animated product demo or an exact FoxESS-style energy diagram.
 5. Verify actual Cloudflare production preview at desktop/tablet/mobile with browser screenshots and click-through testing.
 6. Confirm current scale metrics, preferred developer proof and scope of energy integration with the client.
+
+## V2.1 refinement — 14 October 2026
+
+- **Preserved V2.0 snapshot** at `/experiments/intlife-landing-v2-0/`; original design and earlier preview are unchanged.
+- **How It Works: richer animation tied to actual visuals.** Replaced the schematic cartoon house with a real Intlife project photo and distinct visual states for Home (lighting and comfort), Security (connected access), Energy (conceptual Solar → Home → optional Battery flow) and App (existing official welcome-screen mockup).
+- **Hero:** scene selector changes visible photo treatment and on-image status indicator, not just the copy.
+- **Product/App Showcase:** added interactive Scenes / Security / Devices capability controls around the existing Intlife-branded welcome screen; explicitly **not** a fake reconstruction of the latest app Figma screens.
+- **Motion/accessibility:** transform/opacity animations, keyboard-activatable native buttons, selected states using `aria-pressed`, live text updates and reduced-motion support; mobile-specific layout.
+- **Partner presentation:** partner identities remain text only until original artwork is available; the numerical trust strip uses published Intlife figures, subject to client sign-off.
+- **Version comparison:** `/experiments/intlife-version-history/` now links Original, Previous Draft, V2.0 and V2.1.
+
+### Required for final client approval
+
+1. Confirm preferred previous design with client on video call.
+2. Obtain viewable App Figma screens and replace welcome-only mockup with actual current features/screens.
+3. Obtain approved high-quality partner/developer logo files and confirm permission + full current partner list.
+4. Confirm whether optional energy integration should be shown more technically (visual remains expressly conceptual).
+5. Complete visual browser QA of Cloudflare deployment on 1440 / 1024 / 390 px and test interaction/accessibility.
