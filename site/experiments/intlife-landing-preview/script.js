@@ -41,28 +41,6 @@
     if (window.innerWidth > 980) closeNavigation();
   });
 
-  // UI demonstration only. No connected device is controlled here.
-  const scenes = {
-    day: ["Good morning", "A simple start to the day."],
-    evening: ["Welcome home", "Your lighting and comfort, ready."],
-    away: ["Away mode", "Check home access while you’re out."]
-  };
-  $$(".scene-control").forEach(button => {
-    button.addEventListener("click", () => {
-      const scene = scenes[button.dataset.scene];
-      if (!scene) return;
-      $$(".scene-control").forEach(item => {
-        const active = item === button;
-        item.classList.toggle("active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
-      const sceneTitle = $("#scene-title");
-      const sceneSubtitle = $("#scene-subtitle");
-      if (sceneTitle) sceneTitle.textContent = scene[0];
-      if (sceneSubtitle) sceneSubtitle.textContent = scene[1];
-    });
-  });
-
   // Prepare non-conversion CTA events for GTM/GA4 integration.
   // Events fire only if the client's dataLayer is already configured.
   $$("[data-track]").forEach(link => {
@@ -96,7 +74,7 @@
       return;
     }
     if (feedback) {
-      feedback.textContent = "This is a preview. No details were submitted. The live form will be connected to HubSpot before launch.";
+      feedback.textContent = "Online enquiries are currently unavailable. Please email sales@intlife.com.my to discuss your development.";
     }
   });
 
@@ -144,16 +122,6 @@
       });
     });
 
-    const photo = $(".solutions__photo");
-    if (photo) {
-      window.gsap.fromTo(photo, { scale: 1.06 }, {
-        scale: 1,
-        duration: 1.35,
-        ease: "power2.out",
-        clearProps: "transform",
-        scrollTrigger: { trigger: ".solutions__visual", start: "top 85%", once: true }
-      });
-    }
     window.addEventListener("load", () => window.ScrollTrigger.refresh(), { once: true });
   }
 
