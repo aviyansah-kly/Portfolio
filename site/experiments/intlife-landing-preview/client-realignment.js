@@ -65,12 +65,12 @@
   const stageContent = {
     solar: {
       number:"01 / 04",label:"01 / GENERATE",title:"Start with solar-ready homes.",
-      description:"Explore rooftop solar PV as part of the development's energy plan.",
+      description:"See how rooftop solar panels can generate electricity for the home.",
       icon:"sun-medium"
     },
     storage: {
       number:"02 / 04",label:"02 / STORE",title:"Consider energy storage.",
-      description:"Explore BESS options, project suitability and energy requirements.",
+      description:"Explore storage for solar energy, subject to equipment and project suitability.",
       icon:"battery-charging"
     },
     home: {
@@ -80,7 +80,7 @@
     },
     app: {
       number:"04 / 04",label:"04 / CONTROL",title:"Simple control for homeowners.",
-      description:"Use the intlife app for supported smart-home devices and automation.",
+      description:"Manage supported smart-home devices and scenes through the intlife app.",
       icon:"smartphone"
     }
   };
