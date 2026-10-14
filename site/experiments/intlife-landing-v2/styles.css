@@ -341,3 +341,19 @@ button,input,textarea{font:inherit}a{color:inherit;text-decoration:none}button{c
 .js-ready .reveal{opacity:0;transform:translateY(23px)}
 .js-ready .reveal.is-visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.js-ready .reveal{opacity:1;transform:none}}
+
+/* Published Intlife deployment figures: concise, proof-led, not another text section. */
+.partners-metrics {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+  padding-top:23px;
+  border-top:1px solid #EDE6ED;
+}
+.partners-metrics>div {display:flex;flex-direction:column;gap:1px;min-width:0}
+.partners-metrics strong {font-size:clamp(25px,2.55vw,35px);line-height:1.2;letter-spacing:-.055em;color:#2C1935}
+.partners-metrics span {font-size:14px;line-height:1.6;color:#77697D}
+@media(max-width:680px){
+  .partners-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 11px;padding-top:20px}
+}
