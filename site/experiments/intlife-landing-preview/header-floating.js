@@ -6,7 +6,9 @@
 (() => {
   "use strict";
   const header = document.querySelector(".header");
-  const heroButtons = document.querySelector(".hero__actions");
+  const actionGroups = [
+    ...document.querySelectorAll(".hero__actions, .case-study__actions")
+  ];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let scrollQueued = false;
   let resizeQueued = false;
@@ -18,53 +20,59 @@
     header.classList.toggle("is-scrolled", scrolled);
   }
 
-  function updateCTA() {
-    resizeQueued = false;
-    if (!heroButtons) return;
+  function updateCTA(group) {
+    if (!group) return;
+    const children = [...group.querySelectorAll(":scope > a")];
+    if (children.length < 2) return;
+
     if (window.matchMedia("(max-width: 680px)").matches) {
-      heroButtons.classList.add("is-stacked");
+      group.classList.add("is-stacked");
       return;
     }
-    // Temporarily measure each intrinsic, unwrapped button at its natural width.
-    heroButtons.classList.remove("is-stacked");
-    const children = [...heroButtons.querySelectorAll(":scope > a")];
-    if (children.length < 2) return;
-    const style = window.getComputedStyle(heroButtons);
-    const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
-    const total = children.reduce((sum, el) => sum + el.getBoundingClientRect().width,0)
+
+    // Compare intrinsic button widths against their actual column width.
+    // Clear the stacked class before measurement so either CTA group can
+    // return to one row naturally as its containing column grows.
+    group.classList.remove("is-stacked");
+    const computed = window.getComputedStyle(group);
+    const gap = parseFloat(computed.columnGap || computed.gap || "0") || 0;
+    const total = children.reduce((sum, element) => sum + element.getBoundingClientRect().width, 0)
       + gap * (children.length - 1);
-    if (total > heroButtons.clientWidth + 1) {
-      heroButtons.classList.add("is-stacked");
-    }
+    group.classList.toggle("is-stacked", total > group.clientWidth + 1);
+  }
+
+  function updateAllCTAs() {
+    resizeQueued = false;
+    actionGroups.forEach(updateCTA);
   }
 
   updateHeader();
-  updateCTA();
+  updateAllCTAs();
 
   window.addEventListener("scroll", () => {
     if (scrollQueued) return;
     scrollQueued = true;
     window.requestAnimationFrame(updateHeader);
-  },{passive:true});
+  }, {passive:true});
 
   window.addEventListener("resize", () => {
     if (resizeQueued) return;
     resizeQueued = true;
     window.requestAnimationFrame(() => {
       updateHeader();
-      updateCTA();
+      updateAllCTAs();
     });
-  },{passive:true});
+  }, {passive:true});
 
-  window.addEventListener("load", updateCTA, {once:true});
-  document.fonts?.ready?.then(updateCTA);
-  if (window.ResizeObserver && heroButtons) {
+  window.addEventListener("load", updateAllCTAs, {once:true});
+  document.fonts?.ready?.then(updateAllCTAs);
+  if (window.ResizeObserver && actionGroups.length) {
     const observer = new ResizeObserver(() => {
       if (resizeQueued) return;
       resizeQueued = true;
-      window.requestAnimationFrame(updateCTA);
+      window.requestAnimationFrame(updateAllCTAs);
     });
-    observer.observe(heroButtons);
+    actionGroups.forEach(group => observer.observe(group));
   }
 
   if (reducedMotion) {
