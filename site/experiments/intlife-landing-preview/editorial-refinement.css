@@ -96,10 +96,11 @@
 .solutions__app-shot {
   display:block;
   position:absolute;
-  width:min(70%,350px);
-  max-height:none;
-  height:auto;
-  bottom:-16%;
+  width:min(72%,350px);
+  height:calc(100% - 84px);
+  object-fit:contain;
+  object-position:center bottom;
+  bottom:0;
   left:50%;
   transform:translateX(-50%);
   z-index:1;
@@ -155,7 +156,7 @@
   .opportunity__points h3 { font-size:19px; }
   .case-card { min-height:420px; }
   .solutions__visual { min-height:470px; }
-  .solutions__app-shot { width:min(55%,305px); bottom:-28%; }
+  .solutions__app-shot { width:min(67%,305px); height:calc(100% - 70px); bottom:0; }
   .solution-item { padding:22px; }
   .benefit-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .benefit { min-height:265px; }
@@ -181,7 +182,7 @@
   .case-study__cta { padding:20px; }
   .solutions__visual { min-height:365px; }
   .solutions__visual-label { top:17px; left:17px; font-size:14px; }
-  .solutions__app-shot { width:min(70%,275px); bottom:-28%; }
+  .solutions__app-shot { width:min(72%,275px); height:calc(100% - 62px); bottom:0; }
   .solution-item { padding:19px; }
   .solution-item h3 { font-size:19px; }
   .benefit-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
@@ -199,5 +200,5 @@
   .benefit-grid { grid-template-columns:1fr; }
   .benefit { min-height:150px; }
   .case-card__bottom strong { font-size:26px; }
-  .solutions__app-shot { bottom:-32%; }
+  .solutions__app-shot { width:min(75%,265px); bottom:0; }
 }
