@@ -9,6 +9,10 @@
     window.lucide.createIcons({ attrs: { "stroke-width": 1.8 } });
   }
 
+  // Keep copyright current without needing a yearly content edit.
+  const footerYear = $("#footer-year");
+  if (footerYear) footerYear.textContent = String(new Date().getFullYear());
+
   // Small, accessible navigation for tablet and mobile layouts.
   const nav = $("#main-navigation");
   const toggle = $(".menu-toggle");
