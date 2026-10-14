@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="./editorial-refinement.css">
   <link rel="stylesheet" href="./client-realignment.css">
   <link rel="stylesheet" href="./complete-solution.css">
+  <link rel="stylesheet" href="./header-footer-refinement.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -47,7 +48,7 @@
           <p class="hero__lead">Bring proven smart-home experiences together with solar PV and BESS options, planned around your project and brought to life for homebuyers.</p>
           <div class="hero__actions">
             <a class="button button--pink" href="#contact" data-track="hero_consultation">Discuss your development <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-            <a class="text-link text-link--light button--outline" href="#integrated-solution">Explore the complete solution <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            <a class="text-link text-link--light button--outline" href="#integrated-solution">Explore the complete solution <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </div>
           <div class="hero__support"><i data-lucide="check-circle-2" aria-hidden="true"></i> Smart home · Solar PV · BESS · Project support</div>
         </div>
@@ -125,7 +126,7 @@
             <article><span class="point-number">01</span><div><h3>Show smart living in action</h3><p>Let visitors explore lighting, climate, access and everyday home scenes.</p></div></article>
             <article><span class="point-number">02</span><div><h3>Plan energy solutions early</h3><p>Explore solar PV, BESS and compatible energy monitoring as part of the development specification.</p></div></article>
             <article><span class="point-number">03</span><div><h3>Support buyers beyond the show unit</h3><p>Carry the experience through installation, app setup and homeowner handover.</p></div></article>
-            <a class="text-link button--outline" href="#integrated-solution">See the complete solution <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            <a class="text-link button--outline" href="#integrated-solution">See the complete solution <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -324,25 +325,46 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="site-footer" aria-label="intlife company information">
     <div class="container footer__top">
       <div class="footer__identity">
-        <img class="footer__logo" src="./intlife-logo.svg" width="150" height="29" alt="intlife">
-        <p class="footer__tagline">Smart living for developers.<span>Designed for homeowners.</span></p>
+        <a class="footer__brand" href="https://intlife.com.my/" target="_blank" rel="noopener noreferrer" aria-label="Visit intlife Malaysia website">
+          <img class="footer__logo" src="./intlife-logo.svg" width="154" height="29" alt="intlife">
+        </a>
+        <p class="footer__tagline">Smart Living Built for Developers. Designed for Homeowners.</p>
+        <p class="footer__brand-sub">Smart Property &amp; Building Intelligence Platform</p>
       </div>
-      <div class="footer__description">
-        <p>Smart living for landed developments, combining proven connected-home experiences with solar PV and BESS planning options.</p>
+      <nav class="footer__column footer__navigation" aria-label="intlife website navigation">
+        <h2>Explore</h2>
+        <a href="https://intlife.com.my/" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="https://intlife.com.my/about-us/" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="https://intlife.com.my/new-solutions/" target="_blank" rel="noopener noreferrer">Solutions</a>
+        <a href="https://intlife.com.my/projects/" target="_blank" rel="noopener noreferrer">Projects</a>
+        <a href="https://intlife.com.my/products/" target="_blank" rel="noopener noreferrer">Products</a>
+      </nav>
+      <nav class="footer__column footer__navigation" aria-label="intlife solutions and support">
+        <h2>Resources</h2>
+        <a href="https://intlife.com.my/new-solutions/" target="_blank" rel="noopener noreferrer">Smart Living for Developers</a>
+        <a href="https://intlife.com.my/intlife-smart-living-app/" target="_blank" rel="noopener noreferrer">intlife Smart Living App</a>
+        <a href="https://intlife.com.my/technical-support/" target="_blank" rel="noopener noreferrer">Technical Support</a>
+        <a href="https://intlife.com.my/data-protection-notice/" target="_blank" rel="noopener noreferrer">Data Protection Notice</a>
+      </nav>
+      <div class="footer__column footer__contact">
+        <h2>Contact Us</h2>
+        <a href="mailto:sales@intlife.com.my"><i data-lucide="mail" aria-hidden="true"></i><span>sales@intlife.com.my</span></a>
+        <a href="tel:+60182786300"><i data-lucide="phone" aria-hidden="true"></i><span>+60 18-278 6300</span></a>
+        <address><i data-lucide="map-pin" aria-hidden="true"></i><span>B-18-5, Tower B Vertical Business Suite, Avenue 3, 8 Jalan Kerinchi, Bangsar South, 59200 Kuala Lumpur, Malaysia.</span></address>
       </div>
     </div>
     <div class="container footer__bottom">
-      <p>© <span id="footer-year">2026</span> intlife. A brand by 3i Technologies Sdn Bhd.</p>
+      <p>© <span id="footer-year">2026</span> intlife. All rights reserved.</p>
+      <p>intlife, a brand by 3i Technologies Sdn Bhd.</p>
     </div>
-  </footer>
-
-  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  </footer>  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script defer src="./script.js"></script>
   <script defer src="./client-realignment.js"></script>
+  <script defer src="./header-floating.js"></script>
 </body>
 </html>
