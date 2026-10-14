@@ -82,6 +82,52 @@
     }
   });
 
+  // Align each dashed connector with the actual visible edge of the PNG phone.
+  // The mockup's pale outer canvas is clipped in CSS by 12.45% on each side.
+  // Measuring the element prevents connectors from stopping short at wider widths.
+  const smartShowcase = $(".solutions__showcase");
+  const smartPhone = $(".solutions__app-shot", smartShowcase || document);
+  const leftConnectors = $(".solution-list--left .solution-item__icon", smartShowcase || document);
+  const rightConnectors = $(".solution-list--right .solution-item__icon", smartShowcase || document);
+  const phoneSideCrop = 0.1245;
+
+  function alignSmartLivingConnectors() {
+    if (!smartShowcase || !smartPhone) return;
+    if (window.innerWidth <= 980) {
+      [...leftConnectors, ...rightConnectors].forEach(icon => {
+        icon.style.removeProperty("--connector-width");
+      });
+      return;
+    }
+
+    const phoneBounds = smartPhone.getBoundingClientRect();
+    if (!phoneBounds.width) return;
+    const visibleLeft = phoneBounds.left + phoneBounds.width * phoneSideCrop;
+    const visibleRight = phoneBounds.right - phoneBounds.width * phoneSideCrop;
+    const lineOffset = 7; // Matches the icon pseudo-element's start position.
+
+    leftConnectors.forEach(icon => {
+      const bounds = icon.getBoundingClientRect();
+      const length = Math.max(0, visibleLeft - (bounds.right + lineOffset));
+      icon.style.setProperty("--connector-width", Math.round(length) + "px");
+    });
+    rightConnectors.forEach(icon => {
+      const bounds = icon.getBoundingClientRect();
+      const length = Math.max(0, (bounds.left - lineOffset) - visibleRight);
+      icon.style.setProperty("--connector-width", Math.round(length) + "px");
+    });
+  }
+
+  alignSmartLivingConnectors();
+  window.addEventListener("load", alignSmartLivingConnectors, { once: true });
+  window.addEventListener("resize", alignSmartLivingConnectors, { passive: true });
+  smartPhone?.addEventListener("load", alignSmartLivingConnectors, { once: true });
+  if (smartShowcase && window.ResizeObserver) {
+    const connectorObserver = new ResizeObserver(alignSmartLivingConnectors);
+    connectorObserver.observe(smartShowcase);
+    if (smartPhone) connectorObserver.observe(smartPhone);
+  }
+
   // Runwise-inspired editorial movement: subtle, scroll-based, no scroll hijacking.
   // All content stays visible without animation scripts or with reduced motion enabled.
   if (!reducedMotion && window.gsap && window.ScrollTrigger) {
