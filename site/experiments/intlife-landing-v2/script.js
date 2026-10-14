@@ -53,6 +53,29 @@
   sceneButtons.forEach(btn=>btn.addEventListener("click",()=>setScene(btn.dataset.scene)));
   setScene("home");
 
+  // Product/app showcase: change verified capability summaries around the
+  // official welcome image, not the screenshot itself.
+  const appVisual=$(".app-visual");
+  const appButtons=$(".app-preview-modes button");
+  const appModes={
+    scenes:{title:"Home scenes",description:"Set the right mood at home."},
+    access:{title:"Security & access",description:"Connected controls for peace of mind."},
+    devices:{title:"Smart devices",description:"Manage supported devices in one place."}
+  };
+  function setAppMode(mode){
+    if(!appVisual||!appModes[mode])return;
+    appVisual.dataset.appMode=mode;
+    $("#app-feature-title").textContent=appModes[mode].title;
+    $("#app-feature-description").textContent=appModes[mode].description;
+    appButtons.forEach(button=>{
+      const selected=button.dataset.appMode===mode;
+      button.classList.toggle("is-active",selected);
+      button.setAttribute("aria-pressed",String(selected));
+    });
+  }
+  appButtons.forEach(button=>button.addEventListener("click",()=>setAppMode(button.dataset.appMode)));
+  setAppMode("scenes");
+
   const visual=$(".story-stage");
   const stageButtons=$$(".story-step");
   const progress=$$(".stage-progress span");
