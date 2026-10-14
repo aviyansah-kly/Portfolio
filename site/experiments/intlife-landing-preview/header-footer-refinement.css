@@ -259,3 +259,26 @@ a.complete__discuss.button--outline:hover svg,
   a.button svg,a.text-link.button--outline svg,
   a.complete__discuss.button--outline svg {transition:none;}
 }
+
+
+/* Final icon-motion override: exactly the same direction for each clickable CTA. */
+.header__cta:hover svg,
+.hero__actions a:hover svg,
+a.button:hover svg,
+a.text-link.button--outline:hover svg,
+a.complete__discuss.button--outline:hover svg,
+.case-study__cta a.button:hover svg,
+.contact__submit:hover svg {transform:translate(2px,-2px)!important;}
+@media(max-width:350px) {
+  .header .brand img {width:87px;}
+  .header__cta {padding-inline:7px;gap:4px;}
+  .header__inner,.header.is-scrolled .header__inner {gap:4px;}
+  .header .menu-toggle {width:38px;flex:0 0 38px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .header__cta:hover svg,
+  .hero__actions a:hover svg,
+  a.button:hover svg,
+  a.text-link.button--outline:hover svg,
+  a.complete__discuss.button--outline:hover svg {transform:none!important;}
+}
