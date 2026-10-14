@@ -519,17 +519,17 @@
   z-index:2;
   inset:auto;
   display:block;
-  /* The uploaded PNG includes a light canvas around the phone.
-     Crop that canvas visually without changing the original asset. */
-  width:min(116%,375px);
-  max-width:none;
-  height:auto;
+  /* The latest PNG already has a transparent canvas and a complete phone frame.
+     Keep the entire bezel visible: no legacy crop or oversized image width. */
+  width:auto;
+  height:100%;
+  max-width:100%;
   max-height:575px;
-  aspect-ratio:2 / 3;
+  aspect-ratio:786 / 1452;
   margin:auto;
   object-fit:contain;
   object-position:center;
-  clip-path:inset(3.05% 12.45% 3.0% round 16% / 8%);
+  clip-path:none;
   transform:none;
   filter:drop-shadow(0 22px 32px rgba(9,2,18,.35));
 }
@@ -573,7 +573,7 @@
   .solutions__showcase .solution-item { min-height:154px; }
   .solutions__showcase .solution-item h3 { font-size:18px; }
   .solutions__showcase .solutions__visual { height:505px; }
-  .solutions__showcase .solutions__app-shot { max-height:505px; }
+  .solutions__showcase .solutions__app-shot { width:auto; height:100%; max-width:100%; max-height:505px; }
 }
 @media(max-width:980px) {
   .opportunity__intro { display:block; max-width:800px; margin-bottom:31px; }
@@ -604,7 +604,7 @@
     grid-row:1;
     height:460px;
   }
-  .solutions__showcase .solutions__app-shot { width:min(100%,305px); max-height:460px; }
+  .solutions__showcase .solutions__app-shot { width:auto; height:100%; max-width:100%; max-height:460px; }
   .solutions__showcase .solution-list { display:flex; flex-direction:column; gap:12px; }
   .solutions__showcase .solution-list--left { grid-column:1; grid-row:2; }
   .solutions__showcase .solution-list--right { grid-column:2; grid-row:2; }
@@ -643,7 +643,7 @@
   .solutions__heading p { font-size:15px; line-height:1.7; }
   .solutions__showcase { grid-template-columns:1fr; gap:0; }
   .solutions__showcase .solutions__visual { grid-column:1;grid-row:1;height:400px; }
-  .solutions__showcase .solutions__app-shot { width:min(100%,270px); max-height:395px; }
+  .solutions__showcase .solutions__app-shot { width:auto; height:100%; max-width:100%; max-height:395px; }
   .solutions__showcase .solution-list--left { grid-column:1; grid-row:2; }
   .solutions__showcase .solution-list--right { grid-column:1; grid-row:3; }
   .solutions__showcase .solution-list { gap:0; }
@@ -653,5 +653,5 @@
 }
 @media(max-width:420px) {
   .solutions__showcase .solutions__visual { height:345px; }
-  .solutions__showcase .solutions__app-shot { width:min(100%,238px); max-height:340px; }
+  .solutions__showcase .solutions__app-shot { width:auto; height:100%; max-width:100%; max-height:340px; }
 }
