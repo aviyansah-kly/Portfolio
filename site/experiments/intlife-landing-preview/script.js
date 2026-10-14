@@ -100,24 +100,61 @@
     }
   });
 
-  // Simple progressive enhancement: content stays visible without animation scripts.
+  // Runwise-inspired editorial movement: subtle, scroll-based, no scroll hijacking.
+  // All content stays visible without animation scripts or with reduced motion enabled.
   if (!reducedMotion && window.gsap && window.ScrollTrigger) {
     window.gsap.registerPlugin(window.ScrollTrigger);
+
     $$("[data-reveal]").forEach(element => {
-      const isInHero = !!element.closest(".hero");
-      window.gsap.fromTo(
-        element,
-        { y: isInHero ? 16 : 19 },
-        {
-          y: 0,
-          duration: .7,
-          ease: "power2.out",
-          immediateRender: false,
-          clearProps: "transform",
-          scrollTrigger: isInHero ? undefined : { trigger: element, start: "top 93%", once: true }
+      if (element.matches(".benefit-grid, .process__steps")) return;
+      const isHero = Boolean(element.closest(".hero"));
+      window.gsap.fromTo(element, {
+        y: element.classList.contains("section-head") ? 14 : isHero ? 20 : 28,
+        autoAlpha: 0
+      }, {
+        y: 0,
+        autoAlpha: 1,
+        duration: isHero ? .78 : .88,
+        ease: "power2.out",
+        clearProps: "transform,opacity,visibility",
+        scrollTrigger: isHero ? undefined : {
+          trigger: element,
+          start: "top 91%",
+          once: true
         }
-      );
+      });
     });
+
+    [
+      { root: ".benefit-grid", item: ".benefit" },
+      { root: ".process__steps", item: ".process__steps article" }
+    ].forEach(group => {
+      const root = $(group.root);
+      if (!root) return;
+      const items = $$(group.item, root);
+      if (!items.length) return;
+      window.gsap.fromTo(items, { y: 24, autoAlpha: 0 }, {
+        y: 0,
+        autoAlpha: 1,
+        duration: .72,
+        stagger: .085,
+        ease: "power2.out",
+        clearProps: "transform,opacity,visibility",
+        scrollTrigger: { trigger: root, start: "top 89%", once: true }
+      });
+    });
+
+    const photo = $(".solutions__photo");
+    if (photo) {
+      window.gsap.fromTo(photo, { scale: 1.06 }, {
+        scale: 1,
+        duration: 1.35,
+        ease: "power2.out",
+        clearProps: "transform",
+        scrollTrigger: { trigger: ".solutions__visual", start: "top 85%", once: true }
+      });
+    }
     window.addEventListener("load", () => window.ScrollTrigger.refresh(), { once: true });
   }
+
 })();
