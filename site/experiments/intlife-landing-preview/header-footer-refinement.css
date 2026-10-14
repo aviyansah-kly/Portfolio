@@ -360,11 +360,12 @@ a.complete__discuss.button--outline:hover svg,
   border-radius:19px;
   min-height:438px;
   background:
-    linear-gradient(180deg,rgba(25,7,35,.57) 0%,rgba(27,8,37,.16) 40%,rgba(21,5,33,.89) 100%),
+    linear-gradient(180deg,rgba(25,7,35,.62) 0%,rgba(27,8,37,.34) 42%,rgba(21,5,33,.89) 100%),
     url("https://intlife.com.my/wp-content/uploads/Case-Study-IOI-Properties-Valeria-Image-1.png") center/cover;
   box-shadow:0 18px 39px rgba(39,10,49,.085);
 }
 .case-card__title>span {color:#E8D6E9;}
+.case-card__title strong {text-shadow:0 3px 19px rgba(16,4,23,.38);}
 .case-card__title strong {
   font-size:clamp(54px,5vw,70px);
   line-height:1.12;
