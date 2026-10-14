@@ -1,172 +1,203 @@
-/*
- * Intlife landed development — editorial refinement
- * Inspired by Runwise's storytelling scale and pacing, not its brand identity.
- * Loaded after styles.css for easy rollback and Elementor design-token mapping.
- */
-:root { --editorial-space:clamp(96px,9vw,144px); }
+/* intlife landing page: brand-aligned typography and official image assets.
+   Preserve the native Poppins typography and restrained editorial transitions. */
+:root { --editorial-space:clamp(76px,7.3vw,108px); }
 .section { padding-block:var(--editorial-space); }
-.section-head { margin-bottom:clamp(38px,4vw,64px); padding-top:23px; }
+.section-head { margin-bottom:36px; padding-top:19px; }
 .section-index { letter-spacing:.065em; }
 .section h2,.faq h2 {
-  font-size:clamp(46px,5.25vw,74px);
-  line-height:1.12;
-  letter-spacing:-.062em;
-  max-width:940px;
+  font-size:clamp(37px,3.9vw,52px);
+  line-height:1.2;
+  letter-spacing:-.052em;
+  max-width:850px;
 }
 .section p,.faq p { line-height:1.78; }
 
-/* Hero: stronger visual hierarchy, controlled line length, spacious rhythm. */
+/* Hero proportions closer to the intlife brand site. */
 .hero__layout {
-  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  gap:clamp(34px,4vw,62px);
-  min-height:740px;
-  padding-block:88px 98px;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(36px,4.4vw,64px);
+  min-height:670px;
+  padding-block:72px 78px;
 }
 .hero h1 {
-  font-size:clamp(60px,5.75vw,84px);
-  line-height:1.07;
-  letter-spacing:-.068em;
-  max-width:750px;
-  margin:28px 0 28px;
+  font-size:clamp(49px,4.65vw,64px);
+  line-height:1.16;
+  letter-spacing:-.055em;
+  max-width:660px;
+  margin:22px 0 25px;
 }
-.hero__lead { font-size:18px; line-height:1.74; max-width:570px; }
-.hero__actions { margin:36px 0 32px; }
-.hero__visual { height:610px; min-height:570px; }
-.hero__photo,.hero__photo-shade { border-radius:26px; }
-
-/* Section 1: high-contrast editorial heading with a single clear image. */
-.opportunity__intro {
-  grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
-  align-items:end;
-  gap:clamp(36px,5vw,90px);
-  margin-bottom:clamp(40px,5vw,72px);
+.hero__lead { font-size:16px; line-height:1.78; max-width:535px; }
+.hero__actions { margin:29px 0 27px; }
+.hero__visual { min-height:530px; height:550px; }
+.hero__photo,.hero__photo-shade { border-radius:18px; }
+.hero__photo {
+  background-image:url("https://intlife.com.my/wp-content/uploads/Case-Study-Eufala-at-DMayang-Sari-Image-1.png");
+  background-position:center;
+  background-size:cover;
 }
-.opportunity__intro h2 { max-width:770px; }
-.opportunity__intro p { font-size:17px; line-height:1.8; max-width:455px; }
-.opportunity__layout { gap:clamp(38px,5vw,75px); }
-.opportunity__image { height:clamp(420px,39vw,560px); border-radius:25px; }
-.opportunity__points article { padding-block:28px; }
-.opportunity__points h3 { font-size:clamp(21px,1.8vw,25px); line-height:1.28; }
-.opportunity__points p { font-size:16px; }
+.hero__photo-shade {
+  background:linear-gradient(180deg,rgba(21,6,30,.08) 25%,rgba(20,4,29,.45) 100%);
+}
+.hero__photo-label { background:rgba(35,13,51,.8); }
 
-/* Proof belongs early: make the 50-home reference a statement, not a small card. */
-.case-study { background:#F2EBF5; }
+/* Real intlife case study images, rather than generic stock interiors. */
+.opportunity__intro { gap:clamp(35px,4.5vw,60px); margin-bottom:39px; }
+.opportunity__intro h2 { max-width:710px; }
+.opportunity__intro p { font-size:16px; line-height:1.8; max-width:430px; }
+.opportunity__layout { gap:clamp(32px,4vw,58px); }
+.opportunity__image {
+  height:460px;
+  border-radius:18px;
+  background-image:url("https://intlife.com.my/wp-content/uploads/Case-Study-Eco-Ardence-Image-1-1.png");
+  background-position:center;
+  background-size:cover;
+}
+.opportunity__points article { padding-block:24px; }
+.opportunity__points h3 { font-size:21px; line-height:1.35; }
+.opportunity__points p { font-size:15px; }
+
+/* Valeria: official project visual reinforces the B2B proof point. */
+.case-study { background:#F3EDF5; }
 .case-study__layout { grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr); gap:7%; }
-.case-study__copy h2 { font-size:clamp(48px,5.15vw,73px); line-height:1.1; }
-.case-study__copy p { font-size:17px; line-height:1.78; }
-.case-card { min-height:515px; border-radius:26px; padding:clamp(30px,3vw,42px); }
-.case-card__title strong { font-size:clamp(68px,6.5vw,94px); }
-.case-card__bottom strong { font-size:clamp(38px,3.3vw,50px); }
-.case-study__cta { margin-top:34px; padding:27px 32px; border-radius:18px; }
-
-/* Solutions alternate from light proof to immersive dark product story. */
-.solutions { background:linear-gradient(145deg,#270A3C 0%,#180722 80%); }
-.solutions__heading { margin-bottom:clamp(38px,4.5vw,68px); }
-.solutions__heading p { font-size:17px; max-width:470px; }
-.solutions__grid { gap:clamp(40px,5vw,78px); }
-.solutions__visual { min-height:580px; border-radius:26px; }
-.solution-item { padding-block:31px; }
-.solution-item h3 { font-size:clamp(21px,1.8vw,26px); }
-
-/* Benefits: a calm, legible chapter after the dark product section. */
-.benefits { background:#FCFAFD; }
-.benefits__heading { margin-bottom:clamp(38px,4.2vw,62px); }
-.benefits__heading p { font-size:17px; }
-.benefit-grid { gap:16px; }
-.benefit {
-  border-radius:20px;
-  min-height:335px;
-  padding:30px 23px 27px;
-  transition:transform .35s ease,box-shadow .35s ease;
+.case-study__copy h2 { font-size:clamp(37px,4vw,53px); line-height:1.2; }
+.case-study__copy p { font-size:16px; line-height:1.8; }
+.case-card {
+  min-height:438px;
+  border-radius:18px;
+  padding:31px;
+  background:
+    linear-gradient(180deg,rgba(26,7,35,.86) 0%,rgba(29,8,39,.48) 36%,rgba(27,6,37,.92) 100%),
+    url("https://intlife.com.my/wp-content/uploads/Case-Study-IOI-Properties-Valeria-Image-1.png") center/cover;
 }
-.benefit h3 { font-size:clamp(19px,1.55vw,23px); letter-spacing:-.045em; }
-.benefit p { font-size:15px; }
+.case-card__title strong { font-size:clamp(56px,5.4vw,76px); }
+.case-card__bottom strong { font-size:clamp(31px,3vw,42px); }
+.case-study__cta { margin-top:27px; padding:22px 27px; border-radius:12px; }
+
+/* Official app screenshot; an image, not an interactive pseudo-app. */
+.solutions__heading { margin-bottom:38px; }
+.solutions__heading p { font-size:16px; max-width:440px; }
+.solutions__grid { gap:clamp(36px,4vw,60px); align-items:stretch; }
+.solutions__visual {
+  min-height:535px;
+  border-radius:18px;
+  background:radial-gradient(circle at 70% 40%,#78408b88 0%,transparent 47%),linear-gradient(145deg,#361248,#1b092c);
+  overflow:hidden;
+  isolation:isolate;
+}
+.solutions__photo { display:none; }
+.solutions__visual::after {
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 60% 50%,transparent 28%,rgba(16,6,26,.24) 93%);
+  z-index:0;
+}
+.solutions__app-shot {
+  display:block;
+  position:absolute;
+  width:min(70%,350px);
+  max-height:none;
+  height:auto;
+  bottom:-16%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1;
+  filter:drop-shadow(0 18px 33px rgba(8,1,19,.38));
+}
+.solutions__visual-label {
+  top:23px;
+  bottom:auto;
+  left:25px;
+  right:25px;
+  font-size:15px;
+  font-weight:600;
+  z-index:2;
+}
+.solution-item { padding-block:25px; }
+.solution-item h3 { font-size:21px; }
+
+/* Compact, well-separated benefits and closing chapters. */
+.benefits__heading { margin-bottom:34px; }
+.benefits__heading p { font-size:16px; }
+.benefit-grid { gap:13px; }
+.benefit { min-height:303px; padding:24px 19px 22px; border-radius:14px; transition:transform .3s ease,box-shadow .3s ease; }
+.benefit h3 { font-size:19px; }
+.benefit p { font-size:14px; }
 @media(hover:hover) and (prefers-reduced-motion:no-preference) {
-  .benefit:hover { transform:translateY(-5px); box-shadow:0 18px 46px rgba(46,16,68,.09); }
+  .benefit:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(46,16,68,.08); }
 }
-
-/* Closing chapters: clear pacing, fewer visual distractions. */
-.process { background:#fff; }
-.process__intro { margin-bottom:clamp(38px,4vw,58px); }
-.process__intro p { font-size:17px; max-width:450px; }
-.process__steps { gap:20px; }
-.process__steps article { min-height:245px; padding:32px; border-radius:19px; }
-.process__steps h3 { font-size:clamp(21px,1.8vw,25px); }
+.process__intro { margin-bottom:35px; }
+.process__intro p { font-size:16px; }
+.process__steps { gap:16px; }
+.process__steps article { min-height:205px; padding:27px; border-radius:14px; }
+.process__steps h3 { font-size:21px; }
 .faq { padding-block:var(--editorial-space); }
-.faq h2 { margin-top:24px; }
-.faq__layout { gap:9%; }
-.faq__items summary { font-size:17px; min-height:88px; }
-.contact { padding-block:clamp(100px,9vw,146px); }
-.contact h2 { font-size:clamp(52px,5.7vw,82px); line-height:1.09; letter-spacing:-.066em; }
-.contact__copy>p { font-size:18px; line-height:1.75; }
-.contact__panel { padding:clamp(28px,3vw,42px); border-radius:22px; }
+.faq__items summary { font-size:16px; min-height:76px; }
+.contact { padding-block:90px 100px; }
+.contact h2 { font-size:clamp(44px,4.8vw,65px); line-height:1.15; }
+.contact__copy>p { font-size:16px; }
+.contact__panel { padding:34px; border-radius:18px; }
 
-/* Keep every section purposeful on tablets: no oversized text over narrow columns. */
+/* Tablet: keep the original compact hierarchy and no sideways overflow. */
 @media(max-width:1180px) {
-  .hero__layout { gap:38px; }
-  .hero h1 { font-size:clamp(56px,5.65vw,71px); }
-  .benefit-grid { gap:13px; }
-  .benefit { min-height:285px; padding:25px 21px; }
+  .hero h1 { font-size:clamp(47px,4.5vw,57px); }
 }
 @media(max-width:980px) {
-  :root { --editorial-space:94px; }
-  .hero__layout { grid-template-columns:1fr; gap:40px; min-height:auto; padding-block:80px 86px; }
-  .hero h1 { font-size:clamp(56px,7vw,72px); max-width:790px; }
-  .hero__visual { height:550px; min-height:480px; max-width:790px; }
-  .opportunity__intro,.solutions__heading { grid-template-columns:1fr; gap:23px; }
-  .opportunity__intro p,.solutions__heading p { max-width:680px; }
-  .opportunity__layout,.solutions__grid,.case-study__layout { grid-template-columns:1fr; gap:36px; }
-  .opportunity__image { height:440px; }
-  .opportunity__points article { padding:22px; }
-  .opportunity__points h3 { font-size:20px; }
-  .case-study__copy h2 { max-width:800px; }
-  .case-card { min-height:435px; }
-  .solutions__visual { min-height:430px; }
-  .solution-item { padding:23px; }
+  :root { --editorial-space:80px; }
+  .hero__layout { grid-template-columns:1fr; min-height:auto; gap:35px; padding-block:66px 74px; }
+  .hero h1 { font-size:clamp(44px,6.2vw,58px); max-width:720px; }
+  .hero__visual { height:490px; min-height:490px; max-width:760px; }
+  .opportunity__intro,.solutions__heading { grid-template-columns:1fr; gap:20px; }
+  .opportunity__layout,.case-study__layout,.solutions__grid { grid-template-columns:1fr; gap:29px; }
+  .opportunity__image { height:410px; }
+  .opportunity__points article { padding:20px; }
+  .opportunity__points h3 { font-size:19px; }
+  .case-card { min-height:420px; }
+  .solutions__visual { min-height:470px; }
+  .solutions__app-shot { width:min(55%,305px); bottom:-28%; }
+  .solution-item { padding:22px; }
   .benefit-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-  .benefits__heading { gap:20px; }
-  .process__steps article { min-height:235px; padding:25px; }
-  .faq__layout { grid-template-columns:1fr; gap:32px; }
-  .contact__layout { grid-template-columns:1fr; }
-  .contact h2 { max-width:780px; }
+  .benefit { min-height:265px; }
+  .process__steps article { min-height:205px; }
+  .faq__layout,.contact__layout { grid-template-columns:1fr; }
 }
 @media(max-width:680px) {
-  :root { --editorial-space:72px; }
-  .section h2,.faq h2 { font-size:clamp(33px,8vw,45px); line-height:1.15; letter-spacing:-.053em; }
-  .section-head { margin-bottom:29px; padding-top:18px; }
-  .hero__layout { gap:31px; padding-block:61px 69px; }
-  .hero h1 { font-size:clamp(43px,9.5vw,55px); line-height:1.12; letter-spacing:-.056em; margin:21px 0; }
-  .hero__lead { font-size:16px; line-height:1.7; }
-  .hero__visual { height:465px; min-height:465px; }
-  .hero__photo,.hero__photo-shade { border-radius:18px; }
-  .opportunity__intro { margin-bottom:26px; }
-  .opportunity__intro p,.solutions__heading p,.benefits__heading p,.process__intro p { font-size:16px; }
-  .opportunity__image { height:320px; border-radius:17px; }
-  .opportunity__points article { padding:20px; }
-  .opportunity__points h3 { font-size:20px; }
-  .case-study__copy h2 { font-size:clamp(35px,8vw,46px); }
-  .case-study__copy p { font-size:16px; }
-  .case-card { min-height:350px; padding:24px; border-radius:18px; }
-  .case-card__title strong { font-size:clamp(51px,11vw,67px); }
-  .case-card__bottom strong { font-size:clamp(27px,7vw,36px); }
+  :root { --editorial-space:70px; }
+  .section h2,.faq h2 { font-size:clamp(31px,7.8vw,38px); line-height:1.21; }
+  .section-head { margin-bottom:26px; }
+  .hero__layout { padding-block:55px 63px; gap:30px; }
+  .hero h1 { font-size:clamp(37px,9vw,44px); line-height:1.17; }
+  .hero__lead { font-size:16px; }
+  .hero__visual { height:390px; min-height:390px; }
+  .hero__photo,.hero__photo-shade { border-radius:16px; }
+  .opportunity__intro { margin-bottom:25px; }
+  .opportunity__image { height:300px; }
+  .opportunity__points h3 { font-size:19px; }
+  .case-study__copy h2 { font-size:clamp(32px,7.9vw,39px); }
+  .case-card { padding:23px; min-height:335px; }
+  .case-card__title strong { font-size:clamp(49px,11.5vw,59px); }
+  .case-card__bottom strong { font-size:clamp(26px,7vw,33px); }
   .case-study__cta { padding:20px; }
-  .solutions__visual { min-height:340px; border-radius:17px; }
+  .solutions__visual { min-height:365px; }
+  .solutions__visual-label { top:17px; left:17px; font-size:14px; }
+  .solutions__app-shot { width:min(70%,275px); bottom:-28%; }
   .solution-item { padding:19px; }
-  .solution-item h3 { font-size:20px; }
+  .solution-item h3 { font-size:19px; }
   .benefit-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-  .benefit { min-height:266px; padding:22px 17px; }
-  .benefit h3 { font-size:19px; }
-  .process__steps article { min-height:auto; padding:24px; }
-  .faq { padding-block:72px; }
-  .faq__items summary { min-height:74px; font-size:16px; }
-  .contact { padding-block:80px; }
-  .contact h2 { font-size:clamp(43px,9.6vw,60px); line-height:1.12; }
-  .contact__copy>p { font-size:16px; }
-  .contact__panel { padding:24px 20px; }
+  .benefit { min-height:270px; padding:20px 17px; }
+  .benefit h3 { font-size:18px; }
+  .process__steps article { min-height:auto; padding:22px; }
+  .faq { padding-block:70px; }
+  .faq__items summary { font-size:15px; min-height:69px; }
+  .contact { padding-block:75px 82px; }
+  .contact h2 { font-size:clamp(39px,9.3vw,48px); }
+  .contact__panel { padding:23px 20px; }
 }
 @media(max-width:420px) {
-  .hero h1 { font-size:41px; }
+  .hero h1 { font-size:37px; }
   .benefit-grid { grid-template-columns:1fr; }
-  .benefit { min-height:155px; }
-  .case-card__bottom strong { font-size:27px; }
+  .benefit { min-height:150px; }
+  .case-card__bottom strong { font-size:26px; }
+  .solutions__app-shot { bottom:-32%; }
 }
