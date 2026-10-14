@@ -223,13 +223,98 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .form-feedback { margin:0; color:#9B286E; min-height:1em; }
 
 /* FOOTER */
-.footer { background:#15041F; color:#E8DBEA; }
-.footer__main { padding:40px 0; border-bottom:1px solid #47304F; display:flex; align-items:center; justify-content:space-between; gap:30px; }
-.footer__main img { width:140px; }
-.footer__main>span { font-size:14px; font-weight:600; line-height:1.65; max-width:340px; }
-.footer__main>a { display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:600; }
-.footer__main>a svg { width:17px; height:17px; }
-.footer__legal { display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; padding:22px 0 30px; color:#BFA9C8; font-size:14px; }
+.footer { background:#15041F; color:#F0E5F2; border-top:1px solid rgba(232,194,229,.11); }
+.footer__top {
+  padding:57px 0 49px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:60px;
+}
+.footer__identity {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:19px;
+  min-width:0;
+}
+.footer__logo { display:inline-flex; width:fit-content; align-items:center; }
+.footer__logo img { display:block; width:150px; height:auto; }
+.footer__tagline {
+  font-size:16px;
+  line-height:1.6;
+  font-weight:500;
+  color:#D9C8DF;
+  margin:0;
+}
+.footer__tagline span { display:block; }
+.footer__nav {
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:clamp(22px,2.6vw,40px);
+  flex-wrap:wrap;
+  padding-top:6px;
+}
+.footer__nav a {
+  display:inline-flex;
+  align-items:center;
+  min-height:40px;
+  font-size:14px;
+  line-height:1.5;
+  font-weight:600;
+  color:#E7D9EA;
+  white-space:nowrap;
+  transition:color .18s ease;
+}
+.footer__nav a:hover,.footer__utilities a:hover { color:#FF8BCD; }
+.footer__bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px 36px;
+  padding:23px 0 28px;
+  border-top:1px solid rgba(232,194,229,.18);
+}
+.footer__bottom p {
+  margin:0;
+  color:#BCA9C5;
+  font-size:14px;
+  line-height:1.6;
+}
+.footer__utilities { display:flex; align-items:center; justify-content:flex-end; gap:32px; flex-wrap:wrap; }
+.footer__utilities a {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:40px;
+  font-weight:600;
+  font-size:14px;
+  line-height:1.5;
+  color:#DCCDE2;
+  transition:color .18s ease;
+}
+.footer__website svg { width:15px; height:15px; }
+.footer__back-icon {
+  width:31px;
+  height:31px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid rgba(245,216,242,.32);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.footer__back-icon svg { width:16px; height:16px; }
+.footer__back-top:hover .footer__back-icon {
+  background:rgba(233,2,136,.14);
+  border-color:#EF73BB;
+  transform:translateY(-2px);
+}
+@media(max-width:980px) {
+  .footer__top { padding:49px 0 42px; gap:28px; }
+  .footer__nav { display:grid; grid-template-columns:repeat(2,max-content); gap:1px 32px; }
+}
 
 /* RESPONSIVE */
 @media(max-width:1180px) {
@@ -333,8 +418,14 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
   .contact__panel h3 { font-size:26px; }
   .form-row { grid-template-columns:1fr; gap:14px; }
   .form-extra .form-row { gap:14px; }
-  .footer__main { flex-direction:column; align-items:flex-start; gap:16px; padding:32px 0; }
-  .footer__legal { flex-direction:column; gap:9px; }
+  .footer__top { flex-direction:column; align-items:stretch; gap:27px; padding:41px 0 33px; }
+  .footer__identity { gap:14px; }
+  .footer__tagline { font-size:15px; }
+  .footer__nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px 18px; padding:0; }
+  .footer__nav a { min-height:44px; }
+  .footer__bottom { padding:21px 0 27px; flex-direction:column; align-items:flex-start; gap:12px; }
+  .footer__utilities { justify-content:space-between; width:100%; gap:12px; }
+  .footer__utilities a { min-height:44px; }
 }
 @media(max-width:420px) {
   .header__cta { font-size:14px; }
