@@ -67,7 +67,7 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .hero__support { display:flex; align-items:center; gap:9px; font-size:14px; line-height:1.5; font-weight:500; color:#D4BFD9; }
 .hero__support svg { width:17px; height:17px; color:#FF87CD; }
 .hero__visual { position:relative; min-height:540px; height:560px; isolation:isolate; }
-.hero__photo { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=82') center/cover,#4D385C; border-radius:18px; z-index:-2; }
+.hero__photo { position:absolute; inset:0; background:url('https://intlife.com.my/wp-content/uploads/Case-Study-Eufala-at-DMayang-Sari-Image-1.png') center/cover,#4D385C; border-radius:18px; z-index:-2; }
 .hero__photo-shade { position:absolute; inset:0; background:linear-gradient(180deg,rgba(32,10,45,.25),transparent 30%,rgba(22,6,34,.53) 100%),linear-gradient(90deg,rgba(31,6,50,.24),transparent 60%); border-radius:18px; z-index:-1; }
 .hero__photo-label { display:flex; gap:9px; align-items:center; position:absolute; top:22px; left:22px; background:rgba(35,13,51,.78); border:1px solid rgba(255,255,255,.25); color:#fff; border-radius:40px; padding:10px 14px; line-height:1.4; font-size:14px; font-weight:600; }
 .hero__photo-label>span { width:7px; height:7px; border-radius:50%; background:#FF57B5; }
@@ -99,7 +99,7 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .opportunity__intro h2 { max-width:740px; }
 .opportunity__intro p { font-size:16px; line-height:1.85; max-width:445px; padding-bottom:6px; }
 .opportunity__layout { display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; }
-.opportunity__image { background:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1100&q=82') center/cover,#E7DCE9; height:480px; border-radius:17px; }
+.opportunity__image { background:url('https://intlife.com.my/wp-content/uploads/Case-Study-Eco-Ardence-Image-1-1.png') center/cover,#E7DCE9; height:480px; border-radius:17px; }
 .opportunity__points article { display:grid; grid-template-columns:40px 1fr; gap:17px; padding:23px 0; border-bottom:1px solid #E9E0EB; }
 .opportunity__points article:first-child { border-top:1px solid #E9E0EB; }
 .point-number { font-size:14px; font-weight:700; color:#C63189; padding-top:4px; }
@@ -114,7 +114,7 @@ i[data-lucide], svg.lucide { height:19px; width:19px; stroke-width:1.8; flex:non
 .solutions__heading p { font-size:16px; color:#D5C0DE; line-height:1.85; max-width:430px; padding-bottom:4px; }
 .solutions__grid { display:grid; grid-template-columns:1.03fr .97fr; gap:58px; align-items:stretch; }
 .solutions__visual { position:relative; min-height:520px; border-radius:17px; overflow:hidden; isolation:isolate; }
-.solutions__photo { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1100&q=82') center/cover,#4D3657; z-index:-2; }
+.solutions__photo { position:absolute; inset:0; background:url('https://intlife.com.my/wp-content/uploads/Smart-Residential-01-1024x576.png') center/cover,#4D3657; z-index:-2; }
 .solutions__visual::after { position:absolute; inset:0; content:''; z-index:-1; background:linear-gradient(0deg,rgba(28,9,41,.85),transparent 60%); }
 .solutions__visual-label { display:inline-flex; align-items:center; gap:11px; position:absolute; bottom:27px; left:27px; right:27px; font-size:17px; font-weight:600; line-height:1.5; }
 .solutions__visual-label svg { width:24px; height:24px; color:#FFA3D7; }
