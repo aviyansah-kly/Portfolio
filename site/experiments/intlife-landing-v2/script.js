@@ -111,9 +111,14 @@
     $$(".reveal").forEach(el=>observer.observe(el));
   }else $$(".reveal").forEach(el=>el.classList.add("is-visible"));
 
-  // Preview form: no collection or storage of personal information.
+  // Preview form: native validity checks; no collection or storage of personal information.
   $("#lead-form")?.addEventListener("submit",e=>{
     e.preventDefault();
+    const form=e.currentTarget;
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
     const feedback=$(".form-feedback");
     if(feedback){feedback.hidden=false;feedback.scrollIntoView({behavior:reduce.matches?"auto":"smooth",block:"nearest"});}
   });
