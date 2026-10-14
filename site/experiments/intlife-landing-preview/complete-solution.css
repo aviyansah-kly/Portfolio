@@ -22,7 +22,7 @@
 .complete__layout {display:grid;grid-template-columns:minmax(0,.87fr) minmax(0,1.13fr);gap:clamp(30px,4.3vw,63px);align-items:start;}
 .complete__steps {display:flex;flex-direction:column;gap:11px;min-width:0;}
 .complete__step {
-  position:relative;display:grid;grid-template-columns:48px minmax(0,1fr) 20px;
+  position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);
   gap:17px;align-items:center;width:100%;
   min-height:118px;padding:19px 19px;border-radius:15px;
   background:rgba(255,255,255,.72);color:#2D1A37;
@@ -50,8 +50,6 @@
 .complete__step-meta {font-size:14px;line-height:1.45;font-weight:700;letter-spacing:.04em;color:#AC568B;}
 .complete__step-copy strong {display:block;font-size:19px;font-weight:700;line-height:1.33;letter-spacing:-.035em;}
 .complete__step-copy>span:last-child {font-size:14px;line-height:1.65;color:#706079;}
-.complete__step-arrow {align-self:start;margin-top:5px;width:18px!important;height:18px!important;color:#A45289;opacity:.45;}
-.complete__step.is-current .complete__step-arrow {opacity:1;color:#C8177A;}
 .complete__discuss {
   display:inline-flex;align-items:center;justify-content:space-between;
   gap:16px;min-height:46px;width:fit-content;
@@ -184,7 +182,7 @@
   .complete__flow-node svg {width:20px;height:20px;}
   .complete__flow-arrow {width:13px!important;height:13px!important;}
   .complete__steps {grid-template-columns:1fr;gap:9px;}
-  .complete__step {min-height:102px;grid-template-columns:44px minmax(0,1fr) 17px;gap:12px;padding:15px;}
+  .complete__step {min-height:102px;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:15px;}
   .complete__step-icon {width:44px;height:44px;}
   .complete__step-copy strong {font-size:18px;}
   .complete__fineprint {margin-top:20px;}
