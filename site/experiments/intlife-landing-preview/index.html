@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./editorial-refinement.css">
   <link rel="stylesheet" href="./client-realignment.css">
+  <link rel="stylesheet" href="./complete-solution.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -132,97 +133,63 @@
 
     <section class="section integrated" id="integrated-solution" aria-labelledby="integrated-heading">
       <div class="container">
-        <div class="integrated__intro" data-reveal>
+        <div class="complete__heading" data-reveal>
           <span class="section-index">THE COMPLETE SOLUTION</span>
-          <div class="integrated__intro-row">
-            <h2 id="integrated-heading">One connected vision. <em>From rooftop to living room.</em></h2>
-            <p>Explore how solar generation, battery storage and smart-home experiences can be considered together when planning your next landed development.</p>
+          <div class="complete__heading-row">
+            <h2 id="integrated-heading">Smart living and energy. <em>Planned together.</em></h2>
+            <p>From rooftop solar to a connected home, explore four parts of a future-ready landed development.</p>
           </div>
         </div>
-        <div class="integrated__layout">
-          <div class="integrated__steps" aria-label="Explore the integrated smart living solution">
-            <button class="integrated__step is-current" type="button" data-system-step="solar" aria-pressed="true">
-              <span class="integrated__step-no">01 / SOLAR PV</span>
-              <span class="integrated__step-title">Start with smarter energy.</span>
-              <span class="integrated__step-text">Plan solar-ready rooftops and photovoltaic generation as part of a future-focused property specification.</span>
-              <span class="integrated__step-action">Explore solar PV <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+        <div class="complete__layout">
+          <div class="complete__steps" aria-label="Explore the complete solution">
+            <button class="complete__step is-current" type="button" data-system-step="solar" aria-pressed="true">
+              <span class="complete__step-icon" aria-hidden="true"><i data-lucide="sun"></i></span>
+              <span class="complete__step-copy"><span class="complete__step-meta">01 / GENERATE</span><strong>Solar PV</strong><span>Generate electricity from rooftop solar panels.</span></span>
+              <i data-lucide="arrow-up-right" class="complete__step-arrow" aria-hidden="true"></i>
             </button>
-            <button class="integrated__step" type="button" data-system-step="storage" aria-pressed="false">
-              <span class="integrated__step-no">02 / ENERGY STORAGE</span>
-              <span class="integrated__step-title">Give energy more flexibility.</span>
-              <span class="integrated__step-text">Consider BESS options for compatible projects, including storage needs, site feasibility and energy priorities.</span>
-              <span class="integrated__step-action">Explore BESS <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+            <button class="complete__step" type="button" data-system-step="storage" aria-pressed="false">
+              <span class="complete__step-icon" aria-hidden="true"><i data-lucide="battery-charging"></i></span>
+              <span class="complete__step-copy"><span class="complete__step-meta">02 / STORE</span><strong>Battery Energy Storage (BESS)</strong><span>Explore storage options for suitable projects.</span></span>
+              <i data-lucide="arrow-up-right" class="complete__step-arrow" aria-hidden="true"></i>
             </button>
-            <button class="integrated__step" type="button" data-system-step="home" aria-pressed="false">
-              <span class="integrated__step-no">03 / CONNECTED HOME</span>
-              <span class="integrated__step-title">Make the home work smarter.</span>
-              <span class="integrated__step-text">Connect compatible lighting, climate, security and automation into an intuitive day-to-day experience.</span>
-              <span class="integrated__step-action">Explore smart home <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+            <button class="complete__step" type="button" data-system-step="home" aria-pressed="false">
+              <span class="complete__step-icon" aria-hidden="true"><i data-lucide="house"></i></span>
+              <span class="complete__step-copy"><span class="complete__step-meta">03 / CONNECT</span><strong>Smart Home</strong><span>Bring lighting, climate and security together.</span></span>
+              <i data-lucide="arrow-up-right" class="complete__step-arrow" aria-hidden="true"></i>
             </button>
-            <button class="integrated__step" type="button" data-system-step="app" aria-pressed="false">
-              <span class="integrated__step-no">04 / CONNECTED EXPERIENCE</span>
-              <span class="integrated__step-title">Bring it together for homeowners.</span>
-              <span class="integrated__step-text">Make supported home controls and available energy information easier to access through connected experiences.</span>
-              <span class="integrated__step-action">Explore the app <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+            <button class="complete__step" type="button" data-system-step="app" aria-pressed="false">
+              <span class="complete__step-icon" aria-hidden="true"><i data-lucide="smartphone"></i></span>
+              <span class="complete__step-copy"><span class="complete__step-meta">04 / CONTROL</span><strong>intlife Smart Living App</strong><span>Manage supported home devices in one app.</span></span>
+              <i data-lucide="arrow-up-right" class="complete__step-arrow" aria-hidden="true"></i>
             </button>
+            <a class="complete__discuss" href="#contact" data-track="integrated_solution_consultation">Discuss your project requirements <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </div>
-          <div class="integrated__visual" data-active-system="solar" aria-label="Illustrative connected-home system showing solar PV, energy storage, home automation and app control">
-            <div class="integrated__visual-head"><span><span class="integrated__pulse-dot"></span> CONNECTED LIVING ECOSYSTEM</span><span id="integrated-stage-number">01 / 04</span></div>
-            <svg class="integrated__diagram" viewBox="0 0 720 520" fill="none" role="img" aria-labelledby="integrated-diagram-title">
-              <title id="integrated-diagram-title">Solar PV, battery storage, smart home and mobile experience connected as a project concept</title>
-              <defs>
-                <linearGradient id="il-panel" x1="30" y1="0" x2="390" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#9B5BC0"/><stop offset="1" stop-color="#4D246D"/></linearGradient>
-                <linearGradient id="il-home" x1="0" y1="150" x2="0" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="#FCF5FD"/><stop offset="1" stop-color="#D7BEE0"/></linearGradient>
-                <linearGradient id="il-flow" x1="0" x2="1"><stop stop-color="#EF5FB8"/><stop offset="1" stop-color="#A35DE0"/></linearGradient>
-              </defs>
-              <g class="system-part" data-part="solar">
-                <circle cx="102" cy="95" r="39" fill="#FBE7B9" fill-opacity=".22" stroke="#F9D7A1" stroke-width="2"/>
-                <path d="M102 27v12m0 110v13M34 95h12m113 0h13M54 47l9 9m78 78 9 9m0-96-9 9m-78 78-9 9" stroke="#F9D7A1" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="102" cy="95" r="18" fill="#FFD78A"/>
-                <path d="M77 201l38-56 120 0-37 56H77Z" fill="url(#il-panel)" stroke="#E0A4F3" stroke-width="3"/>
-                <path d="M112 145l-37 56m77-56-35 56m79-56-36 56M90 173h126" stroke="#D7B2E9" stroke-opacity=".85" stroke-width="2"/>
-                <text x="155" y="227" text-anchor="middle" class="diagram-label">SOLAR PV</text>
-              </g>
-              <g class="system-part" data-part="home">
-                <path d="M215 270l145-118 145 118v165H215V270Z" fill="url(#il-home)" stroke="#F4E8F5" stroke-width="4"/>
-                <path d="M197 276l163-135 163 135" stroke="#C38DD1" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="320" y="333" width="81" height="102" rx="8" fill="#543363"/>
-                <rect x="244" y="294" width="62" height="65" rx="7" fill="#8B69A5"/>
-                <path d="M275 294v65m-31-33h62" stroke="#DAC3E9" stroke-width="4"/>
-                <rect x="417" y="294" width="59" height="65" rx="7" fill="#8B69A5"/>
-                <path d="M447 294v65m-30-33h59" stroke="#DAC3E9" stroke-width="4"/>
-                <circle cx="377" cy="385" r="4" fill="#FFB1DD"/>
-                <path d="M332 258q28-27 56 0m-43-17q15-12 30 0" stroke="#BA3E95" stroke-width="4" stroke-linecap="round"/>
-                <text x="360" y="473" text-anchor="middle" class="diagram-label diagram-label--dark">SMART HOME</text>
-              </g>
-              <g class="system-part" data-part="storage">
-                <rect x="556" y="125" width="111" height="157" rx="18" fill="#37214A" stroke="#DAB7E4" stroke-width="4"/>
-                <rect x="585" y="114" width="54" height="12" rx="6" fill="#DAB7E4"/>
-                <path d="M620 163l-25 35h20l-12 34 31-44h-20l6-25Z" fill="#F66CBD"/>
-                <rect x="572" y="248" width="80" height="8" rx="4" fill="#805696"/>
-                <text x="613" y="306" text-anchor="middle" class="diagram-label">BESS</text>
-              </g>
-              <g class="system-part" data-part="app">
-                <rect x="565" y="350" width="88" height="131" rx="20" fill="#291637" stroke="#D8B4E3" stroke-width="4"/>
-                <rect x="575" y="363" width="68" height="103" rx="11" fill="#6A245B"/>
-                <path d="M594 415l15-14 15 14v19h-10v-12h-11v12h-9v-19Z" fill="#FE8CCD"/>
-                <rect x="593" y="355" width="33" height="5" rx="2.5" fill="#BE9CC8"/>
-                <text x="609" y="504" text-anchor="middle" class="diagram-label">INTLIFE APP</text>
-              </g>
-              <g class="system-flow" aria-hidden="true">
-                <path class="flow-path" data-flow="solar" d="M228 182C275 172 296 170 320 194" stroke="url(#il-flow)" stroke-width="4" stroke-dasharray="9 11" stroke-linecap="round"/>
-                <path class="flow-path" data-flow="storage" d="M505 278C528 265 539 249 559 233" stroke="url(#il-flow)" stroke-width="4" stroke-dasharray="9 11" stroke-linecap="round"/>
-                <path class="flow-path" data-flow="app" d="M505 401C532 403 546 407 565 414" stroke="url(#il-flow)" stroke-width="4" stroke-dasharray="9 11" stroke-linecap="round"/>
-              </g>
-            </svg>
-            <div class="integrated__stage-copy" aria-live="polite">
-              <div><span id="integrated-stage-eyebrow">ENERGY GENERATION</span><h3 id="integrated-stage-title">Plan a solar-ready development.</h3></div>
-              <p id="integrated-stage-description">Explore rooftop solar PV and the energy requirements early in your landed project planning.</p>
+          <div class="complete__visual" data-active-system="solar" aria-label="Photos and application preview explaining the four parts of the integrated solution">
+            <div class="complete__visual-top"><span><span class="complete__live-dot" aria-hidden="true"></span> SMART LIVING ECOSYSTEM</span><span id="integrated-stage-number">01 / 04</span></div>
+            <div class="complete__scene">
+              <div class="complete__scene-layer is-visible" data-scene="solar"><img src="https://images.pexels.com/photos/29206495/pexels-photo-29206495.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1300" alt="Illustrative modern house with rooftop solar panels" width="1300" height="975" loading="lazy" decoding="async"></div>
+              <div class="complete__scene-layer" data-scene="storage"><img src="https://images.pexels.com/photos/33751679/pexels-photo-33751679.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1300" alt="Illustrative residential battery storage installation" width="1300" height="975" loading="lazy" decoding="async"></div>
+              <div class="complete__scene-layer" data-scene="home"><img src="https://intlife.com.my/wp-content/uploads/Smart-Residential-01-1024x576.png" alt="Smart residential living imagery from intlife" width="1024" height="576" loading="lazy" decoding="async"></div>
+              <div class="complete__scene-layer complete__scene-layer--app" data-scene="app"><img src="./mockup_Intlife.png?v=3e542499" alt="Official intlife Smart Living mobile app welcome screen" width="786" height="1452" loading="lazy" decoding="async"></div>
+              <div class="complete__scene-copy" aria-live="polite" aria-atomic="true">
+                <span id="integrated-stage-eyebrow">01 / GENERATE</span>
+                <h3 id="integrated-stage-title">Start with solar-ready homes.</h3>
+                <p id="integrated-stage-description">Explore rooftop solar PV as part of the development's energy plan.</p>
+              </div>
+              <div class="complete__scene-corner" aria-hidden="true"><i data-lucide="sun-medium"></i></div>
             </div>
-            <div class="integrated__visual-progress" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="complete__flow">
+              <span class="complete__flow-label">HOW IT CONNECTS</span>
+              <div class="complete__flow-nodes">
+                <span class="complete__flow-node is-current" data-flow-step="solar"><i data-lucide="sun" aria-hidden="true"></i> Generate</span>
+<i class="complete__flow-arrow" data-lucide="arrow-right" aria-hidden="true"></i><span class="complete__flow-node" data-flow-step="storage"><i data-lucide="battery-charging" aria-hidden="true"></i> Store</span>
+<i class="complete__flow-arrow" data-lucide="arrow-right" aria-hidden="true"></i><span class="complete__flow-node" data-flow-step="home"><i data-lucide="house" aria-hidden="true"></i> Connect</span>
+<i class="complete__flow-arrow" data-lucide="arrow-right" aria-hidden="true"></i><span class="complete__flow-node" data-flow-step="app"><i data-lucide="smartphone" aria-hidden="true"></i> Control</span>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="integrated__technical">Visualisation of a potential integrated solution. Solar PV, BESS, device compatibility and app-level energy visibility depend on technical feasibility, partners and final project scope.</p>
+        <p class="complete__fineprint">Illustrative concept imagery, not an existing Intlife solar/BESS installation. Solar PV, battery storage and app integrations depend on technical feasibility and agreed project scope.</p>
       </div>
     </section>
 
