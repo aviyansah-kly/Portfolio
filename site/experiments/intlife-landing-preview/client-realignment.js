@@ -51,92 +51,106 @@
     });
   });
 
-  // Connected systems: visually distinguish how each part contributes.
-  // This is illustrative; it does not claim that all BESS hardware works
-  // through the intlife application without project-specific integration.
+  // Photographic product storytelling: real examples of equipment types,
+  // never a claim that these exact products were installed in intlife projects.
   const integrated = $(".integrated");
-  const visual = $(".integrated__visual");
-  const storyButtons = $$(".integrated__step");
-  const heading = $("#integrated-stage-title");
-  const description = $("#integrated-stage-description");
-  const label = $("#integrated-stage-eyebrow");
+  const visual = $(".complete__visual");
+  const storyButtons = $$(".complete__step");
+  const scenes = $$(".complete__scene-layer");
+  const flowNodes = $$(".complete__flow-node");
+  const stageTitle = $("#integrated-stage-title");
+  const stageDescription = $("#integrated-stage-description");
+  const stageLabel = $("#integrated-stage-eyebrow");
   const stageNumber = $("#integrated-stage-number");
-  const stages = {
+  const stageIcon = $(".complete__scene-corner");
+  const stageContent = {
     solar: {
-      number: "01 / 04",
-      eyebrow: "ENERGY GENERATION",
-      title: "Plan a solar-ready development.",
-      description: "Explore rooftop solar PV and energy requirements early in the landed project."
+      number:"01 / 04",label:"01 / GENERATE",title:"Start with solar-ready homes.",
+      description:"Explore rooftop solar PV as part of the development's energy plan.",
+      icon:"sun-medium"
     },
     storage: {
-      number: "02 / 04",
-      eyebrow: "ENERGY STORAGE",
-      title: "Add flexibility with BESS.",
-      description: "Discuss battery storage options around site feasibility, compatibility and usage goals."
+      number:"02 / 04",label:"02 / STORE",title:"Consider energy storage.",
+      description:"Explore BESS options, project suitability and energy requirements.",
+      icon:"battery-charging"
     },
     home: {
-      number: "03 / 04",
-      eyebrow: "SMART HOME",
-      title: "Connect everyday living.",
-      description: "Lighting, air-conditioning, smart access and supported automation in one home experience."
+      number:"03 / 04",label:"03 / CONNECT",title:"Create smarter everyday living.",
+      description:"Bring compatible lighting, air-conditioning, access and security together.",
+      icon:"house"
     },
     app: {
-      number: "04 / 04",
-      eyebrow: "HOMEOWNER EXPERIENCE",
-      title: "Make the home easier to use.",
-      description: "Give homeowners simpler access to supported devices and available energy information."
+      number:"04 / 04",label:"04 / CONTROL",title:"Simple control for homeowners.",
+      description:"Use the intlife app for supported smart-home devices and automation.",
+      icon:"smartphone"
     }
   };
 
-  function setStage(id) {
-    if (!visual || !stages[id] || visual.dataset.activeSystem === id) return;
-    const copy = stages[id];
-    visual.dataset.activeSystem = id;
+  let activeStage = "solar";
+  function setStage(next) {
+    if (!visual || !stageContent[next] || next === activeStage) return;
+    activeStage = next;
+    const copy = stageContent[next];
+    visual.dataset.activeSystem = next;
     if (stageNumber) stageNumber.textContent = copy.number;
-    if (label) label.textContent = copy.eyebrow;
-    if (heading) heading.textContent = copy.title;
-    if (description) description.textContent = copy.description;
-    storyButtons.forEach(button => {
-      const selected = button.dataset.systemStep === id;
-      button.classList.toggle("is-current", selected);
-      button.setAttribute("aria-pressed", String(selected));
+    if (stageLabel) stageLabel.textContent = copy.label;
+    if (stageTitle) stageTitle.textContent = copy.title;
+    if (stageDescription) stageDescription.textContent = copy.description;
+    scenes.forEach(scene => {
+      const selected = scene.dataset.scene === next;
+      scene.classList.toggle("is-visible",selected);
+      scene.setAttribute("aria-hidden",String(!selected));
     });
+    flowNodes.forEach(node => node.classList.toggle("is-current",node.dataset.flowStep === next));
+    storyButtons.forEach(button => {
+      const selected = button.dataset.systemStep === next;
+      button.classList.toggle("is-current",selected);
+      button.setAttribute("aria-pressed",String(selected));
+    });
+    if (stageIcon && window.lucide) {
+      const glyph = stageIcon.querySelector("[data-lucide]");
+      if (glyph) {
+        // Lucide replaces placeholders with SVG. Rebuild the icon when changing scenes.
+        stageIcon.innerHTML = '<i data-lucide="' + copy.icon + '" aria-hidden="true"></i>';
+        window.lucide.createIcons({nodes:[stageIcon],attrs:{"stroke-width":1.8}});
+      }
+    }
   }
 
   storyButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      setStage(button.dataset.systemStep);
-      // Preserve a calm, accessible reading experience: no automatic
-      // jump or forced scroll on a stage click.
-    });
+    button.addEventListener("click",() => setStage(button.dataset.systemStep));
   });
 
-  let scrollTick = false;
-  function updateActiveStoryOnScroll() {
-    scrollTick = false;
+  let scheduled = false;
+  function updateStageFromScroll() {
+    scheduled = false;
     if (!integrated || !visual || window.innerWidth <= 980 || reducedMotion) return;
-    const section = integrated.getBoundingClientRect();
-    if (section.top > window.innerHeight * .70 || section.bottom < window.innerHeight * .28) return;
-
-    const focusY = window.innerHeight * .49;
-    let closest = null;
-    let distance = Infinity;
+    const bounds = integrated.getBoundingClientRect();
+    if (bounds.top > window.innerHeight * .8 || bounds.bottom < window.innerHeight * .2) return;
+    const targetY = window.innerHeight * .52;
+    let winner = null;
+    let shortest = Infinity;
     storyButtons.forEach(button => {
       const r = button.getBoundingClientRect();
-      // The centre of the visible step tracks the scroll storytelling rhythm.
-      const stepCenter = r.top + r.height / 2;
-      const delta = Math.abs(stepCenter - focusY);
-      if (delta < distance) { closest = button; distance = delta; }
+      const distance = Math.abs((r.top+r.bottom)/2-targetY);
+      if (distance < shortest) {winner=button;shortest=distance;}
     });
-    if (closest) setStage(closest.dataset.systemStep);
+    if (winner) setStage(winner.dataset.systemStep);
   }
   if (integrated && storyButtons.length) {
-    window.addEventListener("scroll", () => {
-      if (scrollTick) return;
-      scrollTick = true;
-      requestAnimationFrame(updateActiveStoryOnScroll);
-    }, { passive:true });
-    window.addEventListener("resize", updateActiveStoryOnScroll, { passive:true });
-    updateActiveStoryOnScroll();
+    window.addEventListener("scroll",() => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(updateStageFromScroll);
+    },{passive:true});
+    window.addEventListener("resize",updateStageFromScroll,{passive:true});
+    updateStageFromScroll();
   }
+
+  // Presentation is still intelligible without an image response.
+  scenes.forEach(scene => {
+    const img = scene.querySelector("img");
+    img?.addEventListener("error",()=>scene.classList.add("image-unavailable"));
+  });
+
 })();
