@@ -32,9 +32,9 @@
   const hero=$(".hero-visual");
   const sceneButtons=$$(".scene-tab");
   const scenes={
-    morning:{kick:"A BRIGHTER START",title:"A good day starts at home.",body:"Ease into the morning, your way."},
-    home:{kick:"WELCOME HOME",title:"Everything feels just right.",body:"Lights and comfort, ready for you."},
-    away:{kick:"PEACE OF MIND",title:"A home that stays connected.",body:"Leave knowing supported security is close at hand."}
+    morning:{kick:"A BRIGHTER START",title:"A good day starts at home.",body:"Ease into the morning, your way.",status:"Morning routine"},
+    home:{kick:"WELCOME HOME",title:"Everything feels just right.",body:"Lights and comfort, ready for you.",status:"Lighting scene ready"},
+    away:{kick:"PEACE OF MIND",title:"A home that stays connected.",body:"Leave knowing supported security is close at hand.",status:"Security scene preview"}
   };
   function setScene(key){
     if(!hero||!scenes[key])return;
@@ -42,6 +42,8 @@
     $("#scene-kicker").textContent=scenes[key].kick;
     $("#scene-name").textContent=scenes[key].title;
     $("#scene-description").textContent=scenes[key].body;
+    const sceneStatus=$("#hero-scene-status-text");
+    if(sceneStatus)sceneStatus.textContent=scenes[key].status;
     sceneButtons.forEach(btn=>{
       const active=btn.dataset.scene===key;
       btn.classList.toggle("is-active",active);
