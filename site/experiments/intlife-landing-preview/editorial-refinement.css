@@ -519,12 +519,17 @@
   z-index:2;
   inset:auto;
   display:block;
-  width:min(100%,315px);
-  height:100%;
+  /* The uploaded PNG includes a light canvas around the phone.
+     Crop that canvas visually without changing the original asset. */
+  width:min(116%,375px);
+  max-width:none;
+  height:auto;
   max-height:575px;
+  aspect-ratio:2 / 3;
   margin:auto;
   object-fit:contain;
   object-position:center;
+  clip-path:inset(3.05% 12.45% 3.0% round 16% / 8%);
   transform:none;
   filter:drop-shadow(0 22px 32px rgba(9,2,18,.35));
 }
