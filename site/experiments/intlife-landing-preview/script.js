@@ -82,46 +82,54 @@
     }
   });
 
-  // Align each dashed connector with the actual visible edge of the PNG phone.
-  // The mockup's pale outer canvas is clipped in CSS by 12.45% on each side.
-  // Measuring the element prevents connectors from stopping short at wider widths.
+  // Keep each connector attached to the *visible* frame of the current phone.
+  // The latest mockup PNG is transparent and has no 12.45% canvas crop.
   const smartShowcase = $(".solutions__showcase");
   const smartPhone = $(".solutions__app-shot", smartShowcase || document);
-  const leftConnectors = $(".solution-list--left .solution-item__icon", smartShowcase || document);
-  const rightConnectors = $(".solution-list--right .solution-item__icon", smartShowcase || document);
-  const phoneSideCrop = 0.1245;
+  const leftConnectors = $$(".solution-list--left .solution-item__icon", smartShowcase || document);
+  const rightConnectors = $$(".solution-list--right .solution-item__icon", smartShowcase || document);
 
   function alignSmartLivingConnectors() {
     if (!smartShowcase || !smartPhone) return;
+    const connectors = [...leftConnectors, ...rightConnectors];
     if (window.innerWidth <= 980) {
-      [...leftConnectors, ...rightConnectors].forEach(icon => {
-        icon.style.removeProperty("--connector-width");
-      });
+      connectors.forEach(icon => icon.style.removeProperty("--connector-width"));
       return;
     }
 
     const phoneBounds = smartPhone.getBoundingClientRect();
-    if (!phoneBounds.width) return;
-    const visibleLeft = phoneBounds.left + phoneBounds.width * phoneSideCrop;
-    const visibleRight = phoneBounds.right - phoneBounds.width * phoneSideCrop;
-    const lineOffset = 7; // Matches the icon pseudo-element's start position.
+    if (phoneBounds.width <= 0 || phoneBounds.height <= 0) return;
+
+    // Account for object-fit:contain if the phone's rendered content has
+    // been letterboxed inside its CSS box by an intermediate breakpoint.
+    const naturalWidth = smartPhone.naturalWidth || 786;
+    const naturalHeight = smartPhone.naturalHeight || 1452;
+    const fitScale = Math.min(phoneBounds.width / naturalWidth, phoneBounds.height / naturalHeight);
+    const contentWidth = naturalWidth * fitScale;
+    const contentLeft = phoneBounds.left + (phoneBounds.width - contentWidth) / 2;
+    const contentRight = contentLeft + contentWidth;
+    const phoneEdgePadding = Math.max(2, contentWidth * 0.007);
+    const bezelOverlap = 4; // Let the dashed line disappear just beneath the phone frame.
+    const visibleLeft = contentLeft + phoneEdgePadding + bezelOverlap;
+    const visibleRight = contentRight - phoneEdgePadding - bezelOverlap;
+    const pseudoStartOffset = 7;
 
     leftConnectors.forEach(icon => {
-      const bounds = icon.getBoundingClientRect();
-      const length = Math.max(0, visibleLeft - (bounds.right + lineOffset));
-      icon.style.setProperty("--connector-width", Math.round(length) + "px");
+      const rect = icon.getBoundingClientRect();
+      const lineStart = rect.right + pseudoStartOffset;
+      icon.style.setProperty("--connector-width", Math.max(0, Math.round(visibleLeft - lineStart)) + "px");
     });
     rightConnectors.forEach(icon => {
-      const bounds = icon.getBoundingClientRect();
-      const length = Math.max(0, (bounds.left - lineOffset) - visibleRight);
-      icon.style.setProperty("--connector-width", Math.round(length) + "px");
+      const rect = icon.getBoundingClientRect();
+      const lineStart = rect.left - pseudoStartOffset;
+      icon.style.setProperty("--connector-width", Math.max(0, Math.round(lineStart - visibleRight)) + "px");
     });
   }
 
   alignSmartLivingConnectors();
-  window.addEventListener("load", alignSmartLivingConnectors, { once: true });
-  window.addEventListener("resize", alignSmartLivingConnectors, { passive: true });
-  smartPhone?.addEventListener("load", alignSmartLivingConnectors, { once: true });
+  window.addEventListener("load", alignSmartLivingConnectors, { once:true });
+  window.addEventListener("resize", alignSmartLivingConnectors, { passive:true });
+  smartPhone?.addEventListener("load", alignSmartLivingConnectors);
   if (smartShowcase && window.ResizeObserver) {
     const connectorObserver = new ResizeObserver(alignSmartLivingConnectors);
     connectorObserver.observe(smartShowcase);
