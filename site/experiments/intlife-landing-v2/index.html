@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" href="../intlife-landing-preview/intlife-logo.svg" as="image">
   <link rel="stylesheet" href="./styles.css?v=2.0">
+  <link rel="stylesheet" href="./visual-refinement.css?v=2.1">
   <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script defer src="./script.js?v=2.0"></script>
 </head>
@@ -53,6 +54,7 @@
             </div>
           </div>
           <div class="scene-light scene-light-a" aria-hidden="true"></div><div class="scene-light scene-light-b" aria-hidden="true"></div>
+          <div class="hero-scene-status" aria-live="polite"><i data-lucide="lightbulb" aria-hidden="true"></i><span id="hero-scene-status-text">Lighting scene ready</span></div>
         </div>
       </div>
       <div class="wrap hero-scroll-hint"><span>Discover a better way to live</span><i data-lucide="arrow-down" aria-hidden="true"></i></div>
@@ -112,23 +114,27 @@
         </div>
         <div class="story-stage" data-active="welcome">
           <div class="story-stage-top"><span><span class="ping"></span> CONNECTED HOME</span><strong id="story-number">01 / 04</strong></div>
-          <div class="house-stage">
-            <div class="stage-orbit"></div>
-            <div class="house-art">
-              <svg viewBox="0 0 640 395" role="img" aria-label="Animated illustration of a connected landed home, with lighting, security and an optional energy flow">
-                <defs><linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9b8e9"/><stop offset="1" stop-color="#8155a0"/></linearGradient><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9fc"/><stop offset="1" stop-color="#d2badb"/></linearGradient><linearGradient id="window" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fab7db"/><stop offset="1" stop-color="#82418a"/></linearGradient></defs>
-                <ellipse cx="315" cy="355" rx="252" ry="34" fill="#5c3379" opacity=".23"/>
-                <path d="M105 179 318 58 535 180 535 341H105Z" fill="url(#wall)"/><path d="M77 188 320 40 561 190" stroke="url(#roof)" stroke-width="24" stroke-linejoin="round" stroke-linecap="round"/>
-                <path d="M160 203h108v99H160zM374 203h106v99H374z" fill="url(#window)" stroke="#8e619f" stroke-width="9"/><path d="M214 203v99M160 250h108M426 203v99M374 250h106" stroke="#e4c7ed" stroke-width="5"/>
-                <path d="M286 259h71v84h-71z" fill="#6b4081"/><circle cx="340" cy="306" r="4" fill="#ffb1d7"/>
-                <path class="solar-roof" d="m238 107 82-48 111 68-81 46Z" fill="#537eae" stroke="#c6dff3" stroke-width="4"/><path class="solar-roof" d="m277 86 112 68m-72-89-80 47m39 1 78-48" stroke="#c6dff3" stroke-opacity=".75" stroke-width="3"/>
-                <circle class="house-glow" cx="214" cy="251" r="90" fill="#ffe5a5" opacity=".16"/><circle class="house-glow" cx="424" cy="250" r="90" fill="#ffe5a5" opacity=".14"/>
-                <g class="house-shield"><circle cx="500" cy="115" r="31" fill="#ed7bbc"/><path d="m500 97 16 6v13c0 9-6 15-16 19-10-4-16-10-16-19v-13l16-6Z" fill="none" stroke="#fff" stroke-width="4"/><path d="m493 116 5 5 10-11" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>
-              </svg>
+          <div class="house-stage" aria-label="Interactive visualisation of connected living in a landed home">
+            <img class="connected-property-photo" src="https://intlife.com.my/wp-content/uploads/Case-Study-Eufala-at-DMayang-Sari-Image-1.png" width="1100" height="700" alt="Landed residential development featured in intlife project references" loading="lazy" decoding="async">
+            <div class="property-scrim" aria-hidden="true"></div>
+            <div class="connected-house-light connected-house-light--a" aria-hidden="true"></div>
+            <div class="connected-house-light connected-house-light--b" aria-hidden="true"></div>
+            <div class="device-marker device-marker--light" aria-hidden="true"><span class="device-marker__icon"><i data-lucide="lightbulb"></i></span><span><strong>Living room</strong><small>Lighting on</small></span></div>
+            <div class="device-marker device-marker--climate" aria-hidden="true"><span class="device-marker__icon"><i data-lucide="thermometer-sun"></i></span><span><strong>Comfort</strong><small>Scene ready</small></span></div>
+            <div class="device-marker device-marker--security" aria-hidden="true"><span class="device-marker__icon"><i data-lucide="shield-check"></i></span><span><strong>Access &amp; security</strong><small>Connected protection</small></span></div>
+            <div class="energy-visual" aria-label="Conceptual energy flow: solar-ready infrastructure, the home, and optional storage">
+              <span class="energy-visual__caption">ENERGY-AWARE HOME · CONCEPT</span>
+              <div class="energy-visual__nodes">
+                <div class="energy-visual__node"><i data-lucide="sun" aria-hidden="true"></i><span><strong>Solar</strong><small>Ready</small></span></div>
+                <span class="energy-visual__path" aria-hidden="true"></span>
+                <div class="energy-visual__node energy-visual__node--focus"><i data-lucide="house" aria-hidden="true"></i><span><strong>Home</strong><small>Connected</small></span></div>
+                <span class="energy-visual__path" aria-hidden="true"></span>
+                <div class="energy-visual__node"><i data-lucide="battery-charging" aria-hidden="true"></i><span><strong>Battery</strong><small>Optional</small></span></div>
+              </div>
             </div>
             <div class="story-phone" aria-hidden="true"><img src="../intlife-landing-preview/mockup_Intlife.png?v=3e542499" alt="" width="786" height="1452" loading="lazy" decoding="async"></div>
-            <div class="story-flow" aria-label="Illustrative energy ecosystem"><div class="flow-pill"><i data-lucide="sun" aria-hidden="true"></i><span>Solar ready</span></div><span class="energy-dash" aria-hidden="true"></span><div class="flow-pill"><i data-lucide="house" aria-hidden="true"></i><span>Home</span></div><span class="energy-dash" aria-hidden="true"></span><div class="flow-pill"><i data-lucide="battery-charging" aria-hidden="true"></i><span>Storage option</span></div></div>
             <div class="stage-feature"><i data-lucide="sparkles" aria-hidden="true"></i><span id="story-visual-label">Welcome home scene</span></div>
+            <span class="stage-illustration-label">ILLUSTRATIVE CONNECTED-HOME DEMO</span>
           </div>
           <div class="story-stage-bottom"><strong id="story-stage-title">Comfort, ready when you are.</strong><span id="story-stage-copy">A home that responds to your routine.</span><div class="stage-progress" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span></div></div>
         </div>
