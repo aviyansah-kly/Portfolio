@@ -327,3 +327,17 @@ button,input,textarea{font:inherit}a{color:inherit;text-decoration:none}button{c
   *,*::before,*::after{animation:none!important;transition-duration:0s!important}
   .reveal{opacity:1;transform:none}
 }
+/* Authentic Intlife app mockup enters the house scene in the fourth scroll step. */
+.story-phone{position:absolute;right:4%;bottom:19%;height:53%;width:27%;opacity:0;visibility:hidden;transform:translateX(15px) scale(.93);transition:opacity .56s,transform .56s,visibility 0s linear .56s;pointer-events:none;z-index:3}
+.story-phone img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 13px 23px rgba(14,2,25,.43))}
+.story-stage[data-active="control"] .story-phone{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.story-stage[data-active="control"] .house-art{opacity:.57;transform:translateX(-8%);transition:opacity .5s,transform .5s}
+.house-art{transition:opacity .5s,transform .5s}
+@media(max-width:680px){.story-phone{height:51%;bottom:18%;right:3%;width:31%}}
+@media(prefers-reduced-motion:reduce){.story-phone,.house-art{transition:none!important}}
+
+/* Progressive enhancement: retain visible content if scripts are unavailable. */
+.reveal{opacity:1;transform:none}
+.js-ready .reveal{opacity:0;transform:translateY(23px)}
+.js-ready .reveal.is-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js-ready .reveal{opacity:1;transform:none}}
