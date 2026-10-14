@@ -1,0 +1,202 @@
+/* Intlife V2.1 — Actual project photography + responsive, state-driven
+   product visualisation. These are conceptual previews, not device telemetry. */
+
+/* Hero modes visibly affect the visual, not just the captions. */
+.hero-scene-status {
+  position:absolute;z-index:3;top:60px;right:19px;
+  display:inline-flex;align-items:center;gap:9px;
+  max-width:calc(100% - 38px);padding:9px 13px;
+  border-radius:999px;border:1px solid rgba(255,255,255,.38);
+  background:rgba(31,12,42,.75);color:#fff;
+  font-size:14px;font-weight:600;line-height:1.3;
+  box-shadow:0 5px 20px rgba(20,5,30,.22);backdrop-filter:blur(12px);
+  transition:background .38s,border-color .38s,transform .38s;
+}
+.hero-scene-status svg{width:17px;height:17px;color:#FFD787;flex:0 0 17px}
+.hero-visual[data-mode="away"] .hero-scene-status {background:rgba(37,26,52,.89);border-color:rgba(192,167,225,.7)}
+.hero-visual[data-mode="away"] .hero-scene-status svg {color:#C1A7F4}
+.hero-visual[data-mode="morning"] .hero-scene-status{border-color:rgba(255,233,175,.83)}
+.hero-visual[data-mode="morning"] .hero-property img{transform:scale(1.04)}
+.hero-visual[data-mode="home"] .hero-property img{transform:scale(1.017)}
+.hero-visual[data-mode="away"] .hero-property img{transform:scale(1)}
+
+/* Replace cartoon house artwork with real landed-development imagery. */
+.story-stage{background:#1C0B2A}
+.house-stage {
+  position:relative;
+  display:block;
+  height:440px;
+  min-height:440px;
+  overflow:hidden;
+  isolation:isolate;
+  padding:0;
+  background:#25122F;
+}
+.connected-property-photo {
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:brightness(.86) saturate(.98);
+  transform:scale(1.04);
+  transition:filter .8s cubic-bezier(.22,.7,.24,1),transform 1.4s cubic-bezier(.22,.7,.24,1);
+}
+.property-scrim{
+  position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(16,6,23,.38) 0%,rgba(15,4,27,.02) 23%,rgba(20,7,31,.11) 51%,rgba(18,6,27,.94) 100%);
+  transition:background .5s;
+}
+.story-stage[data-active="welcome"] .connected-property-photo{filter:brightness(1.06) saturate(1.1);transform:scale(1.02)}
+.story-stage[data-active="secure"] .connected-property-photo{filter:brightness(.57) saturate(.73);transform:scale(1.045)}
+.story-stage[data-active="energy"] .connected-property-photo{filter:brightness(.73) saturate(.9);transform:scale(1.025)}
+.story-stage[data-active="control"] .connected-property-photo{filter:brightness(.47) saturate(.8);transform:scale(1.07)}
+
+/* Window glows give a tangible lighting change when the scene is selected. */
+.connected-house-light {
+  position:absolute;z-index:1;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,233,159,.5) 0%,rgba(253,188,111,.28) 32%,rgba(255,188,111,0) 73%);
+  mix-blend-mode:screen;filter:blur(10px);border-radius:50%;
+  opacity:.03;transform:scale(.75);transition:opacity .8s,transform .9s;
+}
+.connected-house-light--a{top:27%;left:36%;width:31%;aspect-ratio:1}
+.connected-house-light--b{top:35%;right:10%;width:27%;aspect-ratio:1}
+.story-stage[data-active="welcome"] .connected-house-light{opacity:.9;transform:scale(1)}
+.story-stage[data-active="control"] .connected-house-light{opacity:.3}
+
+/* Status UI appears on the relevant home zones. */
+.device-marker {
+  position:absolute;z-index:3;display:flex;align-items:center;gap:9px;
+  max-width:205px;padding:10px 13px;
+  border:1px solid rgba(252,235,254,.54);border-radius:13px;
+  background:rgba(34,12,48,.83);color:#fff;
+  box-shadow:0 16px 24px rgba(19,4,24,.18);
+  backdrop-filter:blur(13px);
+  opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);
+  transition:opacity .52s ease,transform .62s cubic-bezier(.15,.6,.27,1),visibility 0s linear .52s;
+  pointer-events:none;
+}
+.device-marker__icon{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:9px;background:rgba(255,183,219,.2);color:#FFB9DE}
+.device-marker__icon svg{width:17px;height:17px}
+.device-marker span:last-child{min-width:0;display:flex;flex-direction:column;gap:2px}
+.device-marker strong{font-size:14px;line-height:1.27;white-space:normal;font-weight:700}
+.device-marker small{font-size:14px;line-height:1.3;color:#EDD3EA}
+.device-marker--light{left:9%;top:29%}
+.device-marker--climate{right:7%;top:46%}
+.device-marker--security{right:11%;top:30%}
+.story-stage[data-active="welcome"] .device-marker--light,
+.story-stage[data-active="welcome"] .device-marker--climate,
+.story-stage[data-active="secure"] .device-marker--security {
+  opacity:1;visibility:visible;transform:translateY(0) scale(1);transition-delay:0s;
+}
+.story-stage[data-active="welcome"] .device-marker--climate{transition-delay:.12s}
+.story-stage[data-active="secure"] .device-marker--security{border-color:rgba(239,177,235,.88)}
+.story-stage[data-active="secure"] .device-marker--security .device-marker__icon{
+  animation:intlife-security-pulse 2.3s ease-in-out infinite;
+}
+@keyframes intlife-security-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(249,154,218,.22)}
+  50%{box-shadow:0 0 0 8px rgba(249,154,218,0)}
+}
+
+/* Connected energy appears only in the energy-focused storytelling step.
+   The path is deliberately conceptual: no invented generation/consumption stats. */
+.energy-visual{
+  position:absolute;z-index:4;left:6%;right:6%;top:35%;
+  display:flex;flex-direction:column;gap:15px;
+  padding:22px 23px 24px;
+  background:rgba(36,11,52,.89);
+  border:1px solid rgba(240,175,224,.56);border-radius:19px;
+  box-shadow:0 26px 53px rgba(12,2,21,.30);
+  backdrop-filter:blur(22px);
+  opacity:0;visibility:hidden;transform:translateY(18px) scale(.96);
+  transition:opacity .6s,transform .75s cubic-bezier(.16,.72,.2,1),visibility 0s linear .6s;
+}
+.story-stage[data-active="energy"] .energy-visual{
+  opacity:1;visibility:visible;transform:none;transition-delay:0s;
+}
+.energy-visual__caption{font-size:14px;font-weight:700;letter-spacing:.055em;color:#FFB5DF}
+.energy-visual__nodes{display:grid;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr) 38px minmax(0,1fr);gap:8px;align-items:center}
+.energy-visual__node{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  min-width:0;min-height:73px;padding:10px 7px;
+  background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.26);
+  color:#fff;border-radius:13px;
+}
+.energy-visual__node--focus{background:rgba(213,26,140,.23);border-color:rgba(253,128,209,.75)}
+.energy-visual__node svg{flex:0 0 22px;width:22px;height:22px;color:#F6A6D4}
+.energy-visual__node span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.energy-visual__node strong{font-size:14px;line-height:1.3}
+.energy-visual__node small{font-size:14px;line-height:1.3;color:#EAD8EF}
+.energy-visual__path{
+  display:block;height:3px;min-width:0;border-radius:999px;
+  background:repeating-linear-gradient(90deg,#FF8BCD 0 7px,transparent 7px 13px);
+  animation:intlife-power-stream .72s linear infinite;
+  box-shadow:0 0 12px rgba(255,129,210,.3);
+}
+@keyframes intlife-power-stream{to{background-position:13px 0}}
+
+/* Official welcome-screen asset, revealed beside the connected home.
+   The client-provided Figma screens will replace this at final design sign-off. */
+.house-stage .story-phone{
+  position:absolute;z-index:5;right:8%;bottom:10%;
+  height:85%;width:34%;max-width:210px;
+  opacity:0;visibility:hidden;transform:translateX(22px) rotate(3deg) scale(.94);
+  transition:opacity .65s,transform .9s cubic-bezier(.18,.75,.22,1),visibility 0s linear .65s;
+  pointer-events:none;
+}
+.house-stage .story-phone img{display:block;height:100%;width:100%;max-width:none;object-fit:contain;filter:drop-shadow(0 24px 20px rgba(6,1,14,.42))}
+.story-stage[data-active="control"] .house-stage .story-phone {
+  opacity:1;visibility:visible;transform:none;transition-delay:0s;
+}
+.stage-feature{
+  z-index:5;top:16px;right:17px;padding:9px 13px;gap:8px;
+  background:rgba(34,10,45,.82);border-color:rgba(255,255,255,.38);
+  border-radius:999px;backdrop-filter:blur(12px);
+}
+.stage-illustration-label{
+  position:absolute;z-index:5;left:20px;bottom:18px;
+  display:block;font-size:14px;font-weight:600;letter-spacing:.035em;
+  color:rgba(254,245,255,.87);text-shadow:0 1px 10px #1A0926;
+}
+.story-stage[data-active="energy"] .stage-illustration-label {opacity:.65}
+
+/* Refine proof typography without pretending these names are supplied logos. */
+.partner-wordmarks{gap:17px 25px}
+.partner-logo{line-height:1.2;filter:saturate(.88)}
+.partner-logo small{font-size:14px}
+.partners-metrics{border-color:#EEE7F0}
+
+/* Demo scene still legible at tablet and narrow phone breakpoints. */
+@media(max-width:980px){
+  .house-stage{height:470px;min-height:470px}
+  .energy-visual{left:8%;right:8%;top:36%}
+}
+@media(max-width:680px){
+  .house-stage{height:343px;min-height:343px}
+  .stage-feature{top:11px;right:11px;padding:8px 10px;font-size:14px}
+  .stage-feature svg{width:15px;height:15px}
+  .hero-scene-status{top:53px;right:12px;padding:7px 10px}
+  .device-marker{padding:7px 9px;gap:7px;max-width:164px;border-radius:11px}
+  .device-marker__icon{width:27px;height:27px;flex-basis:27px}
+  .device-marker strong,.device-marker small{font-size:14px}
+  .device-marker--light{left:4%;top:29%}
+  .device-marker--climate{right:4%;top:49%}
+  .device-marker--security{right:7%;top:33%}
+  .energy-visual{left:3%;right:3%;top:34%;padding:15px 10px;gap:12px;border-radius:14px}
+  .energy-visual__nodes{grid-template-columns:minmax(0,1fr) 11px minmax(0,1fr) 11px minmax(0,1fr);gap:4px}
+  .energy-visual__node{min-height:67px;padding:8px 4px;flex-direction:column;gap:5px}
+  .energy-visual__node svg{width:18px;height:18px}
+  .energy-visual__node span{text-align:center}
+  .energy-visual__node strong,.energy-visual__node small{font-size:14px}
+  .house-stage .story-phone{height:75%;width:40%;right:4%;bottom:12%}
+  .stage-illustration-label{font-size:14px;left:12px;bottom:12px}
+}
+@media(max-width:390px){
+  .house-stage{height:316px;min-height:316px}
+  .device-marker--climate{top:54%;right:2%}
+  .stage-feature{max-width:65%;white-space:normal}
+  .energy-visual{top:37%;padding:12px 7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-scene-status,.connected-property-photo,.connected-house-light,
+  .device-marker,.energy-visual,.house-stage .story-phone{transition:none}
+  .energy-visual__path,.device-marker--security .device-marker__icon{animation:none!important}
+}
