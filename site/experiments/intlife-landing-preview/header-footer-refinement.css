@@ -282,3 +282,13 @@ a.complete__discuss.button--outline:hover svg,
   a.text-link.button--outline:hover svg,
   a.complete__discuss.button--outline:hover svg {transform:none!important;}
 }
+
+/* Keep the same arrow size on every viewport, including compact phone widths. */
+@media(max-width:390px) {
+  .header .header__cta svg {width:18px;height:18px;min-width:18px;min-height:18px;flex:0 0 18px;}
+}
+@media(max-width:350px) {
+  .header .brand img {width:81px;}
+  .header .menu-toggle {width:36px;flex:0 0 36px;}
+  .header__cta {padding-inline:6px;}
+}
