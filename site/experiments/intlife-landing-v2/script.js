@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  document.body.classList.add("js-ready");
+  // Keep all content visible even when scroll observers, external scripts or animations fail.
   const $ = (q,root=document)=>root.querySelector(q);
   const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
   const reduce = matchMedia("(prefers-reduced-motion: reduce)");
@@ -129,12 +129,8 @@
   updateStoryFromScroll();
 
   // Short, intentional entry transitions; content remains legible with JS off.
-  if("IntersectionObserver" in window&&!reduce.matches){
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-visible");observer.unobserve(e.target)}});
-    },{rootMargin:"0px 0px -5% 0px",threshold:.06});
-    $$(".reveal").forEach(el=>observer.observe(el));
-  }else $$(".reveal").forEach(el=>el.classList.add("is-visible"));
+  // Reveal animation must never gate content visibility.
+  $(".reveal").forEach(el=>el.classList.add("is-visible"));
 
   // Preview form: native validity checks; no collection or storage of personal information.
   $("#lead-form")?.addEventListener("submit",e=>{
