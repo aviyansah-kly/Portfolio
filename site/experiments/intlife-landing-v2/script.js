@@ -53,28 +53,87 @@
   sceneButtons.forEach(btn=>btn.addEventListener("click",()=>setScene(btn.dataset.scene)));
   setScene("home");
 
-  // Product/app showcase: change verified capability summaries around the
-  // official welcome image, not the screenshot itself.
+  // Intlife-backed capabilities are demonstrated as interaction concepts.
+  // They are NOT a reproduction of the client's inaccessible Figma screens.
   const appVisual=$(".app-visual");
-  const appButtons=$(".app-preview-modes button");
-  const appModes={
-    scenes:{title:"Home scenes",description:"Set the right mood at home."},
-    access:{title:"Security & access",description:"Connected controls for peace of mind."},
-    devices:{title:"Smart devices",description:"Manage supported devices in one place."}
+  const appModeButtons=$$(".app-demo__tabs button");
+  const appModePanels=$$(".app-demo__panel");
+  const appScenes={
+    home:{label:"Welcome home",subtitle:"Lighting and comfort, together.",lights:true,locked:true},
+    away:{label:"Away mode",subtitle:"Security stays close at hand.",lights:false,locked:true},
+    sleep:{label:"Good night",subtitle:"Wind down with a calmer home.",lights:false,locked:true}
   };
+  const appState={mode:"scenes",scene:"home",lights:true,locked:true,temp:24};
+
+  function reflectAppDemo(){
+    if(!appVisual)return;
+    appVisual.dataset.appMode=appState.mode;
+    appVisual.dataset.demoScene=appState.scene;
+    appVisual.dataset.demoLight=appState.lights?"on":"off";
+    appVisual.dataset.demoLock=appState.locked?"locked":"unlocked";
+    const currentScene=appScenes[appState.scene];
+    const sceneTitle=$("#app-scene-label");
+    const sceneSubtitle=$("#app-scene-subtitle");
+    if(sceneTitle)sceneTitle.textContent=currentScene.label;
+    if(sceneSubtitle)sceneSubtitle.textContent=currentScene.subtitle;
+    const lockStatus=$("#app-lock-status");
+    const lockButton=$('[data-demo-toggle="lock"]');
+    if(lockStatus)lockStatus.textContent=appState.locked?"Locked":"Unlocked";
+    if(lockButton){
+      lockButton.setAttribute("aria-pressed",String(appState.locked));
+      $("#app-lock-action").textContent=appState.locked?"Unlock demo door":"Lock demo door";
+    }
+    const lightStatus=$("#app-light-status");
+    const lightButton=$('[data-demo-toggle="light"]');
+    if(lightStatus)lightStatus.textContent=appState.lights?"On":"Off";
+    if(lightButton){
+      lightButton.classList.toggle("is-active",appState.lights);
+      lightButton.setAttribute("aria-pressed",String(appState.lights));
+      lightButton.setAttribute("aria-label",appState.lights?"Turn living room lights off":"Turn living room lights on");
+    }
+    const temp=$("#app-temp-value");
+    if(temp)temp.textContent=String(appState.temp);
+    $$("[data-demo-scene]").forEach(button=>{
+      if(button.tagName!=="BUTTON")return;
+      const active=button.dataset.demoScene===appState.scene;
+      button.classList.toggle("is-active",active);
+      button.setAttribute("aria-pressed",String(active));
+    });
+  }
   function setAppMode(mode){
-    if(!appVisual||!appModes[mode])return;
-    appVisual.dataset.appMode=mode;
-    $("#app-feature-title").textContent=appModes[mode].title;
-    $("#app-feature-description").textContent=appModes[mode].description;
-    appButtons.forEach(button=>{
+    if(!appVisual||!["scenes","access","devices"].includes(mode))return;
+    appState.mode=mode;
+    appModeButtons.forEach(button=>{
       const selected=button.dataset.appMode===mode;
       button.classList.toggle("is-active",selected);
       button.setAttribute("aria-pressed",String(selected));
     });
+    appModePanels.forEach(panel=>{panel.hidden=panel.dataset.demoPanel!==mode;});
+    reflectAppDemo();
   }
-  appButtons.forEach(button=>button.addEventListener("click",()=>setAppMode(button.dataset.appMode)));
+  appModeButtons.forEach(button=>button.addEventListener("click",()=>setAppMode(button.dataset.appMode)));
+  $$("button[data-demo-scene]").forEach(button=>button.addEventListener("click",()=>{
+    appState.scene=button.dataset.demoScene;
+    const scene=appScenes[appState.scene];
+    if(scene){appState.lights=scene.lights;appState.locked=scene.locked;}
+    reflectAppDemo();
+  }));
+  $$("button[data-demo-toggle]").forEach(button=>button.addEventListener("click",()=>{
+    if(button.dataset.demoToggle==="light")appState.lights=!appState.lights;
+    if(button.dataset.demoToggle==="lock")appState.locked=!appState.locked;
+    reflectAppDemo();
+  }));
+  $$("button[data-demo-temp]").forEach(button=>button.addEventListener("click",()=>{
+    appState.temp=Math.max(18,Math.min(28,appState.temp+Number(button.dataset.demoTemp)));
+    reflectAppDemo();
+  }));
   setAppMode("scenes");
+
+  // If a third-party logo is unavailable, retain a visible partner name.
+  $$(".partner-artwork__item img").forEach(img=>{
+    img.addEventListener("error",()=>img.closest(".partner-artwork__item")?.classList.add("is-fallback"));
+    if(img.complete && img.naturalWidth===0)img.closest(".partner-artwork__item")?.classList.add("is-fallback");
+  });
 
   const visual=$(".story-stage");
   const stageButtons=$$(".story-step");
@@ -144,5 +203,5 @@
     if(feedback){feedback.hidden=false;feedback.scrollIntoView({behavior:reduce.matches?"auto":"smooth",block:"nearest"});}
   });
   const year=$("#copyright-year");if(year)year.textContent=String(new Date().getFullYear());
-  if(window.lucide?.createIcons)window.lucide.createIcons({attrs:{"stroke-width":1.8}});
+  // Icons are embedded as inline SVGs; no CDN scripts required.
 })();
