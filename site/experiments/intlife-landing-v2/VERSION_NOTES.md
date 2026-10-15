@@ -1,7 +1,7 @@
 # Intlife Landed Smart Living — Design V2
 
 **Date:** 14 October 2026
-**Status:** V2.1 interactive refinement for client alignment. Not production or final approval.
+**Status:** V2.2 interactive design refinement for client alignment. Not production or final approval.
 
 ## Design history (kept separately, no overrides)
 
@@ -89,3 +89,20 @@
 3. Obtain approved high-quality partner/developer logo files and confirm permission + full current partner list.
 4. Confirm whether optional energy integration should be shown more technically (visual remains expressly conceptual).
 5. Complete visual browser QA of Cloudflare deployment on 1440 / 1024 / 390 px and test interaction/accessibility.
+
+## V2.2 client-focused refinement — 15 October 2026
+
+- Archived the complete V2.1 source in `/experiments/intlife-landing-v2-1/` before changes. The original and V2.0 snapshots remain untouched.
+- **Social proof:** replaced the previous text-only imitation of logo artworks with links to public logo images matching the five companies featured in the image the client supplied (IOI Group, Matrix, IJM Land, MKH, PRIMA Communications). Each third-party image has a name fallback; PRIMA Communications uses a cropped public campaign-banner representation. The client should provide the actual official artwork before final design approval. We do not display the unverified “5 of top 10” ranking claim.
+- **App/product:** replaced the static welcome-screen/three-description experience with an actually interactive simulation: choose Home / Away / Sleep, lock/unlock, toggle lights, and adjust the AC demo temperature (18–28 °C). Device capability names are grounded in published Intlife Smart Living documentation. The official welcome-screen image remains visible for brand context. The simulation is prominently labelled an interactive concept, **not a real connected app or a claim that these are the exact Figma application screens**.
+- **Motion:** improved the conceptual energy diagram from three decorative labels to an animated grid/solar/home/battery relationship like the supplied motion reference. No fabricated energy readings, consumption statistics, or installed BESS claims.
+- **Bug fix:** removed an unexpected `$(".reveal").forEach` runtime exception that could stop the rest of the preview JavaScript. Reveal content remains visible even without JavaScript.
+- **Responsive:** dedicated tablet and mobile treatments for the new gallery and app simulation, including fixed minimum 14px typography and reduced-motion support.
+
+### Outstanding for design approval
+
+1. Client to confirm the original 13-Oct baseline and preferred motion storyboard on a short video call.
+2. The Figma app file `kigiHKOO8nu865M1HshtDj` currently denies connected Figma inspection; obtain explicit editor access or exported app screenshots for a pixel-accurate visual showcase.
+3. Replace external logo URLs and the PRIMA banner crop with approved first-party SVG/PNG assets. External hosts may block hotlinking even when fallback text works.
+4. Verify Cloudflare deployment and review actual 1440px, 1024px, 390px browser screenshots and all click interactions. Source-level validation is not a substitute for browser QA.
+5. Confirm published scale metrics and selected customer proof figures with the client before paid-ad use.
