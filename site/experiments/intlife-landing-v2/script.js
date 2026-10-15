@@ -189,7 +189,7 @@
 
   // Short, intentional entry transitions; content remains legible with JS off.
   // Reveal animation must never gate content visibility.
-  $(".reveal").forEach(el=>el.classList.add("is-visible"));
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("is-visible"));
 
   // Preview form: native validity checks; no collection or storage of personal information.
   $("#lead-form")?.addEventListener("submit",e=>{
