@@ -169,3 +169,59 @@
   .app-demo__tabs button,.app-demo__scene-visual,.app-demo__scene-glow,
   .app-demo__switch,.app-demo__switch span,.app-demo__options button{transition:none!important}
 }
+
+/* Energy is part of Smart Living, not a standalone solar/BESS product offer.
+   Animate the connected-house relationship without fabricated kW data. */
+.story-stage[data-active="energy"] .stage-illustration-label{opacity:0}
+.energy-visual{
+  top:20%;padding:16px 21px 16px;gap:6px;
+  background:rgba(36,12,51,.94);
+  border:1px solid rgba(254,181,235,.55);
+}
+.energy-network{position:relative;display:flex;flex-direction:column;justify-content:space-between;align-items:center;height:232px;padding:7px 5px 9px;}
+.energy-network__row{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px}
+.energy-network__node{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:100px;min-height:63px;padding:9px 15px;
+  border:1px solid rgba(255,190,237,.36);
+  border-radius:11px;background:#3B194D;text-align:center;
+}
+.energy-network__node strong,.energy-network__house strong{font-size:16px;line-height:1.3;color:#fff;}
+.energy-network__node small,.energy-network__house small{font-size:14px;line-height:1.45;color:#DFCCE9;}
+.energy-network__house{
+  position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:9px;
+  min-width:165px;min-height:74px;padding:11px 16px;
+  border:1px solid #F48DCA;border-radius:13px;
+  background:linear-gradient(130deg,#76315F,#482052);
+  box-shadow:0 0 27px rgba(245,103,190,.22);
+}
+.energy-network__house-icon{font-family:Arial,sans-serif;font-size:39px;color:#FFE8FB;line-height:.8}
+.energy-network__house>span:last-child{display:flex;flex-direction:column}
+.energy-network__lines{position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.energy-network__lines path{
+  stroke:#FF9CD9;stroke-width:3.2;stroke-linecap:round;
+  stroke-dasharray:9 10;animation:intlife-network-current 1.3s linear infinite;
+  filter:drop-shadow(0 0 5px rgba(244,103,192,.26));
+}
+.energy-network__lines path:nth-child(even){animation-direction:reverse;}
+@keyframes intlife-network-current{to{stroke-dashoffset:-76}}
+.energy-network__disclaimer{display:block;color:#CFB6D6;font-size:14px;line-height:1.4;text-align:center}
+@media(max-width:680px){
+  .energy-visual{top:17%;left:3%;right:3%;padding:12px 12px 11px;gap:1px}
+  .energy-network{height:201px;padding:4px 0}
+  .energy-network__row{gap:5px}
+  .energy-network__node{min-height:53px;min-width:85px;padding:6px 7px;border-radius:9px}
+  .energy-network__node strong,.energy-network__house strong{font-size:14px}
+  .energy-network__node small,.energy-network__house small{font-size:14px}
+  .energy-network__house{min-width:129px;min-height:59px;padding:8px 11px}
+  .energy-network__house-icon{font-size:31px}
+  .energy-network__disclaimer{font-size:14px}
+}
+@media(max-width:390px){
+  .energy-visual{top:16%;padding:10px 8px}
+  .energy-network{height:189px}
+  .energy-network__node{min-height:50px}
+}
+@media(prefers-reduced-motion:reduce){
+  .energy-network__lines path{animation:none!important}
+}
