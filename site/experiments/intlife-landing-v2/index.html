@@ -13,6 +13,7 @@
   <link rel="preload" href="../intlife-landing-preview/intlife-logo.svg" as="image">
   <link rel="stylesheet" href="./styles.css?v=2.0">
   <link rel="stylesheet" href="./visual-refinement.css?v=2.1">
+  <link rel="stylesheet" href="./client-polish.css?v=2.2">
   <!-- Official Lucide SVG icons embedded inline; no external icon script required. -->
   <script defer src="./script.js?v=2.0"></script>
 </head>
@@ -608,64 +609,37 @@
   <path d="m12 5 7 7-7 7" />
 </svg></a>
         </div>
-        <div class="app-visual reveal" data-app-mode="scenes">
+        <div class="app-visual reveal" data-app-mode="scenes" data-demo-scene="home" data-demo-light="on" data-demo-lock="locked">
           <div class="app-halo"></div>
-          <img src="../intlife-landing-preview/mockup_Intlife.png?v=3e542499" width="786" height="1452" loading="lazy" decoding="async" alt="intlife Smart Living app welcome screen in an official smartphone mockup">
-          <div class="app-tag"><span class="ping"></span> CONNECTED EVERYDAY LIVING</div>
-          <div class="app-preview-insight" aria-live="polite"><span>FEATURE PREVIEW</span><strong id="app-feature-title">Home scenes</strong><small id="app-feature-description">Set the right mood at home.</small></div>
-          <div class="app-preview-modes" role="group" aria-label="Explore Smart Living App capabilities">
-            <button type="button" data-app-mode="scenes" class="is-active" aria-pressed="true"><svg class="lucide-inline" aria-hidden="true"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M12 2v2" />
-  <path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715" />
-  <path d="M16 12a4 4 0 0 0-4-4" />
-  <path d="m19 5-1.256 1.256" />
-  <path d="M20 12h2" />
-</svg> Scenes</button>
-            <button type="button" data-app-mode="access" aria-pressed="false"><svg class="lucide-inline" aria-hidden="true"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-  <path d="m9 12 2 2 4-4" />
-</svg> Security</button>
-            <button type="button" data-app-mode="devices" aria-pressed="false"><svg class="lucide-inline" aria-hidden="true"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M10 5H3" />
-  <path d="M12 19H3" />
-  <path d="M14 3v4" />
-  <path d="M16 17v4" />
-  <path d="M21 12h-9" />
-  <path d="M21 19h-5" />
-  <path d="M21 5h-7" />
-  <path d="M8 10v4" />
-  <path d="M8 12H3" />
-</svg> Devices</button>
+          <img class="app-product-shot" src="../intlife-landing-preview/mockup_Intlife.png?v=3e542499" width="786" height="1452" loading="lazy" decoding="async" alt="Existing Intlife Smart Living mobile-app welcome screen">
+          <div class="app-tag"><span class="ping"></span> INTLIFE SMART LIVING</div>
+          <div class="app-demo">
+            <div class="app-demo__header"><span>EXPLORE THE EXPERIENCE</span><small>INTERACTIVE CONCEPT</small></div>
+            <div class="app-demo__tabs" role="group" aria-label="Choose a connected home experience">
+              <button type="button" data-app-mode="scenes" aria-pressed="true" class="is-active">Scenes</button>
+              <button type="button" data-app-mode="access" aria-pressed="false">Security</button>
+              <button type="button" data-app-mode="devices" aria-pressed="false">Devices</button>
+            </div>
+            <div class="app-demo__body" aria-live="polite">
+              <div class="app-demo__panel" data-demo-panel="scenes">
+                <div class="app-demo__scene-visual"><span class="app-demo__window" aria-hidden="true"></span><span class="app-demo__scene-glow" aria-hidden="true"></span><strong id="app-scene-label">Welcome home</strong><small id="app-scene-subtitle">Lighting and comfort, together.</small></div>
+                <div class="app-demo__options" role="group" aria-label="Home scene">
+                  <button type="button" class="is-active" data-demo-scene="home" aria-pressed="true">Home</button>
+                  <button type="button" data-demo-scene="away" aria-pressed="false">Away</button>
+                  <button type="button" data-demo-scene="sleep" aria-pressed="false">Sleep</button>
+                </div>
+              </div>
+              <div class="app-demo__panel" data-demo-panel="access" hidden>
+                <div class="app-demo__device-card"><span class="app-demo__device-icon app-demo__device-icon--lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><span><strong>Front door</strong><small id="app-lock-status">Locked</small></span></div>
+                <button type="button" class="app-demo__action" data-demo-toggle="lock" aria-pressed="true"><span id="app-lock-action">Unlock demo door</span></button>
+                <p>Supported smart access, right when you need it.</p>
+              </div>
+              <div class="app-demo__panel" data-demo-panel="devices" hidden>
+                <div class="app-demo__device-card"><span class="app-demo__device-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4"/><path d="M15 14c1.5-1.5 3-2.9 3-6a6 6 0 0 0-12 0c0 3.1 1.5 4.5 3 6"/></svg></span><span><strong>Living lights</strong><small id="app-light-status">On</small></span><button type="button" class="app-demo__switch is-active" data-demo-toggle="light" aria-pressed="true" aria-label="Turn living room lights off"><span></span></button></div>
+                <div class="app-demo__device-card"><span class="app-demo__device-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15h16M4 7h16M6 11h12"/><path d="M7 17l-2 3m6-3 2 3m4-3 2 3"/></svg></span><span><strong>Air conditioning</strong><small><span id="app-temp-value">24</span>°C · Demo</small></span><span class="app-demo__temp"><button type="button" data-demo-temp="-1" aria-label="Decrease demo AC temperature">−</button><button type="button" data-demo-temp="1" aria-label="Increase demo AC temperature">+</button></span></div>
+              </div>
+            </div>
+            <div class="app-demo__footer">Illustrative interaction · Actual app screens vary by system.</div>
           </div>
         </div>
       </div>
