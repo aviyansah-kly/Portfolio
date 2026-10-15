@@ -225,3 +225,10 @@
 @media(prefers-reduced-motion:reduce){
   .energy-network__lines path{animation:none!important}
 }
+
+/* Tangible responses for simulated light and lock interactions. */
+.app-visual[data-demo-light="off"] .app-demo__panel[data-demo-panel="devices"] .app-demo__device-card:first-child .app-demo__device-icon{color:#C6AFCF;background:rgba(255,255,255,.075)}
+.app-visual[data-demo-light="on"] .app-demo__panel[data-demo-panel="devices"] .app-demo__device-card:first-child .app-demo__device-icon{color:#FFE1A2;box-shadow:0 0 24px rgba(255,215,140,.13)}
+.app-visual[data-demo-lock="unlocked"] .app-demo__device-icon--lock{color:#8FE2CE;background:rgba(73,174,144,.23)}
+.energy-network__house-icon svg{display:block;width:32px;height:32px;color:#FFE8FB}
+@media(max-width:680px){.energy-network__house-icon svg{width:26px;height:26px}}
