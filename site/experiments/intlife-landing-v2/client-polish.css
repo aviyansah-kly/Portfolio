@@ -232,3 +232,22 @@
 .app-visual[data-demo-lock="unlocked"] .app-demo__device-icon--lock{color:#8FE2CE;background:rgba(73,174,144,.23)}
 .energy-network__house-icon svg{display:block;width:32px;height:32px;color:#FFE8FB}
 @media(max-width:680px){.energy-network__house-icon svg{width:26px;height:26px}}
+
+
+/* Design review asset: exact partner visuals cropped from the image supplied
+   by Intlife. The data URI is embedded in HTML to avoid external hotlinks. */
+.partner-artwork--embedded {display:block;min-width:0;overflow:hidden}
+.partner-artwork__scroll {
+  display:block;width:100%;overflow-x:auto;overscroll-behavior-inline:contain;
+  scrollbar-width:thin;scrollbar-color:#D8C7DB transparent;
+}
+.partner-artwork__strip {
+  display:block;width:100%;max-width:100%;height:auto;object-fit:contain;
+}
+@media(max-width:680px){
+  .partner-artwork__strip{width:710px;min-width:710px;max-width:none}
+  .partner-artwork--embedded::after{
+    content:"Swipe to see all partners →";display:block;
+    text-align:right;color:#85738C;font-size:14px;font-weight:500;margin-top:5px;
+  }
+}
