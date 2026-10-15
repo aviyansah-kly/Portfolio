@@ -103,6 +103,14 @@
 
 1. Client to confirm the original 13-Oct baseline and preferred motion storyboard on a short video call.
 2. The Figma app file `kigiHKOO8nu865M1HshtDj` currently denies connected Figma inspection; obtain explicit editor access or exported app screenshots for a pixel-accurate visual showcase.
-3. Replace external logo URLs and the PRIMA banner crop with approved first-party SVG/PNG assets. External hosts may block hotlinking even when fallback text works.
+3. The five partner logos now render from a compact embedded image cropped from the client's supplied reference (not third-party hotlinks). Replace with approved, high-resolution first-party SVG/PNG files for production.
 4. Verify Cloudflare deployment and review actual 1440px, 1024px, 390px browser screenshots and all click interactions. Source-level validation is not a substitute for browser QA.
 5. Confirm published scale metrics and selected customer proof figures with the client before paid-ad use.
+
+### 15 October 2026 — Partner asset reliability fix
+
+- Eliminated broken/unverifiable third-party partner image URLs and the misleading PR1MA background-banner crop.
+- Embedded all five actual logo images extracted from the screenshot the client supplied (IOI Group, Matrix, IJM Land, MKH, PR1MA Communications), as one compressed WebP data URI. The desktop strip scales proportionally; narrow phones get a horizontal swipe region rather than unreadably small logos.
+- Audited the embedded image integrity against the original cropped reference (1000×150, base64 checksum match). This is suitable for design discussion, not a substitute for brand-approved original vector artwork.
+- Source checks: 11 sections including trust strip, no duplicate IDs, valid local anchors, valid JavaScript syntax, balanced CSS, and live form remains preview-only.
+- Cloudflare preview couldn't be accessed from current web/runtime check and the latest commit had no reported CI/workflow status. Perform visual and functional verification before claiming final design sign-off.
