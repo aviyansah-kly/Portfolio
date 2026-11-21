@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e3d4d">
+<meta name="description" content="Go Travel — explore the world with exciting people. An interactive design-to-code portfolio demo from Figma.">
+<title>Go Travel — Explore the world</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top"><div class="container nav-wrap">
+<a class="logo" href="#top" aria-label="Go Travel home"><span class="brand-mark" aria-hidden="true">⌖</span><strong>Go</strong><span>Travel</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation"><span></span><span></span><span></span></button>
+<nav class="main-nav" id="primary-menu" aria-label="Primary"><a href="#destinations">Demos</a><a href="#about">About</a><a href="#journeys">Blog</a><a href="#testimonials">Pages</a><a href="#footer">Contact</a></nav>
+</div></header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-photo hero-photo-0" id="heroPhoto" aria-hidden="true"></div><div class="hero-shade"></div>
+<div class="container hero-inner"><div class="hero-copy"><p class="eyebrow hero-eyebrow reveal">YOUR NEXT ADVENTURE STARTS HERE</p><h1 id="hero-title" class="reveal">Explore the world with exciting people</h1><p class="hero-subtitle reveal">We help people to find ideal company for the join trips</p><a class="button button-lime reveal" href="#destinations">Start your trips <span class="arrow" aria-hidden="true">→</span></a></div>
+<div class="hero-bottom"><div class="hero-pager"><button type="button" id="heroPrev" aria-label="Previous hero destination">←</button><span id="heroCount" aria-live="polite">1/4</span><button type="button" id="heroNext" aria-label="Next hero destination">→</button></div>
+<div class="hero-steps"><article><b>01</b><strong>Choose place, activity and time</strong><p>Every can choose a route and activity according to his taste and possibilities</p></article><article><b>02</b><strong>Find people who have the same...</strong><p>Meet people who share your passion for new destinations</p></article><article><b>03</b><strong>Start chat and offer to go on...</strong><p>Plan a memorable adventure with your new travel companions</p></article></div></div>
+</div>
+</section>
+<section class="benefits" aria-label="Why travel with Go Travel"><div class="container benefits-grid">
+<article class="benefit reveal"><div class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M32 5 55 15v16c0 17-10 27-23 32C19 58 9 48 9 31V15L32 5Z" stroke="currentColor" stroke-width="3"/><path d="m21 32 7 8 15-17" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h2>Enjoy some flexibility</h2><p>Stays with flexible cancellation make it easy to re-book if your plans change.</p></article>
+<article class="benefit reveal"><div class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="23" cy="16" r="6" stroke="currentColor" stroke-width="3"/><path d="M23 22v18m0 0-10 10m10-10 10 10M12 35h22m0-8 15-8m-1 0 1 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h2>More than 7M active trip</h2><p>More than 1 billion guests who’ve found getaways in over 120 countries and destinations.</p></article>
+<article class="benefit reveal"><div class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M8 14h48M8 32h48M8 50h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="14" r="6" fill="#d9ed82" stroke="currentColor" stroke-width="3"/><circle cx="43" cy="32" r="6" fill="#d9ed82" stroke="currentColor" stroke-width="3"/><circle cx="29" cy="50" r="6" fill="#d9ed82" stroke="currentColor" stroke-width="3"/></svg></div><h2>100+ filters for tailored stays</h2><p>Pick your price range, the number of rooms you want, and other key amenities to find the stay that fits your needs.</p></article>
+</div></section>
+<section class="destinations section-pad" id="destinations" aria-labelledby="destinations-title"><div class="container">
+<div class="section-head reveal"><div><p class="eyebrow">WHERE TO GO</p><h2 id="destinations-title">Popular destinations</h2></div><div class="slider-controls"><button type="button" id="destinationPrev" aria-label="Scroll destinations left">←</button><button type="button" id="destinationNext" aria-label="Scroll destinations right">→</button></div></div>
+<div class="destination-track" id="destinationTrack" role="region" aria-label="Popular destination cards">
+<article class="destination-card reveal"><img src="./assets/destination-bali.png" alt="Tropical bay at Bali" loading="lazy"><div class="card-cover"></div><div class="destination-copy"><h3>Bali</h3><p>🇮🇩 Indonesia</p><span>543 want to travel here</span></div></article>
+<article class="destination-card reveal"><img src="./assets/destination-mykines.png" alt="Coastline at MyKines Island" loading="lazy"><div class="card-cover"></div><div class="destination-copy"><h3>MyKines Island</h3><p>🇮🇩 Indonesia</p><span>312 want to travel here</span></div></article>
+<article class="destination-card destination-featured reveal"><img src="./assets/destination-uludag.png" alt="Mountain view at Uludag" loading="lazy"><div class="card-cover"></div><div class="destination-copy"><h3>Uludag</h3><p>🇹🇷 Turkey</p><button type="button" class="button button-lime small destination-action" data-destination="Uludag">I want to travel here</button></div></article>
+<article class="destination-card reveal"><img src="./assets/destination-swiss.png" alt="Mountain landscape in Switzerland" loading="lazy"><div class="card-cover"></div><div class="destination-copy"><h3>Swiss</h3><p>🇨🇭 Switzerland</p><span>80 want to travel here</span></div></article>
+</div></div></section>
+<section class="about section-pad" id="about"><div class="container about-grid"><div class="about-copy reveal"><h2>Fun for them,<br>made easy for you</h2><p>We at Luckey provide comprehensive management of your property, allowing you to earn extra income from renting your space, without the time commitment.</p></div>
+<div class="about-image reveal"><img src="./assets/fun-photo.png" alt="Traveler enjoying a coastline" loading="lazy"></div>
+<div class="about-benefits reveal"><article><span class="circle-icon">↗</span><div><h3>Book Car</h3><p>Lorem ipsum dolor sit amet consectetur.</p><a href="#destinations">Explore more <span aria-hidden="true">→</span></a></div></article><article><span class="circle-icon">⌁</span><div><h3>Book Hotel</h3><p>Lorem ipsum dolor sit amet consectetur.</p><a href="#destinations">Explore more <span aria-hidden="true">→</span></a></div></article><a class="button button-lime about-cta" href="#destinations">Start your trips <span aria-hidden="true">→</span></a></div>
+</div></section>
+<section class="journeys section-pad" id="journeys"><div class="container"><div class="section-head center reveal"><p class="eyebrow">GALLERY OF OUR TRIPS</p><h2>Completed Journey</h2></div>
+<div class="journey-grid">
+<article class="journey-tile journey-rome reveal"><img src="./assets/journey-rome.png" loading="lazy" alt="Historic architecture in Rome"><div class="tile-label"><h3>Rome</h3><span>543 user travel here</span></div></article>
+<article class="journey-tile journey-milan reveal"><img src="./assets/journey-milan.png" loading="lazy" alt="Waterfront architecture in Milan"><div class="tile-label"><h3>Milan</h3><span>543 user travel here</span></div></article>
+<article class="journey-tile journey-raja placeholder-tile reveal"><div class="tile-label"><h3>Raja Ampat</h3><span>53 user travel here</span></div></article>
+<article class="journey-tile journey-tiga reveal"><img src="./assets/journey-tiga-warna.png" loading="lazy" alt="Coastline at Tiga Warna"><div class="tile-label"><h3>Tiga Warna</h3><span>53 user travel here</span></div></article>
+<article class="journey-tile journey-sempu placeholder-tile reveal"><div class="tile-label"><h3>Sempu Beach</h3><span>53 user travel here</span></div></article>
+</div>
+<div class="journey-more reveal"><a href="#destinations" class="button button-lime">More Journey</a></div></div></section>
+<section class="testimonials section-pad" id="testimonials"><div class="container testimonial-grid"><div class="testimonial-copy reveal"><h2>What our happy client</h2><blockquote id="reviewQuote">“Jhon De is a native of the region. She was a host herself before she started offering her service to other people, so she knows about the necessity to have someone to take care of all the little things”</blockquote><div class="stars"><span aria-label="5 out of 5 stars">★★★★★</span><strong>5/5</strong></div><div class="avatar-row"><button type="button" class="avatar active" data-review="0" aria-label="Show first testimonial"><img src="./assets/avatar-1.png" alt=""></button><button type="button" class="avatar" data-review="1" aria-label="Show second testimonial">JD</button><button type="button" class="avatar" data-review="2" aria-label="Show third testimonial">JD</button></div><div class="review-names"><span>Jhon De</span><span>Jhon De</span><span>Jhon De</span></div></div><div class="testimonial-art reveal"><div class="review-ring"></div><div class="review-dots"></div><div class="portrait-fallback"><img src="./assets/avatar-1.png" alt="Portrait of a Go Travel customer" loading="lazy"></div></div></div></section>
+</main>
+<footer id="footer" class="footer"><div class="container"><div class="footer-top"><a class="logo" href="#top"><span class="brand-mark">⌖</span><strong>Go</strong><span>Travel</span></a><nav aria-label="Footer"><a href="#destinations">Demos</a><a href="#about">About</a><a href="#journeys">Blog</a><a href="#testimonials">Pages</a><a href="mailto:hello@example.invalid" aria-disabled="true" tabindex="-1">Contact</a></nav></div><div class="footer-bottom"><p>Copyright © 2023 Avi Yansah</p><div class="social-links" aria-label="Social media design placeholders"><span>f</span><span>◎</span><span>𝕏</span><span>▶</span></div></div></div></footer>
+<div class="toast" role="status" id="toast" aria-live="polite"></div>
+</body></html>
