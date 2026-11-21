@@ -1,8 +1,16 @@
 # Go Travel — responsive landing page portfolio demo
 
+**Live preview:** https://go-travel-demo.aviyansah.workers.dev/
+
 Source design: https://www.figma.com/design/fLEKppP0HFgl0N8VLXA6zg/Landing-Page---Go-Travel?node-id=308-112
 
 An HTML, CSS and JavaScript reconstruction of the Go Travel Figma design with section transitions, responsive layout, navigation, hero image pager, destination carousel, destination CTA demo, and testimonial switcher.
+
+## Hosting
+
+The demo is served by the dedicated Cloudflare Worker `go-travel-demo` on the personal `aviyansah` workers.dev subdomain. It serves only the allowlisted HTML, CSS, JS and image files from this GitHub branch (`go-travel-html-demo`). Assets are fetched from the public GitHub source with a short edge cache (about 5 minutes). The production portfolio and other Cloudflare projects are untouched.
+
+Direct GitHub-connected Pages setup was unavailable due to a Cloudflare Pages Git installation error; this standalone Worker is the current preview publishing path.
 
 ## How to run
 
