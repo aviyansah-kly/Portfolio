@@ -12,6 +12,12 @@ The demo is served by the dedicated Cloudflare Worker `go-travel-demo` on the pe
 
 Direct GitHub-connected Pages setup was unavailable due to a Cloudflare Pages Git installation error; this standalone Worker is the current preview publishing path.
 
+## Deployment fix (2026-11-21)
+
+The initial Worker forwarded the upstream `raw.githubusercontent.com` response headers, including GitHub's restrictive Content-Security-Policy (`sandbox`). This blocked stylesheet, JavaScript and image subresources when the HTML was served as a website. **Fixed** by constructing clean response headers and a site-appropriate CSP in [`deploy/worker.js`](./deploy/worker.js). Desktop browser verification confirmed 158 CSS rules applied, DM Sans font loaded, hero image visible and destination image assets loaded.
+
+For subsequent Worker updates, keep `deploy/worker.js` in sync with the deployed Cloudflare script; do **not** pass through upstream GitHub security headers. The Worker is independent of the GitHub repository deployment automation and is updated through Cloudflare API.
+
 ## How to run
 
 Open index.html in a browser or serve this directory on any static server. The site references fonts from Google Fonts; fallback system fonts apply offline.
